@@ -123,15 +123,266 @@
   <data name="AboutMessage" xml:space="preserve">
     <value>Приветствуем вас на сайте нашей компании!</value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>Адрес</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="Addresses" xml:space="preserve">
+    <value>Адреса</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="Address_Flat" xml:space="preserve">
+    <value>Номер квартиры</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Address_House" xml:space="preserve">
+    <value>Дом</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Cities" xml:space="preserve">
+    <value>Города</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Город</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="City_Name" xml:space="preserve">
+    <value>Название</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Companies" xml:space="preserve">
+    <value>Компании</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Компания</value>
+    <comment>Entity Type</comment>
+  </data>
   <data name="CompanyName" xml:space="preserve">
     <value>ООО "Компания по установке приборов учёта"</value>
     <comment>Название компании</comment>
   </data>
+  <data name="Company_CompanyName" xml:space="preserve">
+    <value>Название</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Company_INN" xml:space="preserve">
+    <value>ИНН</value>
+    <comment>Entity Attribute</comment>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Контакты</value>
   </data>
+  <data name="CookiesExpirationDays" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Заказчик</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Заказчики</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="Customer_FIO" xml:space="preserve">
+    <value>ФИО</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Customer_Passport" xml:space="preserve">
+    <value>Номер паспорта</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Customer_PhoneNumber" xml:space="preserve">
+    <value>Номер телефона</value>
+    <comment>Entity Attribute</comment>
+  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Домашняя страница</value>
+  </data>
+  <data name="House" xml:space="preserve">
+    <value>Дом</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="Houses" xml:space="preserve">
+    <value>Дома</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="House_Number" xml:space="preserve">
+    <value>Номер</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="House_Street" xml:space="preserve">
+    <value>Улица</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="LoginResponse_Empty" xml:space="preserve">
+    <value>Введите </value>
+  </data>
+  <data name="LoginResponse_IncorrectPassword" xml:space="preserve">
+    <value>Неверный</value>
+  </data>
+  <data name="LoginResponse_InvalidString" xml:space="preserve">
+    <value>Некорретный</value>
+  </data>
+  <data name="LoginResponse_NoUser" xml:space="preserve">
+    <value>Такого пользователя не существует</value>
+  </data>
+  <data name="Meter" xml:space="preserve">
+    <value>Счётчик</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="Meters" xml:space="preserve">
+    <value>Счётчики</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="MeterType" xml:space="preserve">
+    <value>Тип счётчиков</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="MeterTypes" xml:space="preserve">
+    <value>Типы счётчиков</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="MeterType_Name" xml:space="preserve">
+    <value>Название</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Meter_MeterType" xml:space="preserve">
+    <value>Тип</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Meter_Name" xml:space="preserve">
+    <value>Название</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Заказ</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="OrderEntries" xml:space="preserve">
+    <value>Заказные позиции</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="OrderEntry" xml:space="preserve">
+    <value>Заказная позиция</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="OrderEntry_EndTime" xml:space="preserve">
+    <value>Дата выполнения заказа</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="OrderEntry_Meter" xml:space="preserve">
+    <value>Счётчик</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="OrderEntry_Order" xml:space="preserve">
+    <value>Заказ</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="OrderEntry_Person" xml:space="preserve">
+    <value>Исполнитель</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="OrderEntry_RegNum" xml:space="preserve">
+    <value>Регистрационный номер</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="OrderEntry_StartTime" xml:space="preserve">
+    <value>Дата принятия заказа</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="OrderEntry_Status" xml:space="preserve">
+    <value>Статус заказа</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Заказы</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="Order_Address" xml:space="preserve">
+    <value>Адрес</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Order_Customer" xml:space="preserve">
+    <value>Заказчик</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Person" xml:space="preserve">
+    <value>Исполнитель</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="Persons" xml:space="preserve">
+    <value>Исполнители</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="Person_FIO" xml:space="preserve">
+    <value>ФИО</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус заказных позиций</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="Statuses" xml:space="preserve">
+    <value>Статусы заказных позиций</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="Status_Name" xml:space="preserve">
+    <value>Название</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Stavka" xml:space="preserve">
+    <value>Ставка</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="Stavkas" xml:space="preserve">
+    <value>Ставки</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="Stavka_MeterType" xml:space="preserve">
+    <value>Тип счётчика</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Stavka_Person" xml:space="preserve">
+    <value>Исполнитель</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Улица</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="Streets" xml:space="preserve">
+    <value>Улицы</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="Street_City" xml:space="preserve">
+    <value>Город</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="Street_Name" xml:space="preserve">
+    <value>Название</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Пользователь</value>
+    <comment>Entity Type</comment>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Пользователи</value>
+    <comment>Entity Type M</comment>
+  </data>
+  <data name="User_Login" xml:space="preserve">
+    <value>Логин</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="User_Password" xml:space="preserve">
+    <value>Пароль</value>
+    <comment>Entity Attribute</comment>
+  </data>
+  <data name="User_UserType" xml:space="preserve">
+    <value>Тип пользователя</value>
+    <comment>Entity Attribute</comment>
   </data>
   <data name="WebSiteName" xml:space="preserve">
     <value>Сайт компании ООО "Компания по установке приборов учёта" </value>

@@ -152,16 +152,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_GlobalResources\AtributeResourses.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AtributeResourses.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\EntitiesResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntitiesResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="App_GlobalResources\SiteResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -338,14 +328,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\EntitiesResources.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>EntitiesResources.Designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\AtributeResourses.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>AtributeResourses.Designer.cs</LastGenOutput>
-    </Content>
     <EmbeddedResource Include="App_GlobalResources\SiteResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SiteResources.Designer.cs</LastGenOutput>

@@ -79,6 +79,105 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Номер квартиры.
+        /// </summary>
+        public static string Address_Flat {
+            get {
+                return ResourceManager.GetString("Address_Flat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дом.
+        /// </summary>
+        public static string Address_House {
+            get {
+                return ResourceManager.GetString("Address_House", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Адреса.
+        /// </summary>
+        public static string Addresses {
+            get {
+                return ResourceManager.GetString("Addresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Города.
+        /// </summary>
+        public static string Cities {
+            get {
+                return ResourceManager.GetString("Cities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Город.
+        /// </summary>
+        public static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название.
+        /// </summary>
+        public static string City_Name {
+            get {
+                return ResourceManager.GetString("City_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Компании.
+        /// </summary>
+        public static string Companies {
+            get {
+                return ResourceManager.GetString("Companies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Компания.
+        /// </summary>
+        public static string Company {
+            get {
+                return ResourceManager.GetString("Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название.
+        /// </summary>
+        public static string Company_CompanyName {
+            get {
+                return ResourceManager.GetString("Company_CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ИНН.
+        /// </summary>
+        public static string Company_INN {
+            get {
+                return ResourceManager.GetString("Company_INN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ООО &quot;Компания по установке приборов учёта&quot;.
         /// </summary>
         public static string CompanyName {
@@ -97,11 +196,488 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 1.
+        /// </summary>
+        public static string CookiesExpirationDays {
+            get {
+                return ResourceManager.GetString("CookiesExpirationDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказчик.
+        /// </summary>
+        public static string Customer {
+            get {
+                return ResourceManager.GetString("Customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ФИО.
+        /// </summary>
+        public static string Customer_FIO {
+            get {
+                return ResourceManager.GetString("Customer_FIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Номер паспорта.
+        /// </summary>
+        public static string Customer_Passport {
+            get {
+                return ResourceManager.GetString("Customer_Passport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Номер телефона.
+        /// </summary>
+        public static string Customer_PhoneNumber {
+            get {
+                return ResourceManager.GetString("Customer_PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказчики.
+        /// </summary>
+        public static string Customers {
+            get {
+                return ResourceManager.GetString("Customers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Домашняя страница.
         /// </summary>
         public static string HomePage {
             get {
                 return ResourceManager.GetString("HomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дом.
+        /// </summary>
+        public static string House {
+            get {
+                return ResourceManager.GetString("House", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Номер.
+        /// </summary>
+        public static string House_Number {
+            get {
+                return ResourceManager.GetString("House_Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Улица.
+        /// </summary>
+        public static string House_Street {
+            get {
+                return ResourceManager.GetString("House_Street", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дома.
+        /// </summary>
+        public static string Houses {
+            get {
+                return ResourceManager.GetString("Houses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Введите .
+        /// </summary>
+        public static string LoginResponse_Empty {
+            get {
+                return ResourceManager.GetString("LoginResponse_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Неверный.
+        /// </summary>
+        public static string LoginResponse_IncorrectPassword {
+            get {
+                return ResourceManager.GetString("LoginResponse_IncorrectPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Некорретный.
+        /// </summary>
+        public static string LoginResponse_InvalidString {
+            get {
+                return ResourceManager.GetString("LoginResponse_InvalidString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Такого пользователя не существует.
+        /// </summary>
+        public static string LoginResponse_NoUser {
+            get {
+                return ResourceManager.GetString("LoginResponse_NoUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Счётчик.
+        /// </summary>
+        public static string Meter {
+            get {
+                return ResourceManager.GetString("Meter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип.
+        /// </summary>
+        public static string Meter_MeterType {
+            get {
+                return ResourceManager.GetString("Meter_MeterType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название.
+        /// </summary>
+        public static string Meter_Name {
+            get {
+                return ResourceManager.GetString("Meter_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Счётчики.
+        /// </summary>
+        public static string Meters {
+            get {
+                return ResourceManager.GetString("Meters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип счётчиков.
+        /// </summary>
+        public static string MeterType {
+            get {
+                return ResourceManager.GetString("MeterType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название.
+        /// </summary>
+        public static string MeterType_Name {
+            get {
+                return ResourceManager.GetString("MeterType_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Типы счётчиков.
+        /// </summary>
+        public static string MeterTypes {
+            get {
+                return ResourceManager.GetString("MeterTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказ.
+        /// </summary>
+        public static string Order {
+            get {
+                return ResourceManager.GetString("Order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес.
+        /// </summary>
+        public static string Order_Address {
+            get {
+                return ResourceManager.GetString("Order_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказчик.
+        /// </summary>
+        public static string Order_Customer {
+            get {
+                return ResourceManager.GetString("Order_Customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказные позиции.
+        /// </summary>
+        public static string OrderEntries {
+            get {
+                return ResourceManager.GetString("OrderEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказная позиция.
+        /// </summary>
+        public static string OrderEntry {
+            get {
+                return ResourceManager.GetString("OrderEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата выполнения заказа.
+        /// </summary>
+        public static string OrderEntry_EndTime {
+            get {
+                return ResourceManager.GetString("OrderEntry_EndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Счётчик.
+        /// </summary>
+        public static string OrderEntry_Meter {
+            get {
+                return ResourceManager.GetString("OrderEntry_Meter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказ.
+        /// </summary>
+        public static string OrderEntry_Order {
+            get {
+                return ResourceManager.GetString("OrderEntry_Order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Исполнитель.
+        /// </summary>
+        public static string OrderEntry_Person {
+            get {
+                return ResourceManager.GetString("OrderEntry_Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Регистрационный номер.
+        /// </summary>
+        public static string OrderEntry_RegNum {
+            get {
+                return ResourceManager.GetString("OrderEntry_RegNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Дата принятия заказа.
+        /// </summary>
+        public static string OrderEntry_StartTime {
+            get {
+                return ResourceManager.GetString("OrderEntry_StartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Статус заказа.
+        /// </summary>
+        public static string OrderEntry_Status {
+            get {
+                return ResourceManager.GetString("OrderEntry_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказы.
+        /// </summary>
+        public static string Orders {
+            get {
+                return ResourceManager.GetString("Orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Исполнитель.
+        /// </summary>
+        public static string Person {
+            get {
+                return ResourceManager.GetString("Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ФИО.
+        /// </summary>
+        public static string Person_FIO {
+            get {
+                return ResourceManager.GetString("Person_FIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Исполнители.
+        /// </summary>
+        public static string Persons {
+            get {
+                return ResourceManager.GetString("Persons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Статус заказных позиций.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название.
+        /// </summary>
+        public static string Status_Name {
+            get {
+                return ResourceManager.GetString("Status_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Статусы заказных позиций.
+        /// </summary>
+        public static string Statuses {
+            get {
+                return ResourceManager.GetString("Statuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ставка.
+        /// </summary>
+        public static string Stavka {
+            get {
+                return ResourceManager.GetString("Stavka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип счётчика.
+        /// </summary>
+        public static string Stavka_MeterType {
+            get {
+                return ResourceManager.GetString("Stavka_MeterType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Исполнитель.
+        /// </summary>
+        public static string Stavka_Person {
+            get {
+                return ResourceManager.GetString("Stavka_Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ставки.
+        /// </summary>
+        public static string Stavkas {
+            get {
+                return ResourceManager.GetString("Stavkas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Улица.
+        /// </summary>
+        public static string Street {
+            get {
+                return ResourceManager.GetString("Street", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Город.
+        /// </summary>
+        public static string Street_City {
+            get {
+                return ResourceManager.GetString("Street_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Название.
+        /// </summary>
+        public static string Street_Name {
+            get {
+                return ResourceManager.GetString("Street_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Улицы.
+        /// </summary>
+        public static string Streets {
+            get {
+                return ResourceManager.GetString("Streets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пользователь.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Логин.
+        /// </summary>
+        public static string User_Login {
+            get {
+                return ResourceManager.GetString("User_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пароль.
+        /// </summary>
+        public static string User_Password {
+            get {
+                return ResourceManager.GetString("User_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Тип пользователя.
+        /// </summary>
+        public static string User_UserType {
+            get {
+                return ResourceManager.GetString("User_UserType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пользователи.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         

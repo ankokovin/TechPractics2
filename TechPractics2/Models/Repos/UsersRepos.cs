@@ -165,7 +165,7 @@ namespace TechPractics2.Models.Repos
                             select u).ToList();
                 if (user.Count == 0)
                 {
-                    Message += "Такого пользователя не существует";
+                    Message += GlobalResources.SiteResources.LoginResponse_NoUser;
                     return null;
                 }
                 else
