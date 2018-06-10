@@ -1,0 +1,920 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="OrderSet" EntityType="Model1.Store.OrderSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet" EntityType="Model1.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerSet" EntityType="Model1.Store.CustomerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonSet" EntityType="Model1.Store.PersonSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StavkaSet" EntityType="Model1.Store.StavkaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MeterSet" EntityType="Model1.Store.MeterSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderEntrySet" EntityType="Model1.Store.OrderEntrySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MeterTypeSet" EntityType="Model1.Store.MeterTypeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StatusSet" EntityType="Model1.Store.StatusSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CitySet" EntityType="Model1.Store.CitySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StreetSet" EntityType="Model1.Store.StreetSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HouseSet" EntityType="Model1.Store.HouseSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AddressSet" EntityType="Model1.Store.AddressSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerSet_Company" EntityType="Model1.Store.CustomerSet_Company" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CustomerOrder" Association="Model1.Store.CustomerOrder">
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="Order" EntitySet="OrderSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserOrder" Association="Model1.Store.UserOrder">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Order" EntitySet="OrderSet" />
+    </AssociationSet>
+    <AssociationSet Name="PersonWorker" Association="Model1.Store.PersonWorker">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="Worker" EntitySet="StavkaSet" />
+    </AssociationSet>
+    <AssociationSet Name="OrderOrderEntry" Association="Model1.Store.OrderOrderEntry">
+      <End Role="Order" EntitySet="OrderSet" />
+      <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+    </AssociationSet>
+    <AssociationSet Name="MeterOrderEntry" Association="Model1.Store.MeterOrderEntry">
+      <End Role="Meter" EntitySet="MeterSet" />
+      <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+    </AssociationSet>
+    <AssociationSet Name="MeterTypeMeter" Association="Model1.Store.MeterTypeMeter">
+      <End Role="MeterType" EntitySet="MeterTypeSet" />
+      <End Role="Meter" EntitySet="MeterSet" />
+    </AssociationSet>
+    <AssociationSet Name="MeterTypeStavka" Association="Model1.Store.MeterTypeStavka">
+      <End Role="MeterType" EntitySet="MeterTypeSet" />
+      <End Role="Stavka" EntitySet="StavkaSet" />
+    </AssociationSet>
+    <AssociationSet Name="StatusOrderEntry" Association="Model1.Store.StatusOrderEntry">
+      <End Role="Status" EntitySet="StatusSet" />
+      <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+    </AssociationSet>
+    <AssociationSet Name="CityStreet" Association="Model1.Store.CityStreet">
+      <End Role="City" EntitySet="CitySet" />
+      <End Role="Street" EntitySet="StreetSet" />
+    </AssociationSet>
+    <AssociationSet Name="HouseAddress" Association="Model1.Store.HouseAddress">
+      <End Role="House" EntitySet="HouseSet" />
+      <End Role="Address" EntitySet="AddressSet" />
+    </AssociationSet>
+    <AssociationSet Name="AddressOrder" Association="Model1.Store.AddressOrder">
+      <End Role="Address" EntitySet="AddressSet" />
+      <End Role="Order" EntitySet="OrderSet" />
+    </AssociationSet>
+    <AssociationSet Name="StreetHouse" Association="Model1.Store.StreetHouse">
+      <End Role="Street" EntitySet="StreetSet" />
+      <End Role="House" EntitySet="HouseSet" />
+    </AssociationSet>
+    <AssociationSet Name="PersonOrderEntry" Association="Model1.Store.PersonOrderEntry">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_inherits_Customer" Association="Model1.Store.FK_Company_inherits_Customer">
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="Company" EntitySet="CustomerSet_Company" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="OrderSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Address_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Passport" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PersonSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StavkaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Person_Id" Type="int" Nullable="false" />
+    <Property Name="MeterType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MeterSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MeterType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderEntrySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegNumer" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="StartTime" Type="datetime" Nullable="true" />
+    <Property Name="EndTime" Type="datetime" Nullable="true" />
+    <Property Name="PersonId" Type="int" Nullable="true" />
+    <Property Name="Order_Id" Type="int" Nullable="false" />
+    <Property Name="Meter_Id" Type="int" Nullable="false" />
+    <Property Name="Status_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MeterTypeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatusSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CitySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StreetSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HouseSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Street_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AddressSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Flat" Type="int" Nullable="false" />
+    <Property Name="House_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerSet_Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="CompanyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="INN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CustomerOrder">
+    <End Role="Customer" Type="Model1.Store.CustomerSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Order" Type="Model1.Store.OrderSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserOrder">
+    <End Role="User" Type="Model1.Store.UserSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Order" Type="Model1.Store.OrderSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonWorker">
+    <End Role="Person" Type="Model1.Store.PersonSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Worker" Type="Model1.Store.StavkaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderOrderEntry">
+    <End Role="Order" Type="Model1.Store.OrderSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderEntry" Type="Model1.Store.OrderEntrySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderEntry">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MeterOrderEntry">
+    <End Role="Meter" Type="Model1.Store.MeterSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderEntry" Type="Model1.Store.OrderEntrySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meter">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderEntry">
+        <PropertyRef Name="Meter_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MeterTypeMeter">
+    <End Role="MeterType" Type="Model1.Store.MeterTypeSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Meter" Type="Model1.Store.MeterSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MeterType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Meter">
+        <PropertyRef Name="MeterType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MeterTypeStavka">
+    <End Role="MeterType" Type="Model1.Store.MeterTypeSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Stavka" Type="Model1.Store.StavkaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MeterType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Stavka">
+        <PropertyRef Name="MeterType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StatusOrderEntry">
+    <End Role="Status" Type="Model1.Store.StatusSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderEntry" Type="Model1.Store.OrderEntrySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderEntry">
+        <PropertyRef Name="Status_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityStreet">
+    <End Role="City" Type="Model1.Store.CitySet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Street" Type="Model1.Store.StreetSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Street">
+        <PropertyRef Name="City_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HouseAddress">
+    <End Role="House" Type="Model1.Store.HouseSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Address" Type="Model1.Store.AddressSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="House">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="House_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AddressOrder">
+    <End Role="Address" Type="Model1.Store.AddressSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Order" Type="Model1.Store.OrderSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Address_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StreetHouse">
+    <End Role="Street" Type="Model1.Store.StreetSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="House" Type="Model1.Store.HouseSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Street">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="House">
+        <PropertyRef Name="Street_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonOrderEntry">
+    <End Role="Person" Type="Model1.Store.PersonSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderEntry" Type="Model1.Store.OrderEntrySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderEntry">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_inherits_Customer">
+    <End Role="Customer" Type="Model1.Store.CustomerSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Company" Type="Model1.Store.CustomerSet_Company" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OrderSet" EntityType="Model1.Order" />
+          <EntitySet Name="UserSet" EntityType="Model1.User" />
+          <EntitySet Name="CustomerSet" EntityType="Model1.Customer" />
+          <EntitySet Name="PersonSet" EntityType="Model1.Person" />
+          <EntitySet Name="StavkaSet" EntityType="Model1.Stavka" />
+          <AssociationSet Name="CustomerOrder" Association="Model1.CustomerOrder">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="Order" EntitySet="OrderSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserOrder" Association="Model1.UserOrder">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Order" EntitySet="OrderSet" />
+          </AssociationSet>
+          <AssociationSet Name="PersonWorker" Association="Model1.PersonWorker">
+            <End Role="Person" EntitySet="PersonSet" />
+            <End Role="Worker" EntitySet="StavkaSet" />
+          </AssociationSet>
+          <EntitySet Name="MeterSet" EntityType="Model1.Meter" />
+          <EntitySet Name="OrderEntrySet" EntityType="Model1.OrderEntry" />
+          <AssociationSet Name="OrderOrderEntry" Association="Model1.OrderOrderEntry">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="MeterOrderEntry" Association="Model1.MeterOrderEntry">
+            <End Role="Meter" EntitySet="MeterSet" />
+            <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+          </AssociationSet>
+          <EntitySet Name="MeterTypeSet" EntityType="Model1.MeterType" />
+          <AssociationSet Name="MeterTypeMeter" Association="Model1.MeterTypeMeter">
+            <End Role="MeterType" EntitySet="MeterTypeSet" />
+            <End Role="Meter" EntitySet="MeterSet" />
+          </AssociationSet>
+          <EntitySet Name="StatusSet" EntityType="Model1.Status" />
+          <AssociationSet Name="MeterTypeStavka" Association="Model1.MeterTypeStavka">
+            <End Role="MeterType" EntitySet="MeterTypeSet" />
+            <End Role="Stavka" EntitySet="StavkaSet" />
+          </AssociationSet>
+          <AssociationSet Name="StatusOrderEntry" Association="Model1.StatusOrderEntry">
+            <End Role="Status" EntitySet="StatusSet" />
+            <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+          </AssociationSet>
+          <EntitySet Name="CitySet" EntityType="Model1.City" />
+          <EntitySet Name="StreetSet" EntityType="Model1.Street" />
+          <AssociationSet Name="CityStreet" Association="Model1.CityStreet">
+            <End Role="City" EntitySet="CitySet" />
+            <End Role="Street" EntitySet="StreetSet" />
+          </AssociationSet>
+          <EntitySet Name="HouseSet" EntityType="Model1.House" />
+          <EntitySet Name="AddressSet" EntityType="Model1.Address" />
+          <AssociationSet Name="HouseAddress" Association="Model1.HouseAddress">
+            <End Role="House" EntitySet="HouseSet" />
+            <End Role="Address" EntitySet="AddressSet" />
+          </AssociationSet>
+          <AssociationSet Name="AddressOrder" Association="Model1.AddressOrder">
+            <End Role="Address" EntitySet="AddressSet" />
+            <End Role="Order" EntitySet="OrderSet" />
+          </AssociationSet>
+          <AssociationSet Name="StreetHouse" Association="Model1.StreetHouse">
+            <End Role="Street" EntitySet="StreetSet" />
+            <End Role="House" EntitySet="HouseSet" />
+          </AssociationSet>
+          <AssociationSet Name="PersonOrderEntry" Association="Model1.PersonOrderEntry">
+            <End Role="Person" EntitySet="PersonSet" />
+            <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="Customer" Relationship="Model1.CustomerOrder" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="User" Relationship="Model1.UserOrder" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="OrderEntry" Relationship="Model1.OrderOrderEntry" FromRole="Order" ToRole="OrderEntry" />
+          <NavigationProperty Name="Address" Relationship="Model1.AddressOrder" FromRole="Order" ToRole="Address" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="UserType" Type="Model1.UserType" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Model1.UserOrder" FromRole="User" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Customer" Abstract="false">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="FIO" Type="String" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Model1.CustomerOrder" FromRole="Customer" ToRole="Order" />
+          <Property Name="Passport" Type="String" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Company" BaseType="Model1.Customer">
+          <Property Name="CompanyName" Nullable="false" Type="String" />
+          <Property Name="INN" Nullable="false" Type="String" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="FIO" Type="String" Nullable="false" />
+          <NavigationProperty Name="Stavka" Relationship="Model1.PersonWorker" FromRole="Person" ToRole="Worker" />
+          <NavigationProperty Name="OrderEntry" Relationship="Model1.PersonOrderEntry" FromRole="Person" ToRole="OrderEntry" />
+        </EntityType>
+        <EntityType Name="Stavka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="Person" Relationship="Model1.PersonWorker" FromRole="Worker" ToRole="Person" />
+          <NavigationProperty Name="MeterType" Relationship="Model1.MeterTypeStavka" FromRole="Stavka" ToRole="MeterType" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="CustomerOrder">
+          <End Type="Model1.Customer" Role="Customer" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Order" Role="Order" Multiplicity="*" />
+        </Association>
+        <Association Name="UserOrder">
+          <End Type="Model1.User" Role="User" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Order" Role="Order" Multiplicity="*" />
+        </Association>
+        <Association Name="PersonWorker">
+          <End Type="Model1.Person" Role="Person" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Stavka" Role="Worker" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Meter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="OrderEntry" Relationship="Model1.MeterOrderEntry" FromRole="Meter" ToRole="OrderEntry" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="MeterType" Relationship="Model1.MeterTypeMeter" FromRole="Meter" ToRole="MeterType" />
+        </EntityType>
+        <EntityType Name="OrderEntry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="Order" Relationship="Model1.OrderOrderEntry" FromRole="OrderEntry" ToRole="Order" />
+          <NavigationProperty Name="Meter" Relationship="Model1.MeterOrderEntry" FromRole="OrderEntry" ToRole="Meter" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="RegNumer" Type="String" Nullable="true" />
+          <NavigationProperty Name="Status" Relationship="Model1.StatusOrderEntry" FromRole="OrderEntry" ToRole="Status" />
+          <Property Name="StartTime" Type="DateTime" Nullable="true" />
+          <Property Name="EndTime" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Person" Relationship="Model1.PersonOrderEntry" FromRole="OrderEntry" ToRole="Person" />
+          <Property Name="PersonId" Type="Int32" Nullable="true" />
+        </EntityType>
+        <Association Name="OrderOrderEntry">
+          <End Type="Model1.Order" Role="Order" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.OrderEntry" Role="OrderEntry" Multiplicity="*" />
+        </Association>
+        <Association Name="MeterOrderEntry">
+          <End Type="Model1.Meter" Role="Meter" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.OrderEntry" Role="OrderEntry" Multiplicity="*" />
+        </Association>
+        <EntityType Name="MeterType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="Meter" Relationship="Model1.MeterTypeMeter" FromRole="MeterType" ToRole="Meter" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Stavka" Relationship="Model1.MeterTypeStavka" FromRole="MeterType" ToRole="Stavka" />
+        </EntityType>
+        <Association Name="MeterTypeMeter">
+          <End Type="Model1.MeterType" Role="MeterType" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Meter" Role="Meter" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="OrderEntry" Relationship="Model1.StatusOrderEntry" FromRole="Status" ToRole="OrderEntry" />
+        </EntityType>
+        <Association Name="MeterTypeStavka">
+          <End Type="Model1.MeterType" Role="MeterType" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Stavka" Role="Stavka" Multiplicity="*" />
+        </Association>
+        <EnumType Name="UserType" >
+          <Member Name="Admin" Value="0" />
+          <Member Name="Operator" Value="1" />
+          <Member Name="Analitic" Value="2" />
+        </EnumType>
+        <Association Name="StatusOrderEntry">
+          <End Type="Model1.Status" Role="Status" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.OrderEntry" Role="OrderEntry" Multiplicity="*" />
+        </Association>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Street" Relationship="Model1.CityStreet" FromRole="City" ToRole="Street" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="City" Relationship="Model1.CityStreet" FromRole="Street" ToRole="City" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="House" Relationship="Model1.StreetHouse" FromRole="Street" ToRole="House" />
+        </EntityType>
+        <Association Name="CityStreet">
+          <End Type="Model1.City" Role="City" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Street" Role="Street" Multiplicity="*" />
+        </Association>
+        <EntityType Name="House">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Number" Type="String" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Model1.HouseAddress" FromRole="House" ToRole="Address" />
+          <NavigationProperty Name="Street" Relationship="Model1.StreetHouse" FromRole="House" ToRole="Street" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <NavigationProperty Name="House" Relationship="Model1.HouseAddress" FromRole="Address" ToRole="House" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
+          <Property Name="Flat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Model1.AddressOrder" FromRole="Address" ToRole="Order" />
+        </EntityType>
+        <Association Name="HouseAddress">
+          <End Type="Model1.House" Role="House" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Address" Role="Address" Multiplicity="*" />
+        </Association>
+        <Association Name="AddressOrder">
+          <End Type="Model1.Address" Role="Address" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.Order" Role="Order" Multiplicity="*" />
+        </Association>
+        <Association Name="StreetHouse">
+          <End Type="Model1.Street" Role="Street" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.House" Role="House" Multiplicity="*" />
+        </Association>
+        <Association Name="PersonOrderEntry">
+          <End Type="Model1.Person" Role="Person" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.OrderEntry" Role="OrderEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderEntry">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="OrderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Order)">
+        <MappingFragment StoreEntitySet="OrderSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Customer)">
+        <MappingFragment StoreEntitySet="CustomerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Company)">
+        <MappingFragment StoreEntitySet="CustomerSet_Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Person)">
+        <MappingFragment StoreEntitySet="PersonSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StavkaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Stavka)">
+        <MappingFragment StoreEntitySet="StavkaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MeterSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Meter)">
+        <MappingFragment StoreEntitySet="MeterSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderEntrySet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.OrderEntry)">
+        <MappingFragment StoreEntitySet="OrderEntrySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RegNumer" ColumnName="RegNumer" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MeterTypeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.MeterType)">
+        <MappingFragment StoreEntitySet="MeterTypeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Status)">
+        <MappingFragment StoreEntitySet="StatusSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CitySet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.City)">
+        <MappingFragment StoreEntitySet="CitySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StreetSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Street)">
+        <MappingFragment StoreEntitySet="StreetSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HouseSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.House)">
+        <MappingFragment StoreEntitySet="HouseSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddressSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Address)">
+        <MappingFragment StoreEntitySet="AddressSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Flat" ColumnName="Flat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CustomerOrder" TypeName="Model1.CustomerOrder" StoreEntitySet="OrderSet">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserOrder" TypeName="Model1.UserOrder" StoreEntitySet="OrderSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonWorker" TypeName="Model1.PersonWorker" StoreEntitySet="StavkaSet">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Person_Id" />
+      </EndProperty>
+      <EndProperty Name="Worker">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderOrderEntry" TypeName="Model1.OrderOrderEntry" StoreEntitySet="OrderEntrySet">
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Order_Id" />
+      </EndProperty>
+      <EndProperty Name="OrderEntry">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MeterOrderEntry" TypeName="Model1.MeterOrderEntry" StoreEntitySet="OrderEntrySet">
+      <EndProperty Name="Meter">
+        <ScalarProperty Name="Id" ColumnName="Meter_Id" />
+      </EndProperty>
+      <EndProperty Name="OrderEntry">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MeterTypeMeter" TypeName="Model1.MeterTypeMeter" StoreEntitySet="MeterSet">
+      <EndProperty Name="MeterType">
+        <ScalarProperty Name="Id" ColumnName="MeterType_Id" />
+      </EndProperty>
+      <EndProperty Name="Meter">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MeterTypeStavka" TypeName="Model1.MeterTypeStavka" StoreEntitySet="StavkaSet">
+      <EndProperty Name="MeterType">
+        <ScalarProperty Name="Id" ColumnName="MeterType_Id" />
+      </EndProperty>
+      <EndProperty Name="Stavka">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StatusOrderEntry" TypeName="Model1.StatusOrderEntry" StoreEntitySet="OrderEntrySet">
+      <EndProperty Name="Status">
+        <ScalarProperty Name="Id" ColumnName="Status_Id" />
+      </EndProperty>
+      <EndProperty Name="OrderEntry">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CityStreet" TypeName="Model1.CityStreet" StoreEntitySet="StreetSet">
+      <EndProperty Name="City">
+        <ScalarProperty Name="Id" ColumnName="City_Id" />
+      </EndProperty>
+      <EndProperty Name="Street">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HouseAddress" TypeName="Model1.HouseAddress" StoreEntitySet="AddressSet">
+      <EndProperty Name="House">
+        <ScalarProperty Name="Id" ColumnName="House_Id" />
+      </EndProperty>
+      <EndProperty Name="Address">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AddressOrder" TypeName="Model1.AddressOrder" StoreEntitySet="OrderSet">
+      <EndProperty Name="Address">
+        <ScalarProperty Name="Id" ColumnName="Address_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StreetHouse" TypeName="Model1.StreetHouse" StoreEntitySet="HouseSet">
+      <EndProperty Name="Street">
+        <ScalarProperty Name="Id" ColumnName="Street_Id" />
+      </EndProperty>
+      <EndProperty Name="House">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
