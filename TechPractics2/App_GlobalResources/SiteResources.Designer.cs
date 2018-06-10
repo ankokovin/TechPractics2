@@ -250,6 +250,60 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на {0}:{1} {2}.
+        /// </summary>
+        public static string FailedLogIn_MsgFormat {
+            get {
+                return ResourceManager.GetString("FailedLogIn_MsgFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка входа.
+        /// </summary>
+        public static string FailedLogIn_Title {
+            get {
+                return ResourceManager.GetString("FailedLogIn_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Во время входа была обнаружена ошибка.
+        /// </summary>
+        public static string FailerdLogIn_MsgStart {
+            get {
+                return ResourceManager.GetString("FailerdLogIn_MsgStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Header_sign_in.
+        /// </summary>
+        public static string Header_sign_in {
+            get {
+                return ResourceManager.GetString("Header_sign_in", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Войти.
+        /// </summary>
+        public static string Header_sing_in_msg {
+            get {
+                return ResourceManager.GetString("Header_sing_in_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на HiddenButtonId.
+        /// </summary>
+        public static string HiddenButtonId {
+            get {
+                return ResourceManager.GetString("HiddenButtonId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Домашняя страница.
         /// </summary>
         public static string HomePage {
@@ -291,6 +345,33 @@ namespace GlobalResources {
         public static string Houses {
             get {
                 return ResourceManager.GetString("Houses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Last_sing_in_error.
+        /// </summary>
+        public static string Last_sing_in_error {
+            get {
+                return ResourceManager.GetString("Last_sing_in_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Last_Url.
+        /// </summary>
+        public static string Last_Url {
+            get {
+                return ResourceManager.GetString("Last_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 5000.
+        /// </summary>
+        public static string LoginRedirectTimeout {
+            get {
+                return ResourceManager.GetString("LoginRedirectTimeout", resourceCulture);
             }
         }
         
@@ -511,6 +592,33 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Login.
+        /// </summary>
+        public static string PageLoginSource {
+            get {
+                return ResourceManager.GetString("PageLoginSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password.
+        /// </summary>
+        public static string PagePasswordSource {
+            get {
+                return ResourceManager.GetString("PagePasswordSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SaveToCookies.
+        /// </summary>
+        public static string PageSaveCookiesSource {
+            get {
+                return ResourceManager.GetString("PageSaveCookiesSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Исполнитель.
         /// </summary>
         public static string Person {
@@ -534,6 +642,33 @@ namespace GlobalResources {
         public static string Persons {
             get {
                 return ResourceManager.GetString("Persons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Запомнить.
+        /// </summary>
+        public static string Remember {
+            get {
+                return ResourceManager.GetString("Remember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SignOutButton.
+        /// </summary>
+        public static string SignOutButtonId {
+            get {
+                return ResourceManager.GetString("SignOutButtonId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выйти.
+        /// </summary>
+        public static string SignOutButtonText {
+            get {
+                return ResourceManager.GetString("SignOutButtonText", resourceCulture);
             }
         }
         
@@ -637,6 +772,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Успешный вход. Перевод на начальную страницу.
+        /// </summary>
+        public static string Success_Login_Msg {
+            get {
+                return ResourceManager.GetString("Success_Login_Msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Пользователь.
         /// </summary>
         public static string User {
@@ -682,11 +826,20 @@ namespace GlobalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Сайт компании ООО &quot;Компания по установке приборов учёта&quot; .
+        ///   Ищет локализованную строку, похожую на Сайт компании ООО &quot;КПУПУ&quot; .
         /// </summary>
         public static string WebSiteName {
             get {
                 return ResourceManager.GetString("WebSiteName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Приветствуем, .
+        /// </summary>
+        public static string WellcomeMessage {
+            get {
+                return ResourceManager.GetString("WellcomeMessage", resourceCulture);
             }
         }
     }

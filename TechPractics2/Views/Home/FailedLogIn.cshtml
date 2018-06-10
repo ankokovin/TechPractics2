@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+    Tuple<string,string> ErrorDisc = Session[GlobalResources.SiteResources.Last_sing_in_error] as Tuple<string, string>;
+}
+
+<!DOCTYPE html>
+
+<style>
+    .error{
+        color:red;
+        font-size: x-large;
+    }
+</style>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@GlobalResources.SiteResources.FailedLogIn_Title</title>
+</head>
+<body>
+    <div>
+        @if (ErrorDisc != null)
+        {
+        <p class="error">
+            @string.Format(
+                GlobalResources.SiteResources.FailedLogIn_MsgFormat,
+                GlobalResources.SiteResources.FailerdLogIn_MsgStart,
+                ErrorDisc.Item2,
+                ErrorDisc.Item1
+                )
+        </p>
+        }
+    </div>
+</body>
+</html>

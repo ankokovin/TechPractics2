@@ -1,0 +1,29 @@
+﻿label.loginlabel{
+    font-size: 12px;
+    color:gray;
+}
+
+label.loginwelcome{
+    font-size:15px;
+    color:gray;
+}
+
+input.logintextbox{
+    font-size: 12px;
+}
+
+button.loginbutton{
+    font-size: 12px;
+}
+
+button.logout{
+    font-size:15px;
+}
+
+table.logintable{
+    border:5px solid gray;
+}
+
+td.logintable{
+    border:5px solid transparent;
+}

@@ -197,6 +197,25 @@
     <value>Номер телефона</value>
     <comment>Entity Attribute</comment>
   </data>
+  <data name="FailedLogIn_MsgFormat" xml:space="preserve">
+    <value>{0}:{1} {2}</value>
+  </data>
+  <data name="FailedLogIn_Title" xml:space="preserve">
+    <value>Ошибка входа</value>
+  </data>
+  <data name="FailerdLogIn_MsgStart" xml:space="preserve">
+    <value>Во время входа была обнаружена ошибка</value>
+  </data>
+  <data name="Header_sign_in" xml:space="preserve">
+    <value>Header_sign_in</value>
+  </data>
+  <data name="Header_sing_in_msg" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="HiddenButtonId" xml:space="preserve">
+    <value>HiddenButtonId</value>
+    <comment>used in TimedActrion.js, SuccessLogIn view</comment>
+  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Домашняя страница</value>
   </data>
@@ -215,6 +234,16 @@
   <data name="House_Street" xml:space="preserve">
     <value>Улица</value>
     <comment>Entity Attribute</comment>
+  </data>
+  <data name="Last_sing_in_error" xml:space="preserve">
+    <value>Last_sing_in_error</value>
+  </data>
+  <data name="Last_Url" xml:space="preserve">
+    <value>Last_Url</value>
+  </data>
+  <data name="LoginRedirectTimeout" xml:space="preserve">
+    <value>5000</value>
+    <comment>Длительность перед редиректом в милисекундах</comment>
   </data>
   <data name="LoginResponse_Empty" xml:space="preserve">
     <value>Введите </value>
@@ -308,6 +337,18 @@
     <value>Заказчик</value>
     <comment>Entity Attribute</comment>
   </data>
+  <data name="PageLoginSource" xml:space="preserve">
+    <value>Login</value>
+    <comment>Должен быть равен названию соответствующего аргумента из SignIn в HomeController</comment>
+  </data>
+  <data name="PagePasswordSource" xml:space="preserve">
+    <value>Password</value>
+    <comment>Должен быть равен названию соответствующего аргумента из SignIn в HomeController</comment>
+  </data>
+  <data name="PageSaveCookiesSource" xml:space="preserve">
+    <value>SaveToCookies</value>
+    <comment>Должен быть равен названию соответствующего аргумента из SignIn в HomeController</comment>
+  </data>
   <data name="Person" xml:space="preserve">
     <value>Исполнитель</value>
     <comment>Entity Type</comment>
@@ -319,6 +360,15 @@
   <data name="Person_FIO" xml:space="preserve">
     <value>ФИО</value>
     <comment>Entity Attribute</comment>
+  </data>
+  <data name="Remember" xml:space="preserve">
+    <value>Запомнить</value>
+  </data>
+  <data name="SignOutButtonId" xml:space="preserve">
+    <value>SignOutButton</value>
+  </data>
+  <data name="SignOutButtonText" xml:space="preserve">
+    <value>Выйти</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Статус заказных позиций</value>
@@ -364,6 +414,9 @@
     <value>Название</value>
     <comment>Entity Attribute</comment>
   </data>
+  <data name="Success_Login_Msg" xml:space="preserve">
+    <value>Успешный вход. Перевод на начальную страницу</value>
+  </data>
   <data name="User" xml:space="preserve">
     <value>Пользователь</value>
     <comment>Entity Type</comment>
@@ -385,6 +438,9 @@
     <comment>Entity Attribute</comment>
   </data>
   <data name="WebSiteName" xml:space="preserve">
-    <value>Сайт компании ООО "Компания по установке приборов учёта" </value>
+    <value>Сайт компании ООО "КПУПУ" </value>
+  </data>
+  <data name="WellcomeMessage" xml:space="preserve">
+    <value>Приветствуем, </value>
   </data>
 </root>

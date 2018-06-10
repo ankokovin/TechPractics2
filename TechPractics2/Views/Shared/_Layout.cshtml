@@ -1,8 +1,7 @@
 ﻿@using TechPractics2.Models.EDM
 @{ 
-    User user = Session["User"] as User;
+    User user = Session[GlobalResources.SiteResources.User] as User;
 }
-
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/header_1.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -19,15 +19,50 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink(GlobalResources.SiteResources.WebSiteName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(GlobalResources.SiteResources.HomePage, "Index", "Home")</li>
+            <div class="navbar-collapse collapse" >
+                <ul class="nav navbar-nav"style="font-size:20px;">
                     <li>@Html.ActionLink(GlobalResources.SiteResources.About, "About", "Home")</li>
                     <li>@Html.ActionLink(GlobalResources.SiteResources.Contact, "Contact", "Home")</li>
+                    <li>
+                        <table align="right" class="logintable">
+                            @if (user != null)
+                            {
+                                <tr>
+                                    <td class="logintable">
+                                    @Html.Label(GlobalResources.SiteResources.WellcomeMessage + user.Login, new { @class = "loginwelcome" })
+                                    </td>
+                                    <td class="logintable">
+                                    @using (Html.BeginForm("SignOut", "Home", FormMethod.Post))
+                                    {
+                                        <button id="@GlobalResources.SiteResources.SignOutButtonId" type="submit" class="logout">
+                                        @GlobalResources.SiteResources.SignOutButtonText</button>
+                                    }
+                                    </td>
+                                </tr>
+                                }
+                                else
+                                { 
+                                 using (Html.BeginForm("SignIn", "Home", FormMethod.Post)) {
+                                <tr>
+                                    <td class="logintable">@Html.Label(GlobalResources.SiteResources.User_Login + ":", new { @class = "loginlabel" })</td>
+                                    <td class="logintable">@Html.TextBox("Login",null, new { @class = "logintextbox" })</td>
+                                    <td class="logintable"><button type="submit" class="loginbutton">@GlobalResources.SiteResources.Header_sing_in_msg</button></td>
+                                </tr>
+                                <tr> 
+                                    <td class="logintable">@Html.Label(GlobalResources.SiteResources.User_Password + ":", new { @class = "loginlabel" })</td>
+                                    <td class="logintable">@Html.Password("Password",null, new { @class = "logintextbox" }) </td>
+                                    <td class="logintable">@Html.Label(GlobalResources.SiteResources.Remember, new { @class = "loginlabel" })  @Html.CheckBox("SaveToCookies", new { @checked = "checked" })</td>
+                                </tr>  
+                                }
+                            }
+                        </table> 
+                    </li>      
                 </ul>
             </div>
         </div>
@@ -36,7 +71,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year – @GlobalResources.SiteResources.CompanyName</p>
         </footer>
     </div>
 

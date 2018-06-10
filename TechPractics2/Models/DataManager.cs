@@ -8,6 +8,7 @@ using TechPractics2.Models.Repos;
 
 namespace TechPractics2.Models
 {
+
     /// <summary>
     /// Операции, выполняемые над базой данных
     /// </summary>
@@ -18,6 +19,7 @@ namespace TechPractics2.Models
         public DataManager()
         {
             cont = new Model1Container();
+            InitializeRepos();
         }
 
         /// <summary>
@@ -100,6 +102,7 @@ namespace TechPractics2.Models
             PersonRepos.RemovePerson(NextId[EntityTypes.Person], out string res15, check: false);
             CustomerRepos.RemoveCustomer(NextId[EntityTypes.Customer], out string res16, check: false);
             StatusRepos.RemoveStatus(NextId[EntityTypes.Status], out string res17, check: false);
+            InitializeRepos();
         }
 
         public  IEnumerable<T2> NextSelect<T2>(Func<T2, bool> predicate , IEnumerable<T2> Prev) => (from p in Prev where predicate(p) select p).AsParallel();

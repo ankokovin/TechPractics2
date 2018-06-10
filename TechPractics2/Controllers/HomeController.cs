@@ -4,18 +4,21 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Caching;
 using System;
+using System.Diagnostics;
+using TechPractics2.Models.UtilityModels;
 
 namespace TechPractics2.Controllers
 {
 
     public class HomeController : DataController
     {
-        public HomeController(Models.DataManager dataManager) : base(dataManager) { }
+        public HomeController(Models.DataManager dataManager) : base(dataManager) {  }
 
         public ActionResult Index()
         {
             return View();
         }
+
 
         public ActionResult About()
         {
@@ -31,64 +34,100 @@ namespace TechPractics2.Controllers
             return View();
         }
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult SignIn(bool signOut = false)
+        public ActionResult AutoSignIn()
         {
-            var cookie = Request.Cookies[GlobalResources.SiteResources.User];
-
-            if (signOut)
+            if (Session[GlobalResources.SiteResources.User] == null)
             {
-                Session.Remove(GlobalResources.SiteResources.User);
+                var cookie = Request.Cookies[GlobalResources.SiteResources.User];
 
                 if (cookie != null)
                 {
-                    cookie.Expires = DateTime.Now.AddDays(-int.Parse(GlobalResources.SiteResources.CookiesExpirationDays));
-                    Response.Cookies.Add(cookie);
+                    return SignIn(cookie.Values[GlobalResources.SiteResources.User_Login], cookie.Values[GlobalResources.SiteResources.User_Password], false, true);
                 }
             }
-
-            if (cookie!=null && cookie.Expires > DateTime.Now)
-            {
-                return SignIn(cookie.Values[GlobalResources.SiteResources.User_Login], cookie.Values[GlobalResources.SiteResources.User_Password],true);
-            }
-
-            return View();
+            return RedirectToAction("Index");
         }
+
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult SignIn(string Login, string Password, bool SaveToCookies)
+        public ActionResult SignIn(string Login, string Password, bool SaveToCookies, bool redirectToIndex=false)
         {
+            Debug.WriteLine("Trying to sign in");
+            Debug.WriteLine("Login:"+ Login);
+            Debug.WriteLine("Password:"+ Password);
             string Source, Message;
-            if (TechPractics2.Models.Checker.CheckLoginInfo(Login,Password,out Message,out Source)){
+            if (TechPractics2.Models.Checker.CheckLoginInfo(Login, Password, out Message,out Source)){
                 Models.EDM.User user = dataManager.UsersRepos.TryEntry(Login, Password, out Message);
                 if (user != null)
                 {
-                    if (ModelState.IsValid)
+
+                    Session[GlobalResources.SiteResources.User] = user;
+
+                    HttpCookie cookie = Request.Cookies[GlobalResources.SiteResources.User];
+
+                    if (SaveToCookies)
                     {
-                        Session[GlobalResources.SiteResources.User] = user;
-
-                        HttpCookie cookie = Request.Cookies[GlobalResources.SiteResources.User];
-
-                        if (SaveToCookies&&(cookie==null||cookie.Expires < DateTime.Now))
+                        if (cookie == null)
                         {
                             cookie = new HttpCookie(GlobalResources.SiteResources.User);
-                            cookie.Values[GlobalResources.SiteResources.User_Login] = user.Login;
-                            cookie.Values[GlobalResources.SiteResources.User_Password] = user.Password;
-                            cookie.Expires = DateTime.Now.AddDays(int.Parse(GlobalResources.SiteResources.CookiesExpirationDays));
                         }
-
-                        //TODO: Redirect according to userType
-                        return RedirectToAction("About");
-                        //NEEDS CHANGE (ADDED FOR TEST)
+                        cookie.Values[GlobalResources.SiteResources.User_Login] = user.Login;
+                        cookie.Values[GlobalResources.SiteResources.User_Password] = user.Password;
+                        cookie.Expires = DateTime.Now.AddDays(int.Parse(GlobalResources.SiteResources.CookiesExpirationDays));
+                        Response.Cookies.Add(cookie);
                     }
-                }
-                else
-                {
-                    Source = GlobalResources.SiteResources.User_Password;
+                    Session[GlobalResources.SiteResources.Remember] = SaveToCookies;
+                    if (!redirectToIndex)
+                        return Redirect(System.Web.HttpContext.Current.Request.UrlReferrer.AbsolutePath);
+                    else
+                        return RedirectToAction("Index", "Home");
                 }
             }
-            
-            ModelState.AddModelError(Source, Message);
-            return View();
+            if (redirectToIndex)
+                Session[GlobalResources.SiteResources.Last_Url] = "/Home/Index";
+            else
+                Session[GlobalResources.SiteResources.Last_Url]= System.Web.HttpContext.Current.Request.UrlReferrer.AbsolutePath;
+            Session[GlobalResources.SiteResources.Last_sing_in_error] = new Tuple<string,string>(Source, Message);
+            return RedirectToAction("FailedLogIn");
+        }
 
+        public ActionResult SuccessLogIn()
+        {
+            return View();
+        }
+
+        public ActionResult FailedLogIn()
+        {
+            return View();
+        }
+
+        public ActionResult LoginRedirect()
+        {
+            string url = Session[GlobalResources.SiteResources.Last_Url] as string;
+            Debug.WriteLine("RedirectURL:"+url);
+            Session.Remove(GlobalResources.SiteResources.Last_Url);
+            if (url!=null)
+                return Redirect(url);
+            return RedirectToAction("Index", "Home");
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult SignOut()
+        {
+            Session.Remove(GlobalResources.SiteResources.User);
+            if (Session[GlobalResources.SiteResources.Remember] != null)
+            {
+                if (!(bool)Session[GlobalResources.SiteResources.Remember])
+                {
+                    HttpCookie httpCookie = Request.Cookies[GlobalResources.SiteResources.User];
+                    if (httpCookie != null)
+                    {
+                        httpCookie.Expires = DateTime.Now.AddDays(-int.Parse(GlobalResources.SiteResources.CookiesExpirationDays));
+                        Response.Cookies.Add(httpCookie);
+                    }
+
+                }
+                Session.Remove(GlobalResources.SiteResources.Remember);
+            }
+            return Redirect(System.Web.HttpContext.Current.Request.UrlReferrer.AbsolutePath);
         }
     }
 }
