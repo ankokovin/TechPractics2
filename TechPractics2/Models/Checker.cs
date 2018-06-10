@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace CourseWork
+namespace TechPractics2.Models
 {
     public static class Checker
     {
