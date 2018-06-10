@@ -14,6 +14,7 @@ namespace TechPractics2
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            ControllerBuilder.Current.SetControllerFactory(typeof(Controllers.MyControllerFactory));
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
