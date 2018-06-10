@@ -10,8 +10,9 @@ namespace TechPractics2.Controllers
         {
             if (controllerType == null)
                 return Activator.CreateInstance(typeof(HomeController), new Models.DataManager()) as IController;
-
-            return Activator.CreateInstance(controllerType, new Models.DataManager()) as IController;
+            if (controllerType.BaseType == typeof(DataController))
+                return Activator.CreateInstance(controllerType, new Models.DataManager()) as IController;
+            return Activator.CreateInstance(controllerType) as IController;
         }
     }
 }
