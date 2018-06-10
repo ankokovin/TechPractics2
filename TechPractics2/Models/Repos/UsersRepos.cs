@@ -157,6 +157,7 @@ namespace TechPractics2.Models.Repos
         /// <returns>Пользователь, под которым происходит вход, null при ошибке входа</returns>
         public  User TryEntry(string Login, string Password, out string Message)
         {
+            //TODO: login in with token
             try
             {
                 Message = string.Empty;
@@ -170,14 +171,12 @@ namespace TechPractics2.Models.Repos
                 }
                 else
                 {
-                    if (user.Count > 1)
-                        Message += "Несколько пользователей имеют одинаковый логин!";
-
                     foreach (User u in user)
                         if (u.Password == Password)
                         {
                             //Login complete
-                            Message += "Успешный вход :" + u;
+                            //TODO: create token and pass it to Message
+                            Message = Password;
                             return u;
                         }
                     Message += "Неверный пароль";

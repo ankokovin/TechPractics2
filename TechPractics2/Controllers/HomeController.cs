@@ -71,7 +71,7 @@ namespace TechPractics2.Controllers
                             cookie = new HttpCookie(GlobalResources.SiteResources.User);
                         }
                         cookie.Values[GlobalResources.SiteResources.User_Login] = user.Login;
-                        cookie.Values[GlobalResources.SiteResources.User_Password] = user.Password;
+                        cookie.Values[GlobalResources.SiteResources.User_Password] = Message;
                         cookie.Expires = DateTime.Now.AddDays(int.Parse(GlobalResources.SiteResources.CookiesExpirationDays));
                         Response.Cookies.Add(cookie);
                     }
