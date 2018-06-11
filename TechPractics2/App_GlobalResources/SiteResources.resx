@@ -438,12 +438,37 @@
     <comment>Entity Attribute</comment>
   </data>
   <data name="WebSiteName" xml:space="preserve">
-    <value>Сайт компании ООО "КПУПУ" </value>
+    <value>ООО "КПУПУ" </value>
   </data>
   <data name="WellcomeMessage" xml:space="preserve">
     <value>Приветствуем, </value>
   </data>
+  <data name="FunctionsButtonText" xml:space="preserve">
+    <value>Функции</value>
+  </data>
+  <data name="LoginTableId" xml:space="preserve">
+    <value>LoginTableId</value>
+  </data>
+  <data name="LoginTextBoxSize" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="navbarBrandId" xml:space="preserve">
+    <value>navbarBrandId</value>
+  </data>
+  <data name="navbarLinkId_1" xml:space="preserve">
+    <value>navbarLinkId_1</value>
+  </data>
+  <data name="navbarLinkId_2" xml:space="preserve">
+    <value>navbarLinkId_2</value>
+  </data>
+  <data name="PasswordTextBoxSize" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="SaltLength" xml:space="preserve">
     <value>20</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="userimg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\userimg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

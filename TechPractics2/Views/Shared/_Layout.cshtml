@@ -15,7 +15,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:cornflowerblue;" id="naravartopid">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -23,20 +23,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink(GlobalResources.SiteResources.WebSiteName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(GlobalResources.SiteResources.WebSiteName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand", id = GlobalResources.SiteResources.navbarBrandId})
             </div>
             <div class="navbar-collapse collapse" >
                 <ul class="nav navbar-nav"style="font-size:20px;">
-                    <li>@Html.ActionLink(GlobalResources.SiteResources.About, "About", "Home")</li>
-                    <li>@Html.ActionLink(GlobalResources.SiteResources.Contact, "Contact", "Home")</li>
+                    <li>@Html.ActionLink(GlobalResources.SiteResources.About, "About", "Home",null,new { id = GlobalResources.SiteResources.navbarLinkId_1 })</li>
+                    <li>@Html.ActionLink(GlobalResources.SiteResources.Contact, "Contact", "Home", null, new { id = GlobalResources.SiteResources.navbarLinkId_2 })</li>
                     <li>
-                        <table align="right" class="logintable">
+                        <table align="right" class="logintable" id="@GlobalResources.SiteResources.LoginTableId">
                             @if (user != null)
                             {
                                 <tr>
                                     <td class="logintable">
-                                    @Html.Label(GlobalResources.SiteResources.WellcomeMessage + user.Login, new { @class = "loginwelcome" })
+                                        <button class="mycollapsible">
+                                            <img src="~/Resources/userimg.png" width="40" height="40" />
+                                            @user.Login @GlobalResources.SiteResources.FunctionsButtonText
+                                        </button>
+                                        <div class="action_options">
+                                            <p>Hi there</p>
+                                            <p>will have some buttons here</p>
+                                            <p>@Html.ActionLink("Home","Index","Home")</p>
+                                        </div>
                                     </td>
+                                    
                                     <td class="logintable">
                                     @using (Html.BeginForm("SignOut", "Home", FormMethod.Post))
                                     {
@@ -50,10 +59,10 @@
                                 { 
                                  using (Html.BeginForm("SignIn", "Home", FormMethod.Post)) {
                                 <tr>
-                                    <td class="logintable">@Html.Label(GlobalResources.SiteResources.User_Login + ":", new { @class = "loginlabel" })</td>
-                                    <td class="logintable">@Html.TextBox("Login",null, new { @class = "logintextbox" })</td>
+                                    <td class="logintable">@Html.Label(GlobalResources.SiteResources.User_Login + ":", new { @class = "loginlabel"})</td>
+                                    <td class="logintable">@Html.TextBox("Login",null, new { @class = "logintextbox", size = GlobalResources.SiteResources.LoginTextBoxSize})</td>
                                     <td class="logintable">@Html.Label(GlobalResources.SiteResources.User_Password + ":", new { @class = "loginlabel" })</td>
-                                    <td class="logintable">@Html.Password("Password",null, new { @class = "logintextbox" }) </td>
+                                    <td class="logintable">@Html.Password("Password",null, new { @class = "logintextbox",size = GlobalResources.SiteResources.PasswordTextBoxSize }) </td>
                                     <td class="logintable">@Html.Label(GlobalResources.SiteResources.Remember, new { @class = "loginlabel" })  @Html.CheckBox("SaveToCookies", new { @checked = "checked" })</td>
                                     <td class="logintable"><button type="submit" class="loginbutton">@GlobalResources.SiteResources.Header_sing_in_msg</button></td>
                                 </tr>  
@@ -65,6 +74,7 @@
             </div>
         </div>
     </div>
+<script src="~/Scripts/mysript.js"></script>
     <div class="container body-content">
         @RenderBody()
         <hr />

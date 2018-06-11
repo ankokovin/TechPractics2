@@ -277,6 +277,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Функции.
+        /// </summary>
+        public static string FunctionsButtonText {
+            get {
+                return ResourceManager.GetString("FunctionsButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Header_sign_in.
         /// </summary>
         public static string Header_sign_in {
@@ -412,6 +421,24 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на LoginTableId.
+        /// </summary>
+        public static string LoginTableId {
+            get {
+                return ResourceManager.GetString("LoginTableId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 10.
+        /// </summary>
+        public static string LoginTextBoxSize {
+            get {
+                return ResourceManager.GetString("LoginTextBoxSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Счётчик.
         /// </summary>
         public static string Meter {
@@ -471,6 +498,33 @@ namespace GlobalResources {
         public static string MeterTypes {
             get {
                 return ResourceManager.GetString("MeterTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на navbarBrandId.
+        /// </summary>
+        public static string navbarBrandId {
+            get {
+                return ResourceManager.GetString("navbarBrandId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на navbarLinkId_1.
+        /// </summary>
+        public static string navbarLinkId_1 {
+            get {
+                return ResourceManager.GetString("navbarLinkId_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на navbarLinkId_2.
+        /// </summary>
+        public static string navbarLinkId_2 {
+            get {
+                return ResourceManager.GetString("navbarLinkId_2", resourceCulture);
             }
         }
         
@@ -615,6 +669,15 @@ namespace GlobalResources {
         public static string PageSaveCookiesSource {
             get {
                 return ResourceManager.GetString("PageSaveCookiesSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 10.
+        /// </summary>
+        public static string PasswordTextBoxSize {
+            get {
+                return ResourceManager.GetString("PasswordTextBoxSize", resourceCulture);
             }
         }
         
@@ -826,6 +889,16 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap userimg {
+            get {
+                object obj = ResourceManager.GetObject("userimg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Пользователи.
         /// </summary>
         public static string Users {
@@ -835,7 +908,7 @@ namespace GlobalResources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Сайт компании ООО &quot;КПУПУ&quot; .
+        ///   Ищет локализованную строку, похожую на ООО &quot;КПУПУ&quot; .
         /// </summary>
         public static string WebSiteName {
             get {
