@@ -443,4 +443,7 @@
   <data name="WellcomeMessage" xml:space="preserve">
     <value>Приветствуем, </value>
   </data>
+  <data name="SaltLength" xml:space="preserve">
+    <value>20</value>
+  </data>
 </root>

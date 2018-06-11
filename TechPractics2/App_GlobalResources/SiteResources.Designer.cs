@@ -655,6 +655,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на 20.
+        /// </summary>
+        public static string SaltLength {
+            get {
+                return ResourceManager.GetString("SaltLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на SignOutButton.
         /// </summary>
         public static string SignOutButtonId {

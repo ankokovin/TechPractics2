@@ -7,9 +7,11 @@ namespace TechPractics2.Models.Repos
 {
     public class UsersRepos : Repos
     {
+        private SiteUtilitiesRepos siteUtilitiesRepos;
+
         public UsersRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model,checkInputs,allowCascade)
         {
-           
+            siteUtilitiesRepos = new SiteUtilitiesRepos();
         }
         /// <summary>
         /// Функция добавления нового пользователя
@@ -155,31 +157,37 @@ namespace TechPractics2.Models.Repos
         /// <param name="Password">Пароль</param>
         /// <param name="Message">Получаемое сообщение</param>
         /// <returns>Пользователь, под которым происходит вход, null при ошибке входа</returns>
-        public  User TryEntry(string Login, string Password, out string Message)
+        public  User TryEntry(string Login, string Password,string Source, out string Message)
         {
-            //TODO: login in with token
             try
             {
                 Message = string.Empty;
                 var user = (from u in cont.UserSet
                             where u.Login == Login
                             select u).ToList();
-                if (user.Count == 0)
-                {
-                    Message += GlobalResources.SiteResources.LoginResponse_NoUser;
-                    return null;
-                }
-                else
+                if (user.Count != 0)
                 {
                     foreach (User u in user)
                         if (u.Password == Password)
                         {
                             //Login complete
-                            //TODO: create token and pass it to Message
-                            Message = Password;
+                            Message = siteUtilitiesRepos.SuccessfulManualLogin(Login,Password,Source);
                             return u;
                         }
-                    Message += "Неверный пароль";
+                    Message = "Неверный пароль";
+                }
+                else
+                {
+                    Message = GlobalResources.SiteResources.LoginResponse_NoUser;
+                }
+                string tMessage;
+                if(siteUtilitiesRepos.TrySignIn(Login,Password,Source,out tMessage))
+                {
+                    Message = tMessage;
+                    return cont.UserSet.Where(x => x.Login == Login).First();
+                }
+                else
+                {
                     return null;
                 }
             }

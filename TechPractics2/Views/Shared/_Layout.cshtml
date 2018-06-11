@@ -52,12 +52,10 @@
                                 <tr>
                                     <td class="logintable">@Html.Label(GlobalResources.SiteResources.User_Login + ":", new { @class = "loginlabel" })</td>
                                     <td class="logintable">@Html.TextBox("Login",null, new { @class = "logintextbox" })</td>
-                                    <td class="logintable"><button type="submit" class="loginbutton">@GlobalResources.SiteResources.Header_sing_in_msg</button></td>
-                                </tr>
-                                <tr> 
                                     <td class="logintable">@Html.Label(GlobalResources.SiteResources.User_Password + ":", new { @class = "loginlabel" })</td>
                                     <td class="logintable">@Html.Password("Password",null, new { @class = "logintextbox" }) </td>
                                     <td class="logintable">@Html.Label(GlobalResources.SiteResources.Remember, new { @class = "loginlabel" })  @Html.CheckBox("SaveToCookies", new { @checked = "checked" })</td>
+                                    <td class="logintable"><button type="submit" class="loginbutton">@GlobalResources.SiteResources.Header_sing_in_msg</button></td>
                                 </tr>  
                                 }
                             }

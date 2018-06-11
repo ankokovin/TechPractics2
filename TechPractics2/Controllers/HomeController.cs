@@ -42,21 +42,21 @@ namespace TechPractics2.Controllers
 
                 if (cookie != null)
                 {
-                    return SignIn(cookie.Values[GlobalResources.SiteResources.User_Login], cookie.Values[GlobalResources.SiteResources.User_Password], false, true);
+                    return SignIn(cookie.Values[GlobalResources.SiteResources.User_Login], cookie.Values[GlobalResources.SiteResources.User_Password], true, true,false);
                 }
             }
             return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult SignIn(string Login, string Password, bool SaveToCookies, bool redirectToIndex=false)
+        public ActionResult SignIn(string Login, string Password, bool SaveToCookies, bool redirectToIndex=false, bool manual=true)
         {
             Debug.WriteLine("Trying to sign in");
             Debug.WriteLine("Login:"+ Login);
             Debug.WriteLine("Password:"+ Password);
-            string Source, Message;
-            if (TechPractics2.Models.Checker.CheckLoginInfo(Login, Password, out Message,out Source)){
-                Models.EDM.User user = dataManager.UsersRepos.TryEntry(Login, Password, out Message);
+            string Source=string.Empty, Message;
+            if (!manual || TechPractics2.Models.Checker.CheckLoginInfo(Login, Password, out Message,out Source)){
+                Models.EDM.User user = dataManager.UsersRepos.TryEntry(Login, Password,Request.UserHostAddress ,out Message);
                 if (user != null)
                 {
 
@@ -87,7 +87,10 @@ namespace TechPractics2.Controllers
             else
                 Session[GlobalResources.SiteResources.Last_Url]= System.Web.HttpContext.Current.Request.UrlReferrer.AbsolutePath;
             Session[GlobalResources.SiteResources.Last_sing_in_error] = new Tuple<string,string>(Source, Message);
-            return RedirectToAction("FailedLogIn");
+            if (manual)
+                return RedirectToAction("FailedLogIn");
+            else
+                return RedirectToAction("Index");
         }
 
         public ActionResult SuccessLogIn()

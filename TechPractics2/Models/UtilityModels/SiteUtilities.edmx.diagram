@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="77b7757af9274ff6a21d6636a212273c" Name="Diagram1" >
+        <EntityTypeShape EntityType="SiteUtilities.Token" Width="1.5" PointX="1.5" PointY="1.25" />
+        <EntityTypeShape EntityType="SiteUtilities.TokenInfo" Width="1.5" PointX="4.5" PointY="1.25" />
+        <AssociationConnector Association="SiteUtilities.TokenTokenInfo" />
+        <EntityTypeShape EntityType="SiteUtilities.HashedToken" Width="1.5" PointX="7.5" PointY="1.25" />
+        <AssociationConnector Association="SiteUtilities.HashedTokenTokenInfo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
