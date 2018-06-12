@@ -103,6 +103,7 @@ namespace TechPractics2.Models.Repos
 
         public Customer FindCustomer(int id) => (from o in cont.CustomerSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Customer> SelectCustomers(Func<Customer, bool> predicate) => (from p in cont.CustomerSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<Customer> SelectCustomers(Func<Customer, bool> predicate) => cont.CustomerSet.Where(predicate).AsParallel();
+
     }
 }

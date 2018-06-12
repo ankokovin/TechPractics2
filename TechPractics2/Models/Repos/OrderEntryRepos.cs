@@ -105,6 +105,6 @@ namespace TechPractics2.Models.Repos
 
         public OrderEntry FindOrderEntry(int id) => (from o in cont.OrderEntrySet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<OrderEntry> SelectOrderEntrys(Func<OrderEntry, bool> predicate) => (from p in cont.OrderEntrySet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<OrderEntry> SelectOrderEntrys(Func<OrderEntry, bool> predicate) => cont.OrderEntrySet.Where(predicate).AsParallel();
     }
 }

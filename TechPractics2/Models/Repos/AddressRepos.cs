@@ -122,6 +122,6 @@ namespace TechPractics2.Models.Repos
         public Address FindAddress(int id) => (from a in cont.AddressSet where a.Id == id select a).FirstOrDefault();
 
 
-        public IEnumerable<Address> SelectAddresss(Func<Address, bool> predicate) => (from p in cont.AddressSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<Address> SelectAddresss(Func<Address, bool> predicate) =>  cont.AddressSet.Where(predicate).AsParallel();
     }
 }

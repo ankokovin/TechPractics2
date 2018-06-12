@@ -95,6 +95,6 @@ namespace TechPractics2.Models.Repos
 
         public MeterType FindMeterType(int id) => (from o in cont.MeterTypeSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<MeterType> SelectMeterTypes(Func<MeterType, bool> predicate) => (from p in cont.MeterTypeSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<MeterType> SelectMeterTypes(Func<MeterType, bool> predicate) => cont.MeterTypeSet.Where(predicate).AsParallel();
     }
 }

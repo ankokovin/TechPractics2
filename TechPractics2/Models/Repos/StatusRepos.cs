@@ -93,6 +93,6 @@ namespace TechPractics2.Models.Repos
 
         public Status FindStatus(int id) => (from o in cont.StatusSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Status> SelectStatuss(Func<Status, bool> predicate) => (from p in cont.StatusSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<Status> SelectStatuss(Func<Status, bool> predicate) => cont.StatusSet.Where(predicate).AsParallel();
     }
 }

@@ -96,6 +96,6 @@ namespace TechPractics2.Models.Repos
 
         public Order FindOrder(int id) => (from o in cont.OrderSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Order> SelectOrders(Func<Order, bool> predicate) => (from p in cont.OrderSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<Order> SelectOrders(Func<Order, bool> predicate) => cont.OrderSet.Where(predicate).AsParallel();
     }
 }

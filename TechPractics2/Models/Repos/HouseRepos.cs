@@ -122,6 +122,6 @@ namespace TechPractics2.Models.Repos
         /// <returns>Дом</returns>
         public House FindHouse(int id) => (from s in cont.HouseSet where s.Id == id select s).FirstOrDefault();
 
-        public IEnumerable<House> SelectHouses(Func<House, bool> predicate) => (from p in cont.HouseSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<House> SelectHouses(Func<House, bool> predicate) => cont.HouseSet.Where(predicate).AsParallel();
     }
 }

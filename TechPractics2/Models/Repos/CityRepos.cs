@@ -119,6 +119,6 @@ namespace TechPractics2.Models.Repos
         /// <returns>Город</returns>
         public City FindCity(int Id) => (from c in cont.CitySet where c.Id == Id select c).FirstOrDefault();
 
-        public IEnumerable<City> SelectCitys(Func<City, bool> predicate) => (from p in cont.CitySet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<City> SelectCitys(Func<City, bool> predicate) => cont.CitySet.Where(predicate).AsParallel();
     }
 }

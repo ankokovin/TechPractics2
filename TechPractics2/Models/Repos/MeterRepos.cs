@@ -95,6 +95,6 @@ namespace TechPractics2.Models.Repos
 
         public Meter FindMeter(int id) => (from o in cont.MeterSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Meter> SelectMeters(Func<Meter, bool> predicate) => (from p in cont.MeterSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<Meter> SelectMeters(Func<Meter, bool> predicate) => cont.MeterSet.Where(predicate).AsParallel();
     }
 }

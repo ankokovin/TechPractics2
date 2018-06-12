@@ -200,8 +200,6 @@ namespace TechPractics2.Models.Repos
 
 
         public IEnumerable<User> SelectUsers(Func<User, bool> predicate) =>
-            (from p in cont.UserSet.Local
-             where predicate(p)
-             select p).AsParallel();
+          cont.UserSet.Where(predicate).AsParallel();
     }
 }

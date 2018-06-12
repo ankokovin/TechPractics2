@@ -92,6 +92,6 @@ namespace TechPractics2.Models.Repos
 
         public Person FindPerson(int id) => (from o in cont.PersonSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Person> SelectPersons(Func<Person, bool> predicate) => (from p in cont.PersonSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<Person> SelectPersons(Func<Person, bool> predicate) => cont.PersonSet.Where(predicate).AsParallel();
     }
 }

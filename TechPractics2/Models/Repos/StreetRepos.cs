@@ -118,6 +118,6 @@ namespace TechPractics2.Models.Repos
         /// <returns>Улица</returns>
         public Street FindStreet(int id) => (from s in cont.StreetSet where s.Id == id select s).FirstOrDefault();
 
-        public IEnumerable<Street> SelectStreets(Func<Street, bool> predicate) => (from p in cont.StreetSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<Street> SelectStreets(Func<Street, bool> predicate) => cont.StreetSet.Where(predicate).AsParallel();
     }
 }

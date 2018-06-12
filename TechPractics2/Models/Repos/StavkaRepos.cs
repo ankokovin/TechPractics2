@@ -86,6 +86,6 @@ namespace TechPractics2.Models.Repos
 
         public Stavka FindStavka(int id) => (from o in cont.StavkaSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Stavka> SelectStavkas(Func<Stavka, bool> predicate) => (from p in cont.StavkaSet.Local where predicate(p) select p).AsParallel();
+        public IEnumerable<Stavka> SelectStavkas(Func<Stavka, bool> predicate) => cont.StavkaSet.Where(predicate).AsParallel();
     }
 }
