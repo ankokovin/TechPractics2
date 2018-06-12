@@ -10,6 +10,7 @@ using System.Diagnostics;
 
 namespace TechPractics2.Controllers
 {
+
     public class CustomerController : DataController
     {
 
