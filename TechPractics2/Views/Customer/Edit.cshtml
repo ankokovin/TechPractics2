@@ -1,0 +1,86 @@
+﻿@model TechPractics2.Models.EDM.Customer
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    TechPractics2.Models.EDM.Company comp = null;
+    bool IsCompany = false;
+    if (Model is TechPractics2.Models.EDM.Company)
+    {
+        comp = Model as TechPractics2.Models.EDM.Company;
+        IsCompany = true;
+    }
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Customer</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Hidden("id", Model.Id);
+
+        <div class="form-group">
+            @Html.Label(GlobalResources.SiteResources.Customer_FIO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("FIO", Model.FIO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("FIO", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label(GlobalResources.SiteResources.Customer_Passport, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("Passport",Model.Passport, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("Passport", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label(GlobalResources.SiteResources.Customer_PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("PhoneNumber",Model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("PhoneNumber", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (IsCompany)
+        {
+            <div class="form-group">
+                @Html.Label(GlobalResources.SiteResources.Company_CompanyName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("CompanyName",comp.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessage("CompanyName", "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+            @Html.Label(GlobalResources.SiteResources.Company_INN, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("INN", comp.INN, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessage("INN", "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+
+        @Html.Hidden("IsCompany", IsCompany);
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

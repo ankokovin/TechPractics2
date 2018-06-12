@@ -79,6 +79,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка доступа. Войдите для просмотра..
+        /// </summary>
+        public static string AccessErrorMsg {
+            get {
+                return ResourceManager.GetString("AccessErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Адрес.
         /// </summary>
         public static string Address {
@@ -709,6 +718,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Пожалуйста, введите .
+        /// </summary>
+        public static string PleaseInput {
+            get {
+                return ResourceManager.GetString("PleaseInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Запомнить.
         /// </summary>
         public static string Remember {
@@ -853,6 +871,24 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на (должна состоять из 10 цифр).
+        /// </summary>
+        public static string TenNumber {
+            get {
+                return ResourceManager.GetString("TenNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на  компании.
+        /// </summary>
+        public static string ToCompany {
+            get {
+                return ResourceManager.GetString("ToCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Пользователь.
         /// </summary>
         public static string User {
@@ -922,6 +958,15 @@ namespace GlobalResources {
         public static string WellcomeMessage {
             get {
                 return ResourceManager.GetString("WellcomeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на  имеет неверный формат.
+        /// </summary>
+        public static string WrongFormat {
+            get {
+                return ResourceManager.GetString("WrongFormat", resourceCulture);
             }
         }
     }

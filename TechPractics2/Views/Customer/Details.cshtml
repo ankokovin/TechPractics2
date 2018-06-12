@@ -1,0 +1,65 @@
+﻿@model TechPractics2.Models.EDM.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool IsCompany = Model is TechPractics2.Models.EDM.Company;
+    TechPractics2.Models.EDM.Company comp = Model as TechPractics2.Models.EDM.Company;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label(GlobalResources.SiteResources.Customer_FIO)
+        </dt>
+
+        <dd>
+            @Html.Label(Model.FIO)
+        </dd>
+
+        <dt>
+            @Html.Label(GlobalResources.SiteResources.Customer_Passport)
+        </dt>
+
+        <dd>
+            @Html.Label(Model.Passport)
+        </dd>
+
+        <dt>
+            @Html.Label(GlobalResources.SiteResources.Customer_PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.Label(Model.PhoneNumber)
+        </dd>
+
+        @if (IsCompany)
+        {
+        <dt>
+            @Html.Label(GlobalResources.SiteResources.Company_CompanyName)
+        </dt>
+
+        <dd>
+            @Html.Label(comp.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.Label(GlobalResources.SiteResources.Company_INN)
+        </dt>
+
+        <dd>
+            @Html.Label(comp.INN)
+        </dd>
+
+        }
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
