@@ -36,11 +36,11 @@
                                 <tr>
                                     <td class="logintable">
                                         <button class="mycollapsible">
-                                            <img src="~/Resources/userimg.png" width="40" height="40" />
+                                            <img src="~/Resources/userimg.png" width="20" height="20" />
                                             @user.Login @GlobalResources.SiteResources.FunctionsButtonText
                                         </button>
                                         <div class="action_options">
-                                            <p>Hi there</p>
+                                            <p>@Html.ActionLink(GlobalResources.SiteResources.Customers,"CustomerCollection","Customer")</p>
                                             <p>will have some buttons here</p>
                                             <p>@Html.ActionLink("Home","Index","Home")</p>
                                         </div>

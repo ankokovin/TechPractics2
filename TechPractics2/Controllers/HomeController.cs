@@ -5,11 +5,10 @@ using System.Web.Mvc;
 using System.Web.Caching;
 using System;
 using System.Diagnostics;
-using TechPractics2.Models.UtilityModels;
+
 
 namespace TechPractics2.Controllers
 {
-
     public class HomeController : DataController
     {
         public HomeController(Models.DataManager dataManager) : base(dataManager) {  }
