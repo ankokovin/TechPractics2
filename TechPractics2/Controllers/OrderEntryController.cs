@@ -38,6 +38,24 @@ namespace TechPractics2.Controllers
                 ModelState.AddModelError("PersonId", GlobalResources.SiteResources.PleaseInput + GlobalResources.SiteResources.OrderEntry_Person);
         }
 
+        public ActionResult Details(int id)
+        {
+            ViewData.Model = dataManager.OrderEntryRepos.FindOrderEntry(id);
+            return View();
+        }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Delete(int id)
+        {
+            ViewData.Model = dataManager.OrderEntryRepos.FindOrderEntry(id);
+            return View();
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Delete(Models.EDM.OrderEntry orderEntry)
+        {
+            dataManager.OrderEntryRepos.RemoveOrderEntry(orderEntry.Id, out string Res);
+            return RedirectToAction("Index");
+        }
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {

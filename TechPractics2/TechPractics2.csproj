@@ -170,6 +170,7 @@
     <Compile Include="Controllers\HouseController.cs" />
     <Compile Include="Controllers\MeterController.cs" />
     <Compile Include="Controllers\MeterTypeController.cs" />
+    <Compile Include="Controllers\OperatorController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderEntryController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
@@ -289,6 +290,7 @@
     <Compile Include="Models\UtilityModels\TokenInfo.cs">
       <DependentUpon>SiteUtilities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UtilityModels\ViewModels.cs" />
     <Compile Include="Models\XMLQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">
@@ -488,6 +490,7 @@
     <Content Include="Views\UserToCustomer\Delete.cshtml" />
     <Content Include="Views\UserToCustomer\Details.cshtml" />
     <Content Include="Views\UserToCustomer\Edit.cshtml" />
+    <Content Include="Views\Operator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

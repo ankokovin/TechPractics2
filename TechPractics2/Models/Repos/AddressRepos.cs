@@ -7,7 +7,17 @@ namespace TechPractics2.Models.Repos
 {
     public class AddressRepos : Repos
     {
-        
+        public bool ParseAddress(string FullAddress, out string City, out string Street, out string House)
+        {
+            //TODO: PARSE FROM YANDEX API ADDRESS STRING
+            var t = FullAddress.Split();
+            City = t[0];
+            Street = t[1];
+            House = t[2];
+            return true;
+        }
+
+
         public AddressRepos(Model1Container model, bool checkInputs = true, bool allowCascade = false): base(model, checkInputs, allowCascade)
         {
           
