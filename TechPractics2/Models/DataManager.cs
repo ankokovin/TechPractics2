@@ -40,6 +40,7 @@ namespace TechPractics2.Models
         public MeterTypeRepos MeterTypeRepos;
         public StavkaRepos StavkaRepos;
         public PersonRepos PersonRepos;
+        public UserToCustomerRepos UserToCustomerRepos;
         
         public Dictionary<EntityTypes, int> NextId;
 
@@ -59,6 +60,7 @@ namespace TechPractics2.Models
             MeterTypeRepos = new MeterTypeRepos(cont, CheckInputs, AllowCascade);
             StavkaRepos = new StavkaRepos(cont, CheckInputs, AllowCascade);
             PersonRepos = new PersonRepos(cont, CheckInputs, AllowCascade);
+            UserToCustomerRepos = new UserToCustomerRepos(cont, CheckInputs, AllowCascade);
         }
 
         public void InicializeNextId()

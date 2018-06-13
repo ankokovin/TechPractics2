@@ -21,6 +21,7 @@ namespace TechPractics2.Models.Repos
                     Res = "Уже есть данный частный заказчик";
                     return false;
                 }
+                
                 Customer customer = new Customer();
                 customer.FIO = Name;
                 customer.Passport = Passport;

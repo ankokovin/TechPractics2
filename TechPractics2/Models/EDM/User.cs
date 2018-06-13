@@ -17,6 +17,7 @@ namespace TechPractics2.Models.EDM
         public User()
         {
             this.Order = new HashSet<Order>();
+            this.UserToCustomer = new HashSet<UserToCustomer>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,6 @@ namespace TechPractics2.Models.EDM
         public string Password { get; set; }
     
         public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<UserToCustomer> UserToCustomer { get; set; }
     }
 }

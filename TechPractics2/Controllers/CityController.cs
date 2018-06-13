@@ -3,7 +3,6 @@ using TechPractics2.Models;
 
 namespace TechPractics2.Controllers
 {
-
     public class CityController : DataController
     {
         public CityController(DataManager dataManager) : base(dataManager) { }

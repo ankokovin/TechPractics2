@@ -5,6 +5,7 @@ using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
+
     public class StavkaRepos : Repos
     {
         public StavkaRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)

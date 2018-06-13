@@ -53,11 +53,24 @@
                                             @user.Login @GlobalResources.SiteResources.FunctionsButtonText
                                         </button>
                                         <div class="action_options">
-                                            <p>@Html.ActionLink(GlobalResources.SiteResources.Customers,"CustomerCollection","Customer")</p>
-                                            <p>@Html.ActionLink(GlobalResources.SiteResources.Statuses,"StatusCollection","Status")</p>
-                                            <p>@Html.ActionLink(GlobalResources.SiteResources.Cities,"Index","City")</p>
-                                            <p>will have some buttons here</p>
-                                            <p>@Html.ActionLink("Home","Index","Home")</p>
+                                            @if (user.UserType == UserType.Admin)
+                                            {
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Cities, "Index", "City")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Streets, "Index", "Street")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Houses, "Index", "House")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Addresses, "Index", "Address")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Meters, "Index", "Meter")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.MeterTypes, "Index", "MeterType")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Customers, "Index", "Customer")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Orders, "Index", "Order")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.OrderEntries, "Index", "OrderEntry")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Persons, "Index", "Person")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Stavkas, "Index", "Stavka")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Users, "Index", "User")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.UserToCustomers,"Index","UserToCustomer")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Statuses, "Index", "Status")</p>
+                                            }
+                                            <p>@Html.ActionLink("Home", "Index", "Home")</p>
                                         </div>
                                     </td>
                                     

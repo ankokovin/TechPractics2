@@ -489,4 +489,13 @@
   <data name="ShowDateFormat" xml:space="preserve">
     <value>(ММ-ДД-ГГГГ)</value>
   </data>
+  <data name="UserToCustomers" xml:space="preserve">
+    <value>Профили заказчиков пользователей</value>
+  </data>
+  <data name="UserToCustomer_Customer" xml:space="preserve">
+    <value>Заказчик</value>
+  </data>
+  <data name="UserToCustomer_User" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
 </root>

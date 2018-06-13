@@ -83,8 +83,8 @@ namespace TechPractics2.Controllers
                 {
                     dataManager.CustomerRepos.AddCustomer(FIO, Passport, PhoneNumber, out string Res);
                 }
+                return RedirectToAction("Index");
             }
-
             return View();
         }
 
@@ -147,6 +147,7 @@ namespace TechPractics2.Controllers
                 {
                     dataManager.CustomerRepos.ChangeCustomer(id, FIO, Passport, PhoneNumber, out string Res);
                 }
+                return RedirectToAction("Index");
             }
             return View();
         }

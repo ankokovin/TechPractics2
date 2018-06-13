@@ -4,6 +4,7 @@ using TechPractics2.Models;
 
 namespace TechPractics2.Controllers
 {
+
     public class StavkaController : DataController
     {
         public StavkaController(DataManager dataManager) : base(dataManager) { }

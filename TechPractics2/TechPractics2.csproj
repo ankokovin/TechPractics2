@@ -176,10 +176,15 @@
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\StavkaController.cs" />
     <Compile Include="Controllers\StreetController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserToCustomerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EDM\Address.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDM\UserToCustomer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repos\AddressRepos.cs" />
@@ -259,6 +264,7 @@
     <Compile Include="Models\EDM\UserType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Repos\UserToCustomerRepos.cs" />
     <Compile Include="Models\UtilityModels\HashedToken.cs">
       <DependentUpon>SiteUtilities.tt</DependentUpon>
     </Compile>
@@ -472,6 +478,16 @@
     <Content Include="Views\OrderEntry\Details.cshtml" />
     <Content Include="Views\OrderEntry\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\User\UserCollection.cshtml" />
+    <Content Include="Views\User\Add.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\UserToCustomer\UserToCustomerCollection.cshtml" />
+    <Content Include="Views\UserToCustomer\Add.cshtml" />
+    <Content Include="Views\UserToCustomer\Delete.cshtml" />
+    <Content Include="Views\UserToCustomer\Details.cshtml" />
+    <Content Include="Views\UserToCustomer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

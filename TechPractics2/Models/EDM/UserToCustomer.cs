@@ -10,12 +10,13 @@
 namespace TechPractics2.Models.EDM
 {
     using System;
+    using System.Collections.Generic;
     
-    public enum UserType : int
+    public partial class UserToCustomer
     {
-        Admin = 0,
-        Operator = 1,
-        Analitic = 2,
-        Normal = 3
+        public int Id { get; set; }
+    
+        public virtual User User { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

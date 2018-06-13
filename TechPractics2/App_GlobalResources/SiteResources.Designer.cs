@@ -953,6 +953,33 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Заказчик.
+        /// </summary>
+        public static string UserToCustomer_Customer {
+            get {
+                return ResourceManager.GetString("UserToCustomer_Customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пользователь.
+        /// </summary>
+        public static string UserToCustomer_User {
+            get {
+                return ResourceManager.GetString("UserToCustomer_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Профили заказчиков пользователей.
+        /// </summary>
+        public static string UserToCustomers {
+            get {
+                return ResourceManager.GetString("UserToCustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ООО &quot;КПУПУ&quot; .
         /// </summary>
         public static string WebSiteName {

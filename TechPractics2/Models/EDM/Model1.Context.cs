@@ -38,7 +38,6 @@ namespace TechPractics2.Models.EDM
         public DbSet<Street> StreetSet { get; set; }
         public DbSet<House> HouseSet { get; set; }
         public DbSet<Address> AddressSet { get; set; }
-
-        public System.Data.Entity.DbSet<TechPractics2.Models.EDM.Company> Customers { get; set; }
+        public DbSet<UserToCustomer> UserToCustomerSet { get; set; }
     }
 }

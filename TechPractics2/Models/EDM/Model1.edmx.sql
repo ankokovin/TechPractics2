@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/10/2018 11:56:40
+-- Date Created: 06/13/2018 19:40:19
 -- Generated from EDMX file: C:\Users\user\Documents\GitHub\TechPractics2\TechPractics2\Models\EDM\Model1.edmx
 -- --------------------------------------------------
 
@@ -56,6 +56,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PersonOrderEntry]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[OrderEntrySet] DROP CONSTRAINT [FK_PersonOrderEntry];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UserUserToCustomer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserToCustomerSet] DROP CONSTRAINT [FK_UserUserToCustomer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CustomerUserToCustomer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserToCustomerSet] DROP CONSTRAINT [FK_CustomerUserToCustomer];
+GO
 IF OBJECT_ID(N'[dbo].[FK_Company_inherits_Customer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CustomerSet_Company] DROP CONSTRAINT [FK_Company_inherits_Customer];
 GO
@@ -102,6 +108,9 @@ IF OBJECT_ID(N'[dbo].[HouseSet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[AddressSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AddressSet];
+GO
+IF OBJECT_ID(N'[dbo].[UserToCustomerSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserToCustomerSet];
 GO
 IF OBJECT_ID(N'[dbo].[CustomerSet_Company]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CustomerSet_Company];
@@ -219,6 +228,14 @@ CREATE TABLE [dbo].[AddressSet] (
 );
 GO
 
+-- Creating table 'UserToCustomerSet'
+CREATE TABLE [dbo].[UserToCustomerSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [User_Id] int  NOT NULL,
+    [Customer_Id] int  NOT NULL
+);
+GO
+
 -- Creating table 'CustomerSet_Company'
 CREATE TABLE [dbo].[CustomerSet_Company] (
     [CompanyName] nvarchar(max)  NOT NULL,
@@ -306,6 +323,12 @@ GO
 -- Creating primary key on [Id] in table 'AddressSet'
 ALTER TABLE [dbo].[AddressSet]
 ADD CONSTRAINT [PK_AddressSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserToCustomerSet'
+ALTER TABLE [dbo].[UserToCustomerSet]
+ADD CONSTRAINT [PK_UserToCustomerSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -512,6 +535,36 @@ GO
 CREATE INDEX [IX_FK_PersonOrderEntry]
 ON [dbo].[OrderEntrySet]
     ([PersonId]);
+GO
+
+-- Creating foreign key on [User_Id] in table 'UserToCustomerSet'
+ALTER TABLE [dbo].[UserToCustomerSet]
+ADD CONSTRAINT [FK_UserUserToCustomer]
+    FOREIGN KEY ([User_Id])
+    REFERENCES [dbo].[UserSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserUserToCustomer'
+CREATE INDEX [IX_FK_UserUserToCustomer]
+ON [dbo].[UserToCustomerSet]
+    ([User_Id]);
+GO
+
+-- Creating foreign key on [Customer_Id] in table 'UserToCustomerSet'
+ALTER TABLE [dbo].[UserToCustomerSet]
+ADD CONSTRAINT [FK_CustomerUserToCustomer]
+    FOREIGN KEY ([Customer_Id])
+    REFERENCES [dbo].[CustomerSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CustomerUserToCustomer'
+CREATE INDEX [IX_FK_CustomerUserToCustomer]
+ON [dbo].[UserToCustomerSet]
+    ([Customer_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'CustomerSet_Company'

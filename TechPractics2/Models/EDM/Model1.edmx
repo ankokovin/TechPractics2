@@ -19,6 +19,7 @@
     <EntitySet Name="StreetSet" EntityType="Model1.Store.StreetSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="HouseSet" EntityType="Model1.Store.HouseSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AddressSet" EntityType="Model1.Store.AddressSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserToCustomerSet" EntityType="Model1.Store.UserToCustomerSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CustomerSet_Company" EntityType="Model1.Store.CustomerSet_Company" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CustomerOrder" Association="Model1.Store.CustomerOrder">
       <End Role="Customer" EntitySet="CustomerSet" />
@@ -71,6 +72,14 @@
     <AssociationSet Name="PersonOrderEntry" Association="Model1.Store.PersonOrderEntry">
       <End Role="Person" EntitySet="PersonSet" />
       <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserToCustomer" Association="Model1.Store.UserUserToCustomer">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="UserToCustomer" EntitySet="UserToCustomerSet" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerUserToCustomer" Association="Model1.Store.CustomerUserToCustomer">
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="UserToCustomer" EntitySet="UserToCustomerSet" />
     </AssociationSet>
     <AssociationSet Name="FK_Company_inherits_Customer" Association="Model1.Store.FK_Company_inherits_Customer">
       <End Role="Customer" EntitySet="CustomerSet" />
@@ -184,6 +193,14 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Flat" Type="int" Nullable="false" />
     <Property Name="House_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserToCustomerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CustomerSet_Company">
     <Key>
@@ -375,6 +392,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="UserUserToCustomer">
+    <End Role="User" Type="Model1.Store.UserSet" Multiplicity="1" />
+    <End Role="UserToCustomer" Type="Model1.Store.UserToCustomerSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserToCustomer">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerUserToCustomer">
+    <End Role="Customer" Type="Model1.Store.CustomerSet" Multiplicity="1" />
+    <End Role="UserToCustomer" Type="Model1.Store.UserToCustomerSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserToCustomer">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Company_inherits_Customer">
     <End Role="Customer" Type="Model1.Store.CustomerSet" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -459,6 +500,15 @@
             <End Role="Person" EntitySet="PersonSet" />
             <End Role="OrderEntry" EntitySet="OrderEntrySet" />
           </AssociationSet>
+          <EntitySet Name="UserToCustomerSet" EntityType="Model1.UserToCustomer" />
+          <AssociationSet Name="UserUserToCustomer" Association="Model1.UserUserToCustomer">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="UserToCustomer" EntitySet="UserToCustomerSet" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerUserToCustomer" Association="Model1.CustomerUserToCustomer">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="UserToCustomer" EntitySet="UserToCustomerSet" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Order">
           <Key>
@@ -479,6 +529,7 @@
           <Property Name="Login" Type="String" Nullable="false" />
           <Property Name="Password" Type="String" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Model1.UserOrder" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="UserToCustomer" Relationship="Model1.UserUserToCustomer" FromRole="User" ToRole="UserToCustomer" />
         </EntityType>
         <EntityType Name="Customer" Abstract="false">
           <Key>
@@ -489,6 +540,7 @@
           <NavigationProperty Name="Order" Relationship="Model1.CustomerOrder" FromRole="Customer" ToRole="Order" />
           <Property Name="Passport" Type="String" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" Nullable="true" />
+          <NavigationProperty Name="UserToCustomer" Relationship="Model1.CustomerUserToCustomer" FromRole="Customer" ToRole="UserToCustomer" />
         </EntityType>
         <EntityType Name="Company" BaseType="Model1.Customer">
           <Property Name="CompanyName" Nullable="false" Type="String" />
@@ -597,6 +649,7 @@
           <Member Name="Admin" Value="0" />
           <Member Name="Operator" Value="1" />
           <Member Name="Analitic" Value="2" />
+          <Member Name="Normal" Value="3" />
         </EnumType>
         <Association Name="StatusOrderEntry">
           <End Type="Model1.Status" Role="Status" Multiplicity="1" >
@@ -676,6 +729,22 @@
               <PropertyRef Name="PersonId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserToCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="Model1.UserUserToCustomer" FromRole="UserToCustomer" ToRole="User" />
+          <NavigationProperty Name="Customer" Relationship="Model1.CustomerUserToCustomer" FromRole="UserToCustomer" ToRole="Customer" />
+        </EntityType>
+        <Association Name="UserUserToCustomer">
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="Model1.UserToCustomer" Role="UserToCustomer" Multiplicity="*" />
+        </Association>
+        <Association Name="CustomerUserToCustomer">
+          <End Type="Model1.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="Model1.UserToCustomer" Role="UserToCustomer" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -799,6 +868,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UserToCustomerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.UserToCustomer)">
+        <MappingFragment StoreEntitySet="UserToCustomerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="CustomerOrder" TypeName="Model1.CustomerOrder" StoreEntitySet="OrderSet">
       <EndProperty Name="Customer">
         <ScalarProperty Name="Id" ColumnName="Customer_Id" />
@@ -892,6 +968,22 @@
         <ScalarProperty Name="Id" ColumnName="Street_Id" />
       </EndProperty>
       <EndProperty Name="House">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserUserToCustomer" TypeName="Model1.UserUserToCustomer" StoreEntitySet="UserToCustomerSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="UserToCustomer">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerUserToCustomer" TypeName="Model1.CustomerUserToCustomer" StoreEntitySet="UserToCustomerSet">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+      <EndProperty Name="UserToCustomer">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
