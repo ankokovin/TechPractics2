@@ -88,6 +88,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Добавление.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Адрес.
         /// </summary>
         public static string Address {
@@ -120,6 +129,15 @@ namespace GlobalResources {
         public static string Addresses {
             get {
                 return ResourceManager.GetString("Addresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Назад.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
             }
         }
         
@@ -196,6 +214,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите удалить данный элемент?.
+        /// </summary>
+        public static string ConfirmDeleteMsg {
+            get {
+                return ResourceManager.GetString("ConfirmDeleteMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Контакты.
         /// </summary>
         public static string Contact {
@@ -210,6 +237,15 @@ namespace GlobalResources {
         public static string CookiesExpirationDays {
             get {
                 return ResourceManager.GetString("CookiesExpirationDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Создать.
+        /// </summary>
+        public static string CreateNew {
+            get {
+                return ResourceManager.GetString("CreateNew", resourceCulture);
             }
         }
         
@@ -255,6 +291,42 @@ namespace GlobalResources {
         public static string Customers {
             get {
                 return ResourceManager.GetString("Customers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Удаление.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Детали.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Изменение.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Просмотр.
+        /// </summary>
+        public static string EntityCol {
+            get {
+                return ResourceManager.GetString("EntityCol", resourceCulture);
             }
         }
         
@@ -534,6 +606,15 @@ namespace GlobalResources {
         public static string navbarLinkId_2 {
             get {
                 return ResourceManager.GetString("navbarLinkId_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Принять заказ.
+        /// </summary>
+        public static string OperatorOrder {
+            get {
+                return ResourceManager.GetString("OperatorOrder", resourceCulture);
             }
         }
         
@@ -949,6 +1030,15 @@ namespace GlobalResources {
         public static string Users {
             get {
                 return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Профиль заказчика пользователя.
+        /// </summary>
+        public static string UserToCustomer {
+            get {
+                return ResourceManager.GetString("UserToCustomer", resourceCulture);
             }
         }
         

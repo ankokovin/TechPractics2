@@ -1,34 +1,46 @@
 ﻿@model IEnumerable<TechPractics2.Models.EDM.Stavka>
 
 @{
-    ViewBag.Title = "StavkaCollection";
+ViewBag.Title = GlobalResources.SiteResources.EntityCol;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
+@if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
+{
 
-<h2>StavkaCollection</h2>
+    <h2>@GlobalResources.SiteResources.EntityCol</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Add")
-</p>
-<table class="table">
-    <tr>
-
-        <th>@Html.DisplayNameFor(model => model.MeterType)</th>
-        <th>@Html.DisplayNameFor(model => model.Person)</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <p>
+        @Html.ActionLink(GlobalResources.SiteResources.CreateNew, "Add")
+    </p>
+    <table class="table">
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.MeterType.FullDisc)</td>
-            <td>@Html.DisplayFor(modelItem => item.Person.FullDisc)</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
 
-</table>
+            <th>@Html.DisplayNameFor(model => model.MeterType)</th>
+            <th>@Html.DisplayNameFor(model => model.Person)</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.MeterType.FullDisc)</td>
+                <td>@Html.DisplayFor(modelItem => item.Person.FullDisc)</td>
+                <td>
+                    @Html.ActionLink(GlobalResources.SiteResources.Edit, "Edit", new { id = item.Id }) |
+                    @Html.ActionLink(GlobalResources.SiteResources.Details, "Details", new { id = item.Id }) |
+                    @Html.ActionLink(GlobalResources.SiteResources.Delete, "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+else
+{
+    <p>
+        @Html.Label(GlobalResources.SiteResources.AccessErrorMsg, new { @class = "text-danger" })
+        @Html.ActionLink(GlobalResources.SiteResources.Back, "Back", "Home")
+    </p>
+}

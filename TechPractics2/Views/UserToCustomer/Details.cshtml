@@ -3,32 +3,44 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
+@if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
+{
 
-<h2>Details</h2>
+    <h2>@GlobalResources.SiteResources.Details</h2>
 
-<div>
-    <h4>UserToCustomer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
+    <div>
+        <h4>@GlobalResources.SiteResources.UserToCustomer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.User.FullDisc)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.User.FullDisc)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Customer)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Customer.FullDisc)
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.Customer.FullDisc)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink(GlobalResources.SiteResources.Edit, "Edit", new { id = Model.Id }) |
+       @Html.ActionLink(GlobalResources.SiteResources.Back, "Index")
+    </p>
+
+}
+else
+{
+    <p>
+        @Html.Label(GlobalResources.SiteResources.AccessErrorMsg, new { @class = "text-danger" })
+        @Html.ActionLink(GlobalResources.SiteResources.Back, "Back", "Home")
+    </p>
+}

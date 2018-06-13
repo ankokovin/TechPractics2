@@ -111,6 +111,17 @@ namespace TechPractics2.Controllers
                 return Redirect(url);
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Back()
+        {
+            var url = System.Web.HttpContext.Current.Request.UrlReferrer;
+            if (url != null)
+            {
+                return Redirect(url.AbsolutePath);
+            }
+            return RedirectToAction("Index");
+        }
+
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult SignOut()
         {

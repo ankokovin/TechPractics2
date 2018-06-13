@@ -1,83 +1,90 @@
 ﻿@model TechPractics2.Models.UtilityModels.OperatorViewModel
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var Meters = ViewData[GlobalResources.SiteResources.Meter] as IEnumerable<TechPractics2.Models.EDM.Meter>;
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                var Meters = ViewData[GlobalResources.SiteResources.Meter] as IEnumerable<TechPractics2.Models.EDM.Meter>;
+
+                var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
-
-<h2>Index</h2>
-
-@using (Html.BeginForm("Index", "Operator", FormMethod.Post, new { @class = "form-horizontal" }))
+@if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
 {
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        @Html.LabelFor(i => i.FIO, new { @class = "control-label col-md-3" })
-        <div class="col-md-9">
-            @Html.EditorFor(i => i.FIO, null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(i => i.FIO, "", new { @class = "text-warning" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(i => i.Passport, new { @class = "control-label col-md-3" })
-        <div class="col-md-9">
-            @Html.EditorFor(i => i.Passport, null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(i => i.Passport, "", new { @class = "text-warning" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(i => i.PhoneNumber, new { @class = "control-label col-md-3" })
-        <div class="col-md-9">
-            @Html.EditorFor(i => i.PhoneNumber, null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(i => i.PhoneNumber, "", new { @class = "text-warning" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(i => i.IsCompany, new { @class = "control-label col-md-3" })
-        <div class="col-md-9">
-            @Html.EditorFor(i => i.IsCompany, null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(i => i.IsCompany, "", new { @class = "text-warning" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(i => i.CompanyName, new { @class = "control-label col-md-3" })
-        <div class="col-md-9">
-            @Html.EditorFor(i => i.CompanyName, null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(i => i.CompanyName, "", new { @class = "text-warning" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(i => i.INN, new { @class = "control-label col-md-3" })
-        <div class="col-md-9">
-            @Html.EditorFor(i => i.INN, null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(i => i.INN, "", new { @class = "text-warning" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(i => i.FullAddress, new { @class = "control-label col-md-3" })
-        <div class="col-md-9">
-            @Html.EditorFor(i => i.FullAddress, null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(i => i.FullAddress, "", new { @class = "text-warning" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(i => i.Flat, new { @class = "control-label col-md-3" })
-        <div class="col-md-9">
-            @Html.EditorFor(i => i.Flat, null, new { @class = "form-control" })
-            @Html.ValidationMessageFor(i => i.Flat, "", new { @class = "text-warning" })
-        </div>
-    </div>
-    foreach (var item in Meters)
+
+    <h2>Index</h2>
+
+    using (Html.BeginForm("Index", "Operator", FormMethod.Post, new { @class = "form-horizontal" }))
     {
-    <div class="form-group">
-        @Html.Label(item.FullDisc, new { @class = "control-label col-md-3" })
-        <div class="col-md-9">
-            @Html.TextBox("MetersCounts", 0, new { @class = "form-control", type = "number" })
-
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(i => i.FIO, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(i => i.FIO, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(i => i.FIO, "", new { @class = "text-warning" })
+            </div>
         </div>
-    </div>
-    }
-    <div class="form-group">
-        <input type="submit" value="Submit" class="btn btn-primary" />
-    </div>
-}
+        <div class="form-group">
+            @Html.LabelFor(i => i.Passport, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(i => i.Passport, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(i => i.Passport, "", new { @class = "text-warning" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.PhoneNumber, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(i => i.PhoneNumber, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(i => i.PhoneNumber, "", new { @class = "text-warning" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.IsCompany, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(i => i.IsCompany, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(i => i.IsCompany, "", new { @class = "text-warning" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.CompanyName, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(i => i.CompanyName, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(i => i.CompanyName, "", new { @class = "text-warning" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.INN, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(i => i.INN, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(i => i.INN, "", new { @class = "text-warning" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.FullAddress, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(i => i.FullAddress, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(i => i.FullAddress, "", new { @class = "text-warning" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.Flat, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(i => i.Flat, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(i => i.Flat, "", new { @class = "text-warning" })
+            </div>
+        </div>
+        foreach (var item in Meters)
+        {
+            <div class="form-group">
+                @Html.Label(item.FullDisc, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBox("MetersCounts", 0, new { @class = "form-control", type = "number" })
 
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    }
+
+}

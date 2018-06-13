@@ -67,10 +67,19 @@
                                                 <p>@Html.ActionLink(GlobalResources.SiteResources.Persons, "Index", "Person")</p>
                                                 <p>@Html.ActionLink(GlobalResources.SiteResources.Stavkas, "Index", "Stavka")</p>
                                                 <p>@Html.ActionLink(GlobalResources.SiteResources.Users, "Index", "User")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.UserToCustomers,"Index","UserToCustomer")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.UserToCustomers, "Index", "UserToCustomer")</p>
                                                 <p>@Html.ActionLink(GlobalResources.SiteResources.Statuses, "Index", "Status")</p>
                                             }
-                                            <p>@Html.ActionLink("Home", "Index", "Home")</p>
+                                            else if (user.UserType == UserType.Operator)
+                                            {
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.OperatorOrder, "Index", "Operator")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Streets, "Index", "Street")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Houses, "Index", "House")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Addresses, "Index", "Address")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Customers, "Index", "Customer")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Orders, "Index", "Order")</p>
+                                                <p>@Html.ActionLink(GlobalResources.SiteResources.OrderEntries, "Index", "OrderEntry")</p>
+                                            }
                                         </div>
                                     </td>
                                     

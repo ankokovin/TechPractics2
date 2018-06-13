@@ -3,41 +3,52 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
+@if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
+{
 
-<h2>Details</h2>
+    <h2>@GlobalResources.SiteResources.Details</h2>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserType)
-        </dt>
+    <div>
+        <h4>@GlobalResources.SiteResources.User</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserType)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserType)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.UserType)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Login)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Login)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Login)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Login)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink(GlobalResources.SiteResources.Edit, "Edit", new { id = Model.Id }) |
+       @Html.ActionLink(GlobalResources.SiteResources.Back, "Index")
+    </p>
+}
+else
+{
+    <p>
+        @Html.Label(GlobalResources.SiteResources.AccessErrorMsg, new { @class = "text-danger" })
+        @Html.ActionLink(GlobalResources.SiteResources.Back, "Back", "Home")
+    </p>
+}

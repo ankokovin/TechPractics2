@@ -3,32 +3,44 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
+@if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
+{
+    <h2>@GlobalResources.SiteResources.Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>@GlobalResources.SiteResources.House</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Number)
+            </dt>
 
-<div>
-    <h4>House</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Number)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Number)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Number)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Street)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Street)
-        </dt>
+            <dd>
+                @Html.Label(Model.Street.ToString())
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink(GlobalResources.SiteResources.Edit, "Edit", new { id = Model.Id }) |
+       @Html.ActionLink(GlobalResources.SiteResources.Back, "Index")
+    </p>
 
-        <dd>
-            @Html.Label(Model.Street.ToString())
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+}
+else
+{
+    <p>
+        @Html.Label(GlobalResources.SiteResources.AccessErrorMsg, new { @class = "text-danger" })
+        @Html.ActionLink(GlobalResources.SiteResources.Back, "Back", "Home")
+    </p>
+}

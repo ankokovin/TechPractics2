@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<TechPractics2.Models.EDM.Customer>
 
 @{
-    ViewBag.Title = "CustomerCollection";
+    ViewBag.Title = GlobalResources.SiteResources.EntityCol;
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
-<div >
-    <h2>CustomerCollection</h2>
-    @if (Session[GlobalResources.SiteResources.User] is TechPractics2.Models.EDM.User)
-    {
+@if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
+{
+
+    <div>
+        <h2>@GlobalResources.SiteResources.EntityCol</h2>
 
         <p>
-            @Html.ActionLink("Create New", "Add")
+            @Html.ActionLink(GlobalResources.SiteResources.CreateNew, "Add")
         </p>
         <table class="table">
             <tr>
@@ -60,19 +63,22 @@
                     }
 
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id, }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink(GlobalResources.SiteResources.Edit, "Edit", new { id = item.Id, }) |
+                        @Html.ActionLink(GlobalResources.SiteResources.Details, "Details", new { id = item.Id }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                     </td>
                 </tr>
             }
 
         </table>
-    }
-    else
-    {
-        <p>
-            <label>@GlobalResources.SiteResources.AccessErrorMsg</label>
-        </p>
-    }
-</div>
+
+    </div>
+
+}
+else
+{
+    <p>
+        @Html.Label(GlobalResources.SiteResources.AccessErrorMsg,new { @class = "text-danger" })
+        @Html.ActionLink(GlobalResources.SiteResources.Back,"Back","Home")
+    </p>
+}

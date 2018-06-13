@@ -1,7 +1,7 @@
 ﻿@model TechPractics2.Models.EDM.Customer
 
 @{
-    ViewBag.Title = "Delete";
+     ViewBag.Title = GlobalResources.SiteResources.Delete;
     Layout = "~/Views/Shared/_Layout.cshtml";
     bool IsCompany = false;
     TechPractics2.Models.EDM.Company comp = null;
@@ -10,65 +10,79 @@
         comp = Model as TechPractics2.Models.EDM.Company;
         IsCompany = true;
     }
+
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
+@if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
+{
 
-<h2>Delete</h2>
+   <h2>@GlobalResources.SiteResources.Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @GlobalResources.SiteResources.Customer_FIO
-        </dt>
+    <h3>@GlobalResources.SiteResources.ConfirmDeleteMsg</h3>
+    <div>
+        <h4>@GlobalResources.SiteResources.Customer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @GlobalResources.SiteResources.Customer_FIO
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FIO)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FIO)
+            </dd>
 
-        <dt>
-            @GlobalResources.SiteResources.Customer_Passport
-        </dt>
+            <dt>
+                @GlobalResources.SiteResources.Customer_Passport
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Passport)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Passport)
+            </dd>
 
-        <dt>
-            @GlobalResources.SiteResources.Customer_PhoneNumber
-        </dt>
+            <dt>
+                @GlobalResources.SiteResources.Customer_PhoneNumber
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        @if (IsCompany)
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+            @if (IsCompany)
+            {
+                <dt>
+                    @GlobalResources.SiteResources.CompanyName
+                </dt>
+
+                <dd>
+                    @Html.Label(comp.CompanyName);
+                </dd>
+
+                <dt>
+                    @GlobalResources.SiteResources.Company_INN
+                </dt>
+
+                <dd>
+                    @Html.Label(comp.INN);
+                </dd>
+            }
+        </dl>
+
+        @using (Html.BeginForm())
         {
-            <dt>
-                @GlobalResources.SiteResources.CompanyName
-            </dt>
-
-            <dd>
-                @Html.Label(comp.CompanyName);
-            </dd>
-
-            <dt>
-                @GlobalResources.SiteResources.Company_INN
-            </dt>
-
-            <dd>
-                @Html.Label(comp.INN);
-            </dd>
+            @Html.AntiForgeryToken()
+            @Html.Hidden("id", Model.Id)
+            @Html.Hidden("IsCompany", IsCompany)
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+               @Html.ActionLink(GlobalResources.SiteResources.Back, "Index")
+            </div>
         }
-    </dl>
+    </div>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-        @Html.Hidden("id",Model.Id)
-        @Html.Hidden("IsCompany",IsCompany)
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+}
+else
+{
+    <p>
+        @Html.Label(GlobalResources.SiteResources.AccessErrorMsg, new { @class = "text-danger" })
+        @Html.ActionLink(GlobalResources.SiteResources.Back, "Back", "Home")
+    </p>
+}

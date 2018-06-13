@@ -1,51 +1,63 @@
 ﻿@model TechPractics2.Models.EDM.Address
 
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = GlobalResources.SiteResources.Add;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
 
-<h2>Add</h2>
 
-
-@using (Html.BeginForm()) 
+@if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
 {
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Address</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Flat, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBox("Flat", null, new { @class = "form-control", type = "number" })
-            @Html.ValidationMessage("Flat", "", new { @class = "text-danger" })
+    <h2>@GlobalResources.SiteResources.Add</h2>
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>@GlobalResources.SiteResources.Address</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Flat, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("Flat", null, new { @class = "form-control", type = "number" })
+                    @Html.ValidationMessage("Flat", "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label(GlobalResources.SiteResources.Address_House, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("HouseId", (IEnumerable<SelectListItem>)ViewData[GlobalResources.SiteResources.Address_House], new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessage("HouseId", "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
         </div>
+    }
+
+    <div>
+       @Html.ActionLink(GlobalResources.SiteResources.Back, "Index")
     </div>
 
-    <div class="form-group">
-        @Html.Label(GlobalResources.SiteResources.Address_House, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("HouseId", (IEnumerable<SelectListItem>)ViewData[GlobalResources.SiteResources.Address_House], new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessage("HouseId", "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+}
+else
+{
+    <p>
+        @Html.Label(GlobalResources.SiteResources.AccessErrorMsg, new { @class = "text-danger" })
+        @Html.ActionLink(GlobalResources.SiteResources.Back, "Back", "Home")
+    </p>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

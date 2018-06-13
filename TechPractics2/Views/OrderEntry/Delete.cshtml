@@ -1,82 +1,96 @@
 ﻿@model TechPractics2.Models.EDM.OrderEntry
 
 @{
-    ViewBag.Title = "Delete";
+     ViewBag.Title = GlobalResources.SiteResources.Delete;
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
+@if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
+{
 
-<h2>Delete</h2>
+   <h2>@GlobalResources.SiteResources.Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>OrderEntry</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <h3>@GlobalResources.SiteResources.ConfirmDeleteMsg</h3>
+    <div>
+        <h4>@GlobalResources.SiteResources.OrderEntry</h4>
+        <hr />
+        <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Order)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Order)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Order.Id)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Order.Id)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Meter)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Meter)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Meter.Id)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Meter.Id)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status.FullDisc)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Status.FullDisc)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RegNumer)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.RegNumer)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RegNumer)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.RegNumer)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StartTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EndTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EndTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Person.FIO)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Person.FIO)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Person.FIO)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Person.FIO)
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+               @Html.ActionLink(GlobalResources.SiteResources.Back, "Index")
+            </div>
+        }
+    </div>
+
+}
+else
+{
+    <p>
+        @Html.Label(GlobalResources.SiteResources.AccessErrorMsg, new { @class = "text-danger" })
+        @Html.ActionLink(GlobalResources.SiteResources.Back, "Back", "Home")
+    </p>
+}
