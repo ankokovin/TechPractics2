@@ -486,4 +486,7 @@
   <data name="WrongFormat" xml:space="preserve">
     <value> имеет неверный формат</value>
   </data>
+  <data name="ShowDateFormat" xml:space="preserve">
+    <value>(ММ-ДД-ГГГГ)</value>
+  </data>
 </root>

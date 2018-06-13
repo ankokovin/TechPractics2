@@ -16,6 +16,8 @@ namespace TechPractics2.Controllers
             return View();
         }
 
+
+
         public ActionResult Details(int id)
         {
             ViewData.Model = dataManager.CityRepos.FindCity(id);
@@ -36,6 +38,13 @@ namespace TechPractics2.Controllers
             return RedirectToAction("Index");
         }
 
+        public void Check(Models.EDM.City city)
+        {
+            if (string.IsNullOrWhiteSpace(city.Name))
+                ModelState.AddModelError("Name", GlobalResources.SiteResources.PleaseInput + GlobalResources.SiteResources.City_Name);
+           
+        }
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {
@@ -45,8 +54,13 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Add(Models.EDM.City city)
         {
-            dataManager.CityRepos.AddCity(city.Name,out string Res);
-            return RedirectToAction("Index");
+            Check(city);
+            if (ModelState.IsValid)
+            {
+                dataManager.CityRepos.AddCity(city.Name, out string Res);
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -59,8 +73,14 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Models.EDM.City city)
         {
-            dataManager.CityRepos.ChangeCity(city.Id, city.Name, out string Res);
-            return RedirectToAction("Index");
+            Check(city);
+            if (ModelState.IsValid)
+            {
+                dataManager.CityRepos.ChangeCity(city.Id, city.Name, out string Res);
+                return RedirectToAction("Index");
+            }
+            ViewData.Model = dataManager.CityRepos.FindCity(city.Id);
+            return View();
         }
     }
 }

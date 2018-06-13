@@ -1,0 +1,77 @@
+﻿@model IEnumerable<TechPractics2.Models.EDM.OrderEntry>
+
+@{
+    ViewBag.Title = "OrderEntryCollection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OrderEntryCollection</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Order)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Meter)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.RegNumer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.FIO)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.Id)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Meter.FullDisc)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.FullDisc)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.RegNumer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.FIO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

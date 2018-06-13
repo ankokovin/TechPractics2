@@ -1,0 +1,101 @@
+﻿@model TechPractics2.Models.EDM.OrderEntry
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Add</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>OrderEntry</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.Label(GlobalResources.SiteResources.OrderEntry_Order, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("OrderId", (IEnumerable<SelectListItem>)ViewData[GlobalResources.SiteResources.OrderEntry_Order], new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("OrderId", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label(GlobalResources.SiteResources.OrderEntry_Meter, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MeterId", (IEnumerable<SelectListItem>)ViewData[GlobalResources.SiteResources.OrderEntry_Meter], new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("MeterId", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RegNumer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RegNumer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RegNumer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            @GlobalResources.SiteResources.ShowDateFormat
+            <div class="col-md-10">
+                @Html.TextBox("StartTime", null, new { htmlAttributes = new { @class = "date-picker", @type = "date" } })
+                @Html.ValidationMessage("StartTime", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            @GlobalResources.SiteResources.ShowDateFormat
+            <div class="col-md-10">
+                @Html.TextBox("EndTime", null, new { htmlAttributes = new { @class = "date-picker", @type = "date" } })
+                @Html.ValidationMessage("EndTime", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label(GlobalResources.SiteResources.Company, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBox("HasPerson", new { @checked = "checked" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label(GlobalResources.SiteResources.OrderEntry_Person, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("PersonId", (IEnumerable<SelectListItem>)ViewData[GlobalResources.SiteResources.OrderEntry_Person], new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("PersonId", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label(GlobalResources.SiteResources.OrderEntry_Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("StatusId", (IEnumerable<SelectListItem>)ViewData[GlobalResources.SiteResources.OrderEntry_Status], new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("StatusId", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

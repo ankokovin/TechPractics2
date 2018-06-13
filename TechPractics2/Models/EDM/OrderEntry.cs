@@ -11,12 +11,17 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class OrderEntry
     {
         public int Id { get; set; }
         public string RegNumer { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> StartTime { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> EndTime { get; set; }
         public Nullable<int> PersonId { get; set; }
     

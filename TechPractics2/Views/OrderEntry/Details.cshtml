@@ -1,0 +1,76 @@
+﻿@model TechPractics2.Models.EDM.OrderEntry
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderEntry</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Meter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Meter.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model=>model.Status.FullDisc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegNumer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegNumer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Person.FIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person.FIO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

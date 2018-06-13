@@ -745,6 +745,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на (ММ-ДД-ГГГГ).
+        /// </summary>
+        public static string ShowDateFormat {
+            get {
+                return ResourceManager.GetString("ShowDateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на SignOutButton.
         /// </summary>
         public static string SignOutButtonId {
