@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TechPractics2.Models.EDM.Address>
+
+@{
+    ViewBag.Title = "AddressCollection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddressCollection</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Flat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.House)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flat)
+        </td>
+        <td>
+            @Html.Label(item.House.ToString())
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

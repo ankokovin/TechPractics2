@@ -162,6 +162,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\ControllerFactory.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -386,6 +387,11 @@
     <Content Include="Views\House\Details.cshtml" />
     <Content Include="Views\House\Delete.cshtml" />
     <Content Include="Views\House\Edit.cshtml" />
+    <Content Include="Views\Address\AddressCollection.cshtml" />
+    <Content Include="Views\Address\Add.cshtml" />
+    <Content Include="Views\Address\Details.cshtml" />
+    <Content Include="Views\Address\Delete.cshtml" />
+    <Content Include="Views\Address\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

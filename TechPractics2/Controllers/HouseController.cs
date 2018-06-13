@@ -19,7 +19,7 @@ namespace TechPractics2.Controllers
         public ActionResult Add()
         {
             var Streets = dataManager.StreetRepos.SelectStreets(x => true);
-            ViewData[GlobalResources.SiteResources.House_Street] = new SelectList(Streets, "Id", "Name");
+            ViewData[GlobalResources.SiteResources.House_Street] = new SelectList(Streets, "Id", "FullDisc");
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
@@ -32,7 +32,7 @@ namespace TechPractics2.Controllers
                 return RedirectToAction("Index");
             }
             var Streets = dataManager.StreetRepos.SelectStreets(x => true);
-            ViewData[GlobalResources.SiteResources.House_Street] = new SelectList(Streets, "Id", "Name");
+            ViewData[GlobalResources.SiteResources.House_Street] = new SelectList(Streets, "Id", "FullDisc");
             return View();
 
         }
@@ -71,7 +71,7 @@ namespace TechPractics2.Controllers
         {
             ViewData.Model = dataManager.HouseRepos.FindHouse(id);
             var Streets = dataManager.StreetRepos.SelectStreets(x => true);
-            ViewData[GlobalResources.SiteResources.House_Street] = new SelectList(Streets, "Id", "Name");
+            ViewData[GlobalResources.SiteResources.House_Street] = new SelectList(Streets, "Id", "FullDisc");
             return View(); 
         }
         [AcceptVerbs(HttpVerbs.Post)]
@@ -86,7 +86,7 @@ namespace TechPractics2.Controllers
 
             ViewData.Model = dataManager.HouseRepos.FindHouse(id);
             var Streets = dataManager.StreetRepos.SelectStreets(x => true);
-            ViewData[GlobalResources.SiteResources.House_Street] = new SelectList(Streets, "Id", "Name");
+            ViewData[GlobalResources.SiteResources.House_Street] = new SelectList(Streets, "Id", "FullDisc");
             return View();
         }
 
