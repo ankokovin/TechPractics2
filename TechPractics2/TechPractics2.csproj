@@ -167,7 +167,9 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HouseController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\StreetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -374,6 +376,16 @@
     <Content Include="Views\City\Edit.cshtml" />
     <Content Include="Views\City\Delete.cshtml" />
     <Content Include="Views\City\Details.cshtml" />
+    <Content Include="Views\Street\StreetCollection.cshtml" />
+    <Content Include="Views\Street\Add.cshtml" />
+    <Content Include="Views\Street\Details.cshtml" />
+    <Content Include="Views\Street\Delete.cshtml" />
+    <Content Include="Views\Street\Edit.cshtml" />
+    <Content Include="Views\House\HouseCollection.cshtml" />
+    <Content Include="Views\House\Add.cshtml" />
+    <Content Include="Views\House\Details.cshtml" />
+    <Content Include="Views\House\Delete.cshtml" />
+    <Content Include="Views\House\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
