@@ -12,6 +12,7 @@ namespace TechPractics2.Models.EDM
         {
             return FIO;
         }
+        public String FullDisc => this.ToString();
     }
     partial class House
     {
@@ -19,6 +20,7 @@ namespace TechPractics2.Models.EDM
         {
             return Street + " " + Number;
         }
+        public String FullDisc => this.ToString();
     }
     partial class Address
     {
@@ -26,6 +28,7 @@ namespace TechPractics2.Models.EDM
         {
             return House + " " + Flat;
         }
+        public String FullDisc => ToString();
     }
     partial class City
     {
@@ -33,6 +36,7 @@ namespace TechPractics2.Models.EDM
         {
             return Name;
         }
+        public String FullDisc => this.ToString();
     }
     partial class Company
     {
@@ -40,6 +44,7 @@ namespace TechPractics2.Models.EDM
         {
             return base.ToString() + " " + CompanyName + " " + INN;
         }
+        public String FullDisc => this.ToString();
     }
     partial class Customer
     {
@@ -47,13 +52,15 @@ namespace TechPractics2.Models.EDM
         {
             return FIO + " " + Passport;
         }
+        public String FullDisc => this.ToString();
     }
     partial class Meter
     {
         public override string ToString()
         {
-            return MeterType + " " + Name; 
+            return MeterType + " " + Name;
         }
+        public String FullDisc => this.ToString();
     }
     partial class MeterType
     {
@@ -61,6 +68,7 @@ namespace TechPractics2.Models.EDM
         {
             return Name;
         }
+        public String FullDisc => this.ToString();
     }
     partial class Order
     {
@@ -68,13 +76,15 @@ namespace TechPractics2.Models.EDM
         {
             return Id + " " + Customer + " " + Address + " " + OrderEntry.Count + " " + User;
         }
+        public String FullDisc => this.ToString();
     }
     partial class OrderEntry
     {
         public override string ToString()
         {
-            return Meter + " " + RegNumer + " " + Person + " " +Status + " " + StartTime + " " + EndTime; 
+            return Meter + " " + RegNumer + " " + Person + " " +Status + " " + StartTime + " " + EndTime;
         }
+        public String FullDisc => this.ToString();
     }
     partial class Status
     {
@@ -82,6 +92,7 @@ namespace TechPractics2.Models.EDM
         {
             return Name;
         }
+        public String FullDisc => this.ToString();
     }
     partial class Stavka
     {
@@ -89,6 +100,7 @@ namespace TechPractics2.Models.EDM
         {
             return Person + " " + MeterType;
         }
+        public String FullDisc => this.ToString();
     }
     partial class Street
     {
@@ -96,6 +108,7 @@ namespace TechPractics2.Models.EDM
         {
             return City + " " + Name;
         }
+        public String FullDisc => this.ToString();
     }
     partial class User
     {
@@ -103,6 +116,7 @@ namespace TechPractics2.Models.EDM
         {
             return Login;
         }
+        public String FullDisc => this.ToString();
     }
 }
 
