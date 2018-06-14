@@ -1,0 +1,74 @@
+﻿@model TechPractics2.Models.EDM.Customer
+
+@{
+    ViewBag.Title = "RemoveProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool IsCompany = false;
+    TechPractics2.Models.EDM.Company comp = null;
+    if (Model is TechPractics2.Models.EDM.Company)
+    {
+        comp = Model as TechPractics2.Models.EDM.Company;
+        IsCompany = true;
+    }
+
+}
+
+<h2>RemoveProfile</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        @if (IsCompany)
+        {
+            <dt>
+                @GlobalResources.SiteResources.CompanyName
+            </dt>
+
+            <dd>
+                @Html.Label(comp.CompanyName);
+            </dd>
+
+            <dt>
+                @GlobalResources.SiteResources.Company_INN
+            </dt>
+
+            <dd>
+                @Html.Label(comp.INN);
+            </dd>
+        }
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "ViewMyProfiles")
+        </div>
+    }
+</div>

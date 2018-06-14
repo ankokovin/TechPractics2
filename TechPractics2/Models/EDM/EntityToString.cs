@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace TechPractics2.Models.EDM
 {
     partial class Person
@@ -44,7 +46,6 @@ namespace TechPractics2.Models.EDM
         {
             return base.ToString() + " " + CompanyName + " " + INN;
         }
-        public String FullDisc => this.ToString();
     }
     partial class Customer
     {

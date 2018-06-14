@@ -20,6 +20,11 @@ button.logout{
     font-size:15px;
 }
 
+.logintable{
+    max-height:500px;
+    overflow-y:scroll;
+}
+
 table.logintable{
     border:5px solid transparent;
 }
@@ -50,6 +55,7 @@ td.logintable {
     display: none;
     overflow: hidden;
     background-color: white;
+    overflow-y:scroll;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -60,5 +66,3 @@ td.logintable {
     color: lightgray;
     font-size: 40px;
 }
-
-.wholecon

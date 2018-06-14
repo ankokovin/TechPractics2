@@ -21,13 +21,16 @@ namespace TechPractics2.Models.Repos
             Container = new SiteUtilitiesContainer();
         }
 
-        private HashedToken HashTheToken(Token token)
+        private HashedToken HashTheToken(Token token,string PrevToken=null)
         {
             HashedToken hashedToken = new HashedToken();
             byte[] tokenVal = Convert.FromBase64String(token.Value);
             byte[] tokenDate = BitConverter.GetBytes(token.TokenInfo.dateTime.ToBinary());
             byte[] tokenSalt = Convert.FromBase64String(token.TokenInfo.Salt);
-            hashedToken.Value = Convert.ToBase64String(sHA256.ComputeHash(tokenVal.Concat(tokenDate).Concat(tokenSalt).ToArray()));
+            byte[] serverSalt = Convert.FromBase64String(GlobalResources.SiteResources.MySalt);
+            var inputString = tokenVal.Concat(tokenDate).Concat(tokenSalt).Concat(serverSalt);
+            if (PrevToken != null) inputString = inputString.Concat(Convert.FromBase64String(PrevToken));
+            hashedToken.Value = Convert.ToBase64String(sHA256.ComputeHash(inputString.ToArray()));
             return hashedToken;
         }
 
@@ -62,8 +65,9 @@ namespace TechPractics2.Models.Repos
                 tokeninfo.Source = Source;
                 tokeninfo.dateTime = DateTime.UtcNow.AddDays(int.Parse(GlobalResources.SiteResources.CookiesExpirationDays));
                 var oldhashedtoken = tokeninfo.HashedToken;
+                var oldhash = oldhashedtoken.Value;
                 Container.HashedTokenSet.Remove(oldhashedtoken);
-                tokeninfo.HashedToken = HashTheToken(tokeninfo.Token);
+                tokeninfo.HashedToken = HashTheToken(tokeninfo.Token, oldhash);
                 Container.Entry(tokeninfo).State = tokeninfo.Id == 0 ? System.Data.Entity.EntityState.Added : System.Data.Entity.EntityState.Modified;
                 Container.Entry(tokeninfo.HashedToken).State = tokeninfo.HashedToken.Id == 0 ? System.Data.Entity.EntityState.Added : System.Data.Entity.EntityState.Modified;
                 Container.Entry(tokeninfo.Token).State = tokeninfo.Token.Id == 0 ? System.Data.Entity.EntityState.Added : System.Data.Entity.EntityState.Modified;
@@ -101,10 +105,14 @@ namespace TechPractics2.Models.Repos
                 return true;
             }else
             {
-                Container.TokenSet.Remove(nTokenInfo.Token);
-                Container.HashedTokenSet.Remove(nTokenInfo.HashedToken);
-                Container.TokenInfoSet.Remove(nTokenInfo);
-                Container.SaveChanges();
+                if (Login == nTokenInfo.Login)
+                {
+                    Container.TokenSet.Remove(nTokenInfo.Token);
+                    Container.HashedTokenSet.Remove(nTokenInfo.HashedToken);
+                    Container.TokenInfoSet.Remove(nTokenInfo);
+                    Container.SaveChanges();
+
+                }
                 return false;
             }
         }

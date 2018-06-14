@@ -30,7 +30,8 @@ namespace TechPractics2.Controllers
         {
             string City, House, Street;
             Check(operatorViewModel.Flat, operatorViewModel.FIO, operatorViewModel.Passport, 
-                operatorViewModel.PhoneNumber, operatorViewModel.IsCompany, operatorViewModel.CompanyName, operatorViewModel.INN);
+                operatorViewModel.PhoneNumber, operatorViewModel.IsCompany, operatorViewModel.CompanyName, operatorViewModel.INN,
+                operatorViewModel.FullAddress);
             if (dataManager.AddressRepos.ParseAddress(operatorViewModel.FullAddress, out City, out Street, out House) && ModelState.IsValid)
             {
                 Models.EDM.City city = dataManager.CityRepos.SelectCitys(x => x.Name == City).FirstOrDefault();
@@ -114,13 +115,15 @@ namespace TechPractics2.Controllers
             }
             ViewData[GlobalResources.SiteResources.Meter] = dataManager.MeterRepos.SelectMeters(x => true);
             int count = (ViewData[GlobalResources.SiteResources.Meter] as IEnumerable<Models.EDM.Meter>).Count();
-            Models.UtilityModels.OperatorViewModel operatorViewModel1 = new Models.UtilityModels.OperatorViewModel();
-            ViewData.Model = operatorViewModel1;
             return View();
         }
 
-        public void Check(int Flat, string FIO,string Passport, string PhoneNumber, bool IsCompany, string CompanyName, string INN)
+        public void Check(int Flat, string FIO,string Passport, string PhoneNumber, bool IsCompany, string CompanyName, string INN, string FullAddress)
         {
+            if (string.IsNullOrWhiteSpace(FullAddress))
+            {
+                ModelState.AddModelError("FullAddress", SiteResources.PleaseInput + " полный адрес");
+            }
             if (string.IsNullOrWhiteSpace(FIO))
             {
                 ModelState.AddModelError(GlobalResources.SiteResources.Customer_FIO, SiteResources.PleaseInput + SiteResources.Customer_FIO + SiteResources.ToCompany);

@@ -31,7 +31,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:cornflowerblue;" id="naravartopid">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button id="togglebutton" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -55,20 +55,49 @@
                                         <div class="action_options">
                                             @if (user.UserType == UserType.Admin)
                                             {
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Cities, "Index", "City")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Streets, "Index", "Street")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Houses, "Index", "House")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Addresses, "Index", "Address")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Meters, "Index", "Meter")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.MeterTypes, "Index", "MeterType")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Customers, "Index", "Customer")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Orders, "Index", "Order")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.OrderEntries, "Index", "OrderEntry")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Persons, "Index", "Person")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Stavkas, "Index", "Stavka")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Users, "Index", "User")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.UserToCustomers, "Index", "UserToCustomer")</p>
-                                                <p>@Html.ActionLink(GlobalResources.SiteResources.Statuses, "Index", "Status")</p>
+                                            <table style="border-spacing: 11px 11px; border-collapse: separate;">
+                                                <tr>
+                                                    <td>
+                                                        @Html.ActionLink(GlobalResources.SiteResources.Cities, "Index", "City")
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink(GlobalResources.SiteResources.Streets, "Index", "Street")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @Html.ActionLink(GlobalResources.SiteResources.Houses, "Index", "House")
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink(GlobalResources.SiteResources.Addresses, "Index", "Address")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> @Html.ActionLink(GlobalResources.SiteResources.Meters, "Index", "Meter")</td>
+                                                    <td>
+                                                        @Html.ActionLink(GlobalResources.SiteResources.MeterTypes, "Index", "MeterType")
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.ActionLink(GlobalResources.SiteResources.Customers, "Index", "Customer")</td>
+                                                    <td>@Html.ActionLink(GlobalResources.SiteResources.Orders, "Index", "Order")</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.ActionLink(GlobalResources.SiteResources.OrderEntries, "Index", "OrderEntry")</td>
+                                                    <td>@Html.ActionLink(GlobalResources.SiteResources.Persons, "Index", "Person")</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.ActionLink(GlobalResources.SiteResources.Stavkas, "Index", "Stavka")</td>
+                                                    <td>
+                                                        @Html.ActionLink(GlobalResources.SiteResources.Users, "Index", "User")
+                                                                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.ActionLink(GlobalResources.SiteResources.UserToCustomers, "Index", "UserToCustomer")</td>
+                                                    <td>@Html.ActionLink(GlobalResources.SiteResources.Statuses, "Index", "Status")</td>
+                                                </tr>
+                                            </table>
+                                                
                                             }
                                             else if (user.UserType == UserType.Operator)
                                             {
@@ -79,6 +108,10 @@
                                                 <p>@Html.ActionLink(GlobalResources.SiteResources.Customers, "Index", "Customer")</p>
                                                 <p>@Html.ActionLink(GlobalResources.SiteResources.Orders, "Index", "Order")</p>
                                                 <p>@Html.ActionLink(GlobalResources.SiteResources.OrderEntries, "Index", "OrderEntry")</p>
+                                            }else if (user.UserType == UserType.Normal)
+                                            {
+                                                <p>@Html.ActionLink("Оставить заказ", null)</p>
+                                                <p>@Html.ActionLink("Мои профили","ViewMyProfiles","Home")</p>
                                             }
                                         </div>
                                     </td>

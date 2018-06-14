@@ -2,3 +2,42 @@
     ViewBag.Title = "Home Page";
 }
 
+<div class="jumbotron">
+        <h1>@GlobalResources.SiteResources.CompanyName</h1>
+        <p class="lead">@GlobalResources.SiteResources.AboutMessage</p>
+       
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Зарегистируйтесь</h2>
+        <p>
+            Это не займёт много времени.
+
+        </p>
+        <p>@Html.ActionLink("Зарегистрироваться","SignUp","Home", new { @class = "btn btn-default" }) </p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>
+            Осмотрите ассортимент
+        </h2>
+        <p>
+            приборов учёта.
+        </p>
+        <p>@Html.ActionLink("Осмотреть","Index",null, new { @class = "btn btn-default" })</p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Оставьте заявку</h2>
+        <p>
+            на установку прибора учёта.
+            Ответ на заявку - не более суток.
+        </p>
+        <p>@Html.ActionLink("Оставить заявку","Index",null, new { @class = "btn btn-default" })</p>
+
+    </div>
+
+
+</div>

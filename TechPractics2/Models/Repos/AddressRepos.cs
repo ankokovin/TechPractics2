@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TechPractics2.Models.EDM;
+using System.Text.RegularExpressions;
 
 namespace TechPractics2.Models.Repos
 {
@@ -9,11 +10,12 @@ namespace TechPractics2.Models.Repos
     {
         public bool ParseAddress(string FullAddress, out string City, out string Street, out string House)
         {
-            //TODO: PARSE FROM YANDEX API ADDRESS STRING
-            var t = FullAddress.Split();
-            City = t[0];
-            Street = t[1];
-            House = t[2];
+            var res = (new Regex(", ").Split(FullAddress));
+            if (res[0] != "Россия")
+                throw new Exception(GlobalResources.SiteResources.NotRussia);
+            City = res[1];
+            Street = res[2];
+            House = res[3];
             return true;
         }
 

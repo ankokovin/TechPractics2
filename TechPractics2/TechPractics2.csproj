@@ -391,6 +391,7 @@
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DatePickerReady.js" />
+    <Content Include="Scripts\input_validation.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -491,6 +492,11 @@
     <Content Include="Views\UserToCustomer\Details.cshtml" />
     <Content Include="Views\UserToCustomer\Edit.cshtml" />
     <Content Include="Views\Operator\Index.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Home\ViewMyProfiles.cshtml" />
+    <Content Include="Views\Home\RemoveProfile.cshtml" />
+    <Content Include="Views\Home\ShareProfile.cshtml" />
+    <Content Include="Views\Home\CreateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

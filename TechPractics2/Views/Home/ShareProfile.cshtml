@@ -1,0 +1,73 @@
+﻿@model TechPractics2.Models.EDM.Customer
+@{
+    ViewBag.Title = "ShareProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool IsCompany = false;
+    TechPractics2.Models.EDM.Company comp = null;
+    if (Model is TechPractics2.Models.EDM.Company)
+    {
+        comp = Model as TechPractics2.Models.EDM.Company;
+        IsCompany = true;
+    }
+}
+
+<h2>Делегировать профиль</h2>
+
+<h4>Профиль</h4>
+
+@using (Html.BeginForm("ShareProfile", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("customerId", Model.Id)
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        @if (IsCompany)
+        {
+            <dt>
+                @GlobalResources.SiteResources.CompanyName
+            </dt>
+
+            <dd>
+                @Html.Label(comp.CompanyName);
+            </dd>
+
+            <dt>
+                @GlobalResources.SiteResources.Company_INN
+            </dt>
+
+            <dd>
+                @Html.Label(comp.INN);
+            </dd>
+        }
+    </dl>
+
+    @Html.Label("Введите имя пользователя:")
+    @Html.TextBox("Login")
+
+    <button type="submit">Отправить</button>
+}
+
+

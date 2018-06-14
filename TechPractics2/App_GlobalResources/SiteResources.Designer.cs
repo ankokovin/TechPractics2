@@ -520,6 +520,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Наша компания оказывает услуги по установке приборов учёта различного типа..
+        /// </summary>
+        public static string MainPageMessage {
+            get {
+                return ResourceManager.GetString("MainPageMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Счётчик.
         /// </summary>
         public static string Meter {
@@ -583,6 +592,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на BF7WkZmBqChHxhi9CMda.
+        /// </summary>
+        public static string MySalt {
+            get {
+                return ResourceManager.GetString("MySalt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на navbarBrandId.
         /// </summary>
         public static string navbarBrandId {
@@ -606,6 +624,15 @@ namespace GlobalResources {
         public static string navbarLinkId_2 {
             get {
                 return ResourceManager.GetString("navbarLinkId_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Данная страна не обслуживается.
+        /// </summary>
+        public static string NotRussia {
+            get {
+                return ResourceManager.GetString("NotRussia", resourceCulture);
             }
         }
         

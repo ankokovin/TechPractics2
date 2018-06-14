@@ -528,4 +528,13 @@
   <data name="UserToCustomer_User" xml:space="preserve">
     <value>Пользователь</value>
   </data>
+  <data name="MainPageMessage" xml:space="preserve">
+    <value>Наша компания оказывает услуги по установке приборов учёта различного типа.</value>
+  </data>
+  <data name="MySalt" xml:space="preserve">
+    <value>BF7WkZmBqChHxhi9CMda</value>
+  </data>
+  <data name="NotRussia" xml:space="preserve">
+    <value>Данная страна не обслуживается</value>
+  </data>
 </root>
