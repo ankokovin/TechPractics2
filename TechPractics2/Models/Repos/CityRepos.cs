@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class CityRepos : Repos
+    public class CityRepos : Repos<City>
     {
        
         public CityRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)
@@ -120,5 +121,10 @@ namespace TechPractics2.Models.Repos
         public City FindCity(int Id) => (from c in cont.CitySet where c.Id == Id select c).FirstOrDefault();
 
         public IEnumerable<City> SelectCitys(Func<City, bool> predicate) => cont.CitySet.Where(predicate).AsParallel();
+
+        public override DataTable table(IEnumerable<City> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

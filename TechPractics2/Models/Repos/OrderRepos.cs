@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class OrderRepos : Repos
+    public class OrderRepos : Repos<Order>
     {
       
         public OrderRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)
@@ -97,5 +98,10 @@ namespace TechPractics2.Models.Repos
         public Order FindOrder(int id) => (from o in cont.OrderSet where o.Id == id select o).FirstOrDefault();
 
         public IEnumerable<Order> SelectOrders(Func<Order, bool> predicate) => cont.OrderSet.Where(predicate).AsParallel();
+
+        public override DataTable table(IEnumerable<Order> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
 
-    public class StavkaRepos : Repos
+    public class StavkaRepos : Repos<Stavka>
     {
         public StavkaRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)
         {
@@ -88,5 +89,10 @@ namespace TechPractics2.Models.Repos
         public Stavka FindStavka(int id) => (from o in cont.StavkaSet where o.Id == id select o).FirstOrDefault();
 
         public IEnumerable<Stavka> SelectStavkas(Func<Stavka, bool> predicate) => cont.StavkaSet.Where(predicate).AsParallel();
+
+        public override DataTable table(IEnumerable<Stavka> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

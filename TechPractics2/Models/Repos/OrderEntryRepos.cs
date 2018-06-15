@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class OrderEntryRepos : Repos
+    public class OrderEntryRepos : Repos<OrderEntry>
     {
         public OrderEntryRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)
         {
@@ -106,5 +107,38 @@ namespace TechPractics2.Models.Repos
         public OrderEntry FindOrderEntry(int id) => (from o in cont.OrderEntrySet where o.Id == id select o).FirstOrDefault();
 
         public IEnumerable<OrderEntry> SelectOrderEntrys(Func<OrderEntry, bool> predicate) => cont.OrderEntrySet.Where(predicate).AsParallel();
+
+        public override DataTable table(IEnumerable<OrderEntry> orderEntries)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.AddRange(new DataColumn[] {
+                new DataColumn("№",typeof(int)),
+                new DataColumn("OrderId",typeof(int)),
+                new DataColumn("MeterId",typeof(int)),
+                new DataColumn("MeterName",typeof(string)),
+                new DataColumn("Status",typeof(string)),
+                new DataColumn("StartTime",typeof(DateTime)),
+                new DataColumn("EndTime",typeof(DateTime)),
+                new DataColumn("RegNumer",typeof(string)),
+                new DataColumn("Person",typeof(string))
+                }
+            );
+            int i = 0;
+            foreach (var orderentry in orderEntries)
+            {
+                dataTable.Rows.Add(
+                    ++i,
+                    orderentry.Order.Id,
+                    orderentry.Meter.Id,
+                    orderentry.Meter.Name,
+                    orderentry.Status.Name,
+                    orderentry.StartTime ?? DateTime.MinValue,
+                    orderentry.EndTime ?? DateTime.MinValue,
+                    orderentry.RegNumer ?? string.Empty,
+                    orderentry.Person?.FIO ?? string.Empty
+                    );
+            }
+            return dataTable;
+        }
     }
 }

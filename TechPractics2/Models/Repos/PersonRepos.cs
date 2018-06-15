@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class PersonRepos : Repos
+    public class PersonRepos : Repos<Person>
     {
         public PersonRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)
         {
@@ -93,5 +94,10 @@ namespace TechPractics2.Models.Repos
         public Person FindPerson(int id) => (from o in cont.PersonSet where o.Id == id select o).FirstOrDefault();
 
         public IEnumerable<Person> SelectPersons(Func<Person, bool> predicate) => cont.PersonSet.Where(predicate).AsParallel();
+
+        public override DataTable table(IEnumerable<Person> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

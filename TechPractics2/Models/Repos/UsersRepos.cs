@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class UsersRepos : Repos
+    public class UsersRepos : Repos<User>
     {
         private SiteUtilitiesRepos siteUtilitiesRepos;
 
@@ -201,5 +202,10 @@ namespace TechPractics2.Models.Repos
 
         public IEnumerable<User> SelectUsers(Func<User, bool> predicate) =>
           cont.UserSet.Where(predicate).AsParallel();
+
+        public override DataTable table(IEnumerable<User> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

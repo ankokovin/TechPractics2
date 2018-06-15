@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TechPractics2.Models.EDM;
 using System.Text.RegularExpressions;
+using System.Data;
 
 namespace TechPractics2.Models.Repos
 {
-    public class AddressRepos : Repos
+    public class AddressRepos : Repos<Address>
     {
         public bool ParseAddress(string FullAddress, out string City, out string Street, out string House)
         {
@@ -135,5 +136,10 @@ namespace TechPractics2.Models.Repos
 
 
         public IEnumerable<Address> SelectAddresss(Func<Address, bool> predicate) =>  cont.AddressSet.Where(predicate).AsParallel();
+
+        public override DataTable table(IEnumerable<Address> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

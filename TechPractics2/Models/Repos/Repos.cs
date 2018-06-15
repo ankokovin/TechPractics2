@@ -1,8 +1,10 @@
-﻿using TechPractics2.Models.EDM;
+﻿using System.Collections.Generic;
+using System.Data;
+using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class Repos
+    public abstract class Repos<T>
     {
         protected Model1Container cont;
         protected bool AllowCascade;
@@ -13,5 +15,6 @@ namespace TechPractics2.Models.Repos
             CheckInputs = checkInputs;
             AllowCascade = allowCascade;
         }
+        public abstract DataTable table(IEnumerable<T> enumerable);
     }
 }

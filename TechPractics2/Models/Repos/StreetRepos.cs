@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class StreetRepos : Repos
+    public class StreetRepos : Repos<Street>
     {
         public StreetRepos(Model1Container model, bool checkInputs = true, bool allowCascade = false) : base(model, checkInputs, allowCascade)
         {
@@ -119,5 +120,10 @@ namespace TechPractics2.Models.Repos
         public Street FindStreet(int id) => (from s in cont.StreetSet where s.Id == id select s).FirstOrDefault();
 
         public IEnumerable<Street> SelectStreets(Func<Street, bool> predicate) => cont.StreetSet.Where(predicate).AsParallel();
+
+        public override DataTable table(IEnumerable<Street> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

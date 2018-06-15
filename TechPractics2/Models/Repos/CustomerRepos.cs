@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class CustomerRepos : Repos
+    public class CustomerRepos : Repos<Customer>
     {
         public CustomerRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)
         {
@@ -106,5 +107,9 @@ namespace TechPractics2.Models.Repos
 
         public IEnumerable<Customer> SelectCustomers(Func<Customer, bool> predicate) => cont.CustomerSet.Where(predicate).AsParallel();
 
+        public override DataTable table(IEnumerable<Customer> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

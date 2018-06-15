@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class MeterRepos : Repos
+    public class MeterRepos : Repos<Meter>
     {
         public MeterRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)
         {
@@ -96,5 +97,10 @@ namespace TechPractics2.Models.Repos
         public Meter FindMeter(int id) => (from o in cont.MeterSet where o.Id == id select o).FirstOrDefault();
 
         public IEnumerable<Meter> SelectMeters(Func<Meter, bool> predicate) => cont.MeterSet.Where(predicate).AsParallel();
+
+        public override DataTable table(IEnumerable<Meter> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

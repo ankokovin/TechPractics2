@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using TechPractics2.Models.EDM;
 
 namespace TechPractics2.Models.Repos
 {
-    public class CompanyRepos : Repos
+    public class CompanyRepos : Repos<Company>
     {
         public CompanyRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)
         {
@@ -107,5 +109,10 @@ namespace TechPractics2.Models.Repos
         }
 
         public Company FindCompany(int id) => (from o in cont.CustomerSet where o.Id == id select o).FirstOrDefault() as Company;
+
+        public override DataTable table(IEnumerable<Company> enumerable)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
