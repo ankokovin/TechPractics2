@@ -58,6 +58,7 @@ function init() {
 
     }
     function showResult(obj) {
+        $('#map').show();
         // Удаляем сообщение об ошибке, если найденный адрес совпадает с поисковым запросом.
         $('#suggest').removeClass('input_error');
         $('#notice').css('display', 'none');
@@ -84,15 +85,17 @@ function init() {
     function showError(message) {
         $('#notice').text(message);
         $('#suggest').addClass('input_error');
-        $('#notice').css('display', 'block');
+        $('#notice').css('display', 'inline-block');
         // Удаляем карту.
         if (map) {
             map.destroy();
             map = null;
         }
+        $('#map').hide();
     }
 
     function createMap(state, caption) {
+
         // Если карта еще не была создана, то создадим ее и добавим метку с адресом.
         if (!map) {
             map = new ymaps.Map('map', state);
@@ -113,8 +116,6 @@ function init() {
     }
 
     function showMessage(message) {
-        $('#messageHeader').text('Данные получены:');
-        $('#message').text(message);
         document.getElementById("FullAddress").value = message;
     }
 }

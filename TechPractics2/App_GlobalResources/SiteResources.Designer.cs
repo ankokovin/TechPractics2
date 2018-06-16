@@ -61,6 +61,16 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap _1200px_Microsoft_Excel_2013_logo_svg {
+            get {
+                object obj = ResourceManager.GetObject("_1200px_Microsoft_Excel_2013_logo_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на О компании.
         /// </summary>
         public static string About {
@@ -241,11 +251,30 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap create {
+            get {
+                object obj = ResourceManager.GetObject("create", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Создать.
         /// </summary>
         public static string CreateNew {
             get {
                 return ResourceManager.GetString("CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Создать новый профиль.
+        /// </summary>
+        public static string CreateProfile {
+            get {
+                return ResourceManager.GetString("CreateProfile", resourceCulture);
             }
         }
         
@@ -304,11 +333,31 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap delete1 {
+            get {
+                object obj = ResourceManager.GetObject("delete1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Детали.
         /// </summary>
         public static string Details {
             get {
                 return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap details1 {
+            get {
+                object obj = ResourceManager.GetObject("details1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -322,11 +371,30 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap edit1 {
+            get {
+                object obj = ResourceManager.GetObject("edit1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Просмотр.
         /// </summary>
         public static string EntityCol {
             get {
                 return ResourceManager.GetString("EntityCol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вывести в Excel.
+        /// </summary>
+        public static string ExportToExcel {
+            get {
+                return ResourceManager.GetString("ExportToExcel", resourceCulture);
             }
         }
         
@@ -354,6 +422,15 @@ namespace GlobalResources {
         public static string FailerdLogIn_MsgStart {
             get {
                 return ResourceManager.GetString("FailerdLogIn_MsgStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Адрес.
+        /// </summary>
+        public static string FullAddress {
+            get {
+                return ResourceManager.GetString("FullAddress", resourceCulture);
             }
         }
         
@@ -525,6 +602,24 @@ namespace GlobalResources {
         public static string MainPageMessage {
             get {
                 return ResourceManager.GetString("MainPageMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оставьте заявку.
+        /// </summary>
+        public static string MakeOrder {
+            get {
+                return ResourceManager.GetString("MakeOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на на установку прибора учёта. Ответ на заявку - не более суток..
+        /// </summary>
+        public static string MakeOrderMsg {
+            get {
+                return ResourceManager.GetString("MakeOrderMsg", resourceCulture);
             }
         }
         
@@ -835,6 +930,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Профиль.
+        /// </summary>
+        public static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Запомнить.
         /// </summary>
         public static string Remember {
@@ -849,6 +953,15 @@ namespace GlobalResources {
         public static string SaltLength {
             get {
                 return ResourceManager.GetString("SaltLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Поделиться профилем с другим пользователем.
+        /// </summary>
+        public static string ShareProfile {
+            get {
+                return ResourceManager.GetString("ShareProfile", resourceCulture);
             }
         }
         
@@ -876,6 +989,24 @@ namespace GlobalResources {
         public static string SignOutButtonText {
             get {
                 return ResourceManager.GetString("SignOutButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Зарегистрироваться.
+        /// </summary>
+        public static string SignUp {
+            get {
+                return ResourceManager.GetString("SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Это не займёт много времени..
+        /// </summary>
+        public static string SignUpMsg {
+            get {
+                return ResourceManager.GetString("SignUpMsg", resourceCulture);
             }
         }
         
@@ -975,6 +1106,15 @@ namespace GlobalResources {
         public static string Streets {
             get {
                 return ResourceManager.GetString("Streets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отправить.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
             }
         }
         
@@ -1093,6 +1233,33 @@ namespace GlobalResources {
         public static string UserToCustomers {
             get {
                 return ResourceManager.GetString("UserToCustomers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Осмотреть.
+        /// </summary>
+        public static string View {
+            get {
+                return ResourceManager.GetString("View", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на приборов учёта..
+        /// </summary>
+        public static string ViewMetersButtonMsg {
+            get {
+                return ResourceManager.GetString("ViewMetersButtonMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Осмотрите ассортимент.
+        /// </summary>
+        public static string ViewMetersButtonTitle {
+            get {
+                return ResourceManager.GetString("ViewMetersButtonTitle", resourceCulture);
             }
         }
         

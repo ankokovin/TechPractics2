@@ -11,7 +11,8 @@ namespace TechPractics2.Models.Repos
         public UserToCustomerRepos(Model1Container model, bool checkInputs = true, bool allowCascade = false) : base(model, checkInputs, allowCascade)
         {
         }
-        public bool AddUserToCustomer(User user, Customer customer, out string Res, bool save = true)
+
+        public bool Add(User user, Customer customer, out string Res, bool save = true)
         {
             try
             {
@@ -33,7 +34,8 @@ namespace TechPractics2.Models.Repos
                 return false;
             }
         }
-        public bool ChangeUserToCustomer(int id, User user, Customer customer, out string Res, bool save = true)
+
+        public bool Change(int id, User user, Customer customer, out string Res, bool save = true)
         {
             try
             {
@@ -42,7 +44,7 @@ namespace TechPractics2.Models.Repos
                     Res = "Уже есть данная связь";
                     return false;
                 }
-                var a = FindUserToCustomer(id);
+                var a = Find(id);
                 a.Customer = customer;
                 a.User = user;
                 if (save) cont.SaveChanges();
@@ -54,11 +56,11 @@ namespace TechPractics2.Models.Repos
                 return false;
             }
         }
-        public bool RemoveUserToCustomer(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var a = FindUserToCustomer(id);
+                var a = Find(id);
                 if (a == null){
                     Res = "Нет объекта с данным Id";
                     return false;
@@ -73,14 +75,11 @@ namespace TechPractics2.Models.Repos
                 return false;
             }
         }
-        public UserToCustomer FindUserToCustomer(int id) => (from o in cont.UserToCustomerSet where o.Id == id select o).FirstOrDefault();
+        public UserToCustomer Find(int id) => (from o in cont.UserToCustomerSet where o.Id == id select o).FirstOrDefault();
 
 
-        public IEnumerable<UserToCustomer> SelectUserToCustomers(Func<UserToCustomer, bool> predicate) => cont.UserToCustomerSet.Where(predicate).AsParallel();
+        public override IEnumerable<UserToCustomer> Select(Func<UserToCustomer, bool> predicate) => cont.UserToCustomerSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<UserToCustomer> enumerable)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

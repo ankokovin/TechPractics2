@@ -21,7 +21,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="Login">Логин пользователя</param>
         /// <param name="Password">Пароль пользователя</param>
         /// <returns>Результат добавления</returns>
-        public bool AddUser(UserType userType, string Login, string Password, out string Res, bool save = true)
+        public bool Add(UserType userType, string Login, string Password, out string Res, bool save = true)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="Password">Пароль</param>
         /// <param name="Res">Сообщение результата изменения</param>
         /// <returns>Результат изменения</returns>
-        public bool ChangeUser(int Id, UserType userType, string Login, string Password, out string Res, bool save = true)
+        public bool Change(int Id, UserType userType, string Login, string Password, out string Res, bool save = true)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="id">Идентификационный номер пользователя</param>
         /// <param name="Res">Сообщение результата удаления</param>
         /// <returns>Результат удаления</returns>
-        public  bool RemoveUser(int id, out string Res, bool save = true, bool check = true)
+        public  bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
@@ -150,7 +150,7 @@ namespace TechPractics2.Models.Repos
         /// </summary>
         /// <param name="Id">Идентификационный номер</param>
         /// <returns>Пользователь</returns>
-        public  User FindUser(int Id) => (from u in cont.UserSet where u.Id == Id select u).FirstOrDefault();
+        public  User Find(int Id) => (from u in cont.UserSet where u.Id == Id select u).FirstOrDefault();
         /// <summary>
         /// Функция входа в систему
         /// </summary>
@@ -200,12 +200,9 @@ namespace TechPractics2.Models.Repos
         }
 
 
-        public IEnumerable<User> SelectUsers(Func<User, bool> predicate) =>
+        public override IEnumerable<User> Select(Func<User, bool> predicate) =>
           cont.UserSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<User> enumerable)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

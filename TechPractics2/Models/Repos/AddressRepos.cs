@@ -4,6 +4,8 @@ using System.Linq;
 using TechPractics2.Models.EDM;
 using System.Text.RegularExpressions;
 using System.Data;
+using System.Linq.Expressions;
+using LinqKit;
 
 namespace TechPractics2.Models.Repos
 {
@@ -14,9 +16,10 @@ namespace TechPractics2.Models.Repos
             var res = (new Regex(", ").Split(FullAddress));
             if (res[0] != "Россия")
                 throw new Exception(GlobalResources.SiteResources.NotRussia);
-            City = res[1];
-            Street = res[2];
-            House = res[3];
+            int i = res.Length == 4 ? 0 : 1;
+            City = res[i+1];
+            Street = res[i+2];
+            House = res[i+3];
             return true;
         }
 
@@ -32,7 +35,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="house">Дом</param>
         /// <param name="Res">Сообщение результата добавления</param>
         /// <returns>Результат добавления</returns>
-        public bool AddAddress(int Flat, House house, out string Res, bool save = true)
+        public bool Add(int Flat, House house, out string Res, bool save = true)
         {
             try
             {
@@ -63,7 +66,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="house">Дом</param>
         /// <param name="Res">Сообщение результата изменения</param>
         /// <returns>Результат изменения</returns>
-        public bool ChangeAddress(int id, int Flat, House house, out string Res, bool save = true)
+        public bool Change(int id, int Flat, House house, out string Res, bool save = true)
         {
             try
             {
@@ -73,7 +76,7 @@ namespace TechPractics2.Models.Repos
                         " в доме номер " + house.Number + " уже есть квартира номер " + Flat;
                     return false;
                 }
-                var a = FindAddress(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет адреса с данным идентификационным номером";
@@ -97,11 +100,11 @@ namespace TechPractics2.Models.Repos
         /// <param name="id">Идентификационный номер адреса</param>
         /// <param name="Res">Сообщение результата удаления</param>
         /// <returns>Результат удаления</returns>
-        public bool RemoveAddress(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var a = FindAddress(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет адреса с таким идентификационным номером";
@@ -132,14 +135,19 @@ namespace TechPractics2.Models.Repos
         /// </summary>
         /// <param name="id">Идентификационный ключ</param>
         /// <returns>Адрес</returns>
-        public Address FindAddress(int id) => (from a in cont.AddressSet where a.Id == id select a).FirstOrDefault();
+        public Address Find(int id) => (from a in cont.AddressSet where a.Id == id select a).FirstOrDefault();
 
 
-        public IEnumerable<Address> SelectAddresss(Func<Address, bool> predicate) =>  cont.AddressSet.Where(predicate).AsParallel();
+        public override IEnumerable<Address> Select(Func<Address, bool> predicate) =>  cont.AddressSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<Address> enumerable)
+       
+        
+
+        /*
+        public override DataTable table(IEnumerable<Address> addresses,string[] Selectors)
         {
-            throw new NotImplementedException();
-        }
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add(new DataColumn("№",typeof()))
+        }*/
     }
 }

@@ -8,7 +8,12 @@ using System.Threading.Tasks;
 
 namespace TechPractics2.Models.EDM
 {
-    partial class Person
+    interface IFullDisc
+    {
+        String FullDisc { get; }
+    }
+
+    partial class Person : IFullDisc
     {
         public override string ToString()
         {
@@ -16,7 +21,7 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class House
+    partial class House : IFullDisc
     {
         public override string ToString()
         {
@@ -24,7 +29,7 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class Address
+    partial class Address : IFullDisc
     {
         public override string ToString()
         {
@@ -32,7 +37,7 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => ToString();
     }
-    partial class City
+    partial class City : IFullDisc
     {
         public override string ToString()
         {
@@ -40,14 +45,14 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class Company
+    partial class Company : IFullDisc
     {
         public override string ToString()
         {
             return base.ToString() + " " + CompanyName + " " + INN;
         }
     }
-    partial class Customer
+    partial class Customer : IFullDisc
     {
         public override string ToString()
         {
@@ -55,7 +60,7 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class Meter
+    partial class Meter : IFullDisc
     {
         public override string ToString()
         {
@@ -63,7 +68,7 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class MeterType
+    partial class MeterType : IFullDisc
     {
         public override string ToString()
         {
@@ -71,15 +76,15 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class Order
+    partial class Order : IFullDisc
     {
         public override string ToString()
         {
-            return Id + " " + Customer + " " + Address + " " + OrderEntry.Count + " " + User;
+            return Id.ToString();
         }
         public String FullDisc => this.ToString();
     }
-    partial class OrderEntry
+    partial class OrderEntry : IFullDisc
     {
         public override string ToString()
         {
@@ -87,7 +92,7 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class Status
+    partial class Status : IFullDisc
     {
         public override string ToString()
         {
@@ -95,7 +100,7 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class Stavka
+    partial class Stavka : IFullDisc
     {
         public override string ToString()
         {
@@ -103,7 +108,7 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class Street
+    partial class Street : IFullDisc
     {
         public override string ToString()
         {
@@ -111,13 +116,21 @@ namespace TechPractics2.Models.EDM
         }
         public String FullDisc => this.ToString();
     }
-    partial class User
+    partial class User : IFullDisc
     {
         public override string ToString()
         {
             return Login;
         }
         public String FullDisc => this.ToString();
+    }
+    partial class UserToCustomer: IFullDisc
+    {
+        public override string ToString()
+        {
+            return User.Login + " " + Customer;
+        }
+        public String FullDisc => ToString();
     }
 }
 

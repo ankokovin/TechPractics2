@@ -13,7 +13,7 @@ namespace TechPractics2.Controllers
         public ActionResult UserToCustomerCollection()
         {
 
-            ViewData.Model = dataManager.UserToCustomerRepos.SelectUserToCustomers(x => true);
+            ViewData.Model = dataManager.UserToCustomerRepos.Select(x => true);
             return View();
         }
 
@@ -27,8 +27,8 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {
-            var Useres = dataManager.UsersRepos.SelectUsers(x => true);
-            var Customers = dataManager.CustomerRepos.SelectCustomers(x => true);
+            var Useres = dataManager.UsersRepos.Select(x => true);
+            var Customers = dataManager.CustomerRepos.Select(x => true);
 
             ViewData[GlobalResources.SiteResources.UserToCustomer_User] = new SelectList(Useres, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.UserToCustomer_Customer] = new SelectList(Customers, "Id", "FullDisc");
@@ -41,15 +41,15 @@ namespace TechPractics2.Controllers
             Check(UserId, CustomerId);
             if (ModelState.IsValid)
             {
-                dataManager.UserToCustomerRepos.AddUserToCustomer(
-                    dataManager.UsersRepos.FindUser(UserId),
-                    dataManager.CustomerRepos.SelectCustomers(x => x.Id == CustomerId).FirstOrDefault(),
+                dataManager.UserToCustomerRepos.Add(
+                    dataManager.UsersRepos.Find(UserId),
+                    dataManager.CustomerRepos.Select(x => x.Id == CustomerId).FirstOrDefault(),
                     out string Res
                     );
                 return RedirectToAction("Index");
             }
-            var Useres = dataManager.UsersRepos.SelectUsers(x => true);
-            var Customers = dataManager.CustomerRepos.SelectCustomers(x => true);
+            var Useres = dataManager.UsersRepos.Select(x => true);
+            var Customers = dataManager.CustomerRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.UserToCustomer_User] = new SelectList(Useres, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.UserToCustomer_Customer] = new SelectList(Customers, "Id", "FullDisc");
             return View();
@@ -57,30 +57,30 @@ namespace TechPractics2.Controllers
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.UserToCustomerRepos.FindUserToCustomer(id);
+            ViewData.Model = dataManager.UserToCustomerRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.UserToCustomerRepos.FindUserToCustomer(id);
+            ViewData.Model = dataManager.UserToCustomerRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.UserToCustomer order)
         {
-            dataManager.UserToCustomerRepos.RemoveUserToCustomer(order.Id, out string Res);
+            dataManager.UserToCustomerRepos.Remove(order.Id, out string Res);
             return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = dataManager.UserToCustomerRepos.FindUserToCustomer(id);
-            var Useres = dataManager.UsersRepos.SelectUsers(x => true);
-            var Customers = dataManager.CustomerRepos.SelectCustomers(x => true);
+            ViewData.Model = dataManager.UserToCustomerRepos.Find(id);
+            var Useres = dataManager.UsersRepos.Select(x => true);
+            var Customers = dataManager.CustomerRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.UserToCustomer_User] = new SelectList(Useres, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.UserToCustomer_Customer] = new SelectList(Customers, "Id", "FullDisc");
             return View();
@@ -92,19 +92,25 @@ namespace TechPractics2.Controllers
             Check(UserId, CustomerId);
             if (ModelState.IsValid)
             {
-                dataManager.UserToCustomerRepos.ChangeUserToCustomer(id,
-                    dataManager.UsersRepos.FindUser(UserId),
-                    dataManager.CustomerRepos.FindCustomer(CustomerId),
+                dataManager.UserToCustomerRepos.Change(id,
+                    dataManager.UsersRepos.Find(UserId),
+                    dataManager.CustomerRepos.Find(CustomerId),
                     out string Res
                     );
                 return RedirectToAction("Index");
             }
-            ViewData.Model = dataManager.UserToCustomerRepos.FindUserToCustomer(id);
-            var Useres = dataManager.UsersRepos.SelectUsers(x => true);
-            var Customers = dataManager.CustomerRepos.SelectCustomers(x => true);
+            ViewData.Model = dataManager.UserToCustomerRepos.Find(id);
+            var Useres = dataManager.UsersRepos.Select(x => true);
+            var Customers = dataManager.CustomerRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.UserToCustomer_User] = new SelectList(Useres, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.UserToCustomer_Customer] = new SelectList(Customers, "Id", "FullDisc");
             return View();
+        }
+
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.UserToCustomer>("UserToCustomer", this, dataManager);
+            return RedirectToAction("Index");
         }
     }
 }

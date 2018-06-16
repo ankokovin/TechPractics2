@@ -19,7 +19,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="city">Город</param>
         /// <param name="Res">Сообщение результата добавления</param>
         /// <returns>Результат добавления</returns>
-        public bool AddStreet(string Name, City city, out string Res, bool save = true)
+        public bool Street(string Name, City city, out string Res, bool save = true)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="city">Город</param>
         /// <param name="Res">Сообщение результата изменения</param>
         /// <returns>Результат изменения</returns>
-        public bool ChangeStreet(int id, string Name, City city, out string Res, bool save = true)
+        public bool Change(int id, string Name, City city, out string Res, bool save = true)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace TechPractics2.Models.Repos
                     Res = "В городе " + city.Name + " уже есть улица " + Name;
                     return false;
                 }
-                var a = FindStreet(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет улицы с заданным идентификационным номером";
@@ -83,11 +83,11 @@ namespace TechPractics2.Models.Repos
         /// <param name="id">Идентификационный номер</param>
         /// <param name="Res">Сообщение результата удаления</param>
         /// <returns>Результат удаления</returns>
-        public bool RemoveStreet(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var s = FindStreet(id);
+                var s = Find(id);
                 if (s == null)
                 {
                     Res = "Нет улицы с заданным идентификационным номером";
@@ -117,13 +117,10 @@ namespace TechPractics2.Models.Repos
         /// </summary>
         /// <param name="id">Идентификационный номер</param>
         /// <returns>Улица</returns>
-        public Street FindStreet(int id) => (from s in cont.StreetSet where s.Id == id select s).FirstOrDefault();
+        public Street Find(int id) => (from s in cont.StreetSet where s.Id == id select s).FirstOrDefault();
 
-        public IEnumerable<Street> SelectStreets(Func<Street, bool> predicate) => cont.StreetSet.Where(predicate).AsParallel();
+        public override IEnumerable<Street> Select(Func<Street, bool> predicate) => cont.StreetSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<Street> enumerable)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

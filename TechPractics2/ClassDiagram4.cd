@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TechPractics2.Models.Repos.AddressRepos" Collapsed="true">
+    <Position X="18.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAgAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\AddressRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.CityRepos" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\CityRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.CompanyRepos" Collapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\CompanyRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.CustomerRepos" Collapsed="true">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\CustomerRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.HouseRepos" Collapsed="true">
+    <Position X="20.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\HouseRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.MeterRepos" Collapsed="true">
+    <Position X="18.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\MeterRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.MeterTypeRepos" Collapsed="true">
+    <Position X="16.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\MeterTypeRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.OrderEntryRepos" Collapsed="true">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\OrderEntryRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.OrderRepos" Collapsed="true">
+    <Position X="23" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\OrderRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.PersonRepos" Collapsed="true">
+    <Position X="23" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\PersonRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.Repos&lt;T&gt;" Collapsed="true">
+    <Position X="23" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAAAAAEAAAAAAAAAAAQAgAAAAQEAACAAAAQQABAIA=</HashCode>
+      <FileName>Models\Repos\Repos.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.SiteUtilitiesRepos" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAQAABACAAAAAIAABgAAAAAAAAAAAAAQAAAAAQA=</HashCode>
+      <FileName>Models\Repos\SiteUtilitiesRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.StatusRepos" Collapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\StatusRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.StavkaRepos" Collapsed="true">
+    <Position X="23" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\StavkaRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.StreetRepos" Collapsed="true">
+    <Position X="20.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAABAAAAAAIAAAAAAIAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\StreetRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.UsersRepos" Collapsed="true">
+    <Position X="18.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAEBAAAAAAIAAAAAAAARAAAAAA=</HashCode>
+      <FileName>Models\Repos\UsersRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.UserToCustomerRepos" Collapsed="true">
+    <Position X="16.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABAAAAAAAAABAAAAAAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\UserToCustomerRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.UtilityModels.OperatorViewModel" Collapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAQAAAAAAAAQAAABAAUAAAAAAIAAAAAAAAAAAICAA=</HashCode>
+      <FileName>Models\UtilityModels\ModelsForViews.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Checker" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACJQAAAAAAAAAAACAAAAAEABAAAAABAABCAASAAA=</HashCode>
+      <FileName>Models\Checker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.DataManager" Collapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAQgoAACUEAAQACQACAAAACAQgAAAAAEEAgABAgE=</HashCode>
+      <FileName>Models\DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

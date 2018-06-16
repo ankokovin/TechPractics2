@@ -12,7 +12,7 @@ namespace TechPractics2.Models.Repos
         {
         }
 
-        public bool AddMeter(string Name, MeterType meterType, out string Res, bool save = true)
+        public bool Add(string Name, MeterType meterType, out string Res, bool save = true)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool ChangeMeter(int Id, string Name, MeterType meterType, out string Res, bool save = true)
+        public bool Change(int Id, string Name, MeterType meterType, out string Res, bool save = true)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace TechPractics2.Models.Repos
                     Res = "Уже есть прибор учёта с данным названием";
                     return false;
                 }
-                var a = FindMeter(Id);
+                var a = Find(Id);
                 if (a == null)
                 {
                     Res = "Нет прибора учёта с данным идентификационным номером";
@@ -64,11 +64,11 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool RemoveMeter(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var a = FindMeter(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет прибора учёта с таким идентификационным номером";
@@ -94,13 +94,9 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public Meter FindMeter(int id) => (from o in cont.MeterSet where o.Id == id select o).FirstOrDefault();
+        public Meter Find(int id) => (from o in cont.MeterSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Meter> SelectMeters(Func<Meter, bool> predicate) => cont.MeterSet.Where(predicate).AsParallel();
+        public override IEnumerable<Meter> Select(Func<Meter, bool> predicate) => cont.MeterSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<Meter> enumerable)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

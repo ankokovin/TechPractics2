@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GlobalResources.SiteResources" Collapsed="true">
+    <Position X="47.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>U5NFeSEvCAgFmTV8CAIxMkzAgUkhQIhCjQYaTBFJyLI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.BundleConfig" Collapsed="true">
+    <Position X="51.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.FilterConfig" Collapsed="true">
+    <Position X="46" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.RouteConfig" Collapsed="true">
+    <Position X="46" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.MvcApplication" Collapsed="true">
+    <Position X="46" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Resource1" Collapsed="true">
+    <Position X="44.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.AddressController" Collapsed="true">
+    <Position X="24.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAEAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AddressController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.AnaliticController" Collapsed="true">
+    <Position X="29.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AnaliticController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.CityController" Collapsed="true">
+    <Position X="33.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAEAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\CityController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.MyControllerFactory" Collapsed="true">
+    <Position X="47.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ControllerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.CustomerController" Collapsed="true">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAIAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\CustomerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.DataController" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\DataController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.HomeController" Collapsed="true">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACiAAAAACAkQCAQAoAAAQAAAEAAAAIEQABAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.HouseController" Collapsed="true">
+    <Position X="13.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAABAAA=</HashCode>
+      <FileName>Controllers\HouseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.MeterController" Collapsed="true">
+    <Position X="18" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\MeterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.MeterTypeController" Collapsed="true">
+    <Position X="22.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAABAAAAAAAAAAAAAAEAAAACAAEABAAAAAA=</HashCode>
+      <FileName>Controllers\MeterTypeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.OperatorController" Collapsed="true">
+    <Position X="27" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\OperatorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.OrderController" Collapsed="true">
+    <Position X="31.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAAAAg=</HashCode>
+      <FileName>Controllers\OrderController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.OrderEntryController" Collapsed="true">
+    <Position X="36" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAQAAA=</HashCode>
+      <FileName>Controllers\OrderEntryController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.PersonController" Collapsed="true">
+    <Position X="38.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAIAAAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PersonController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.StatusController" Collapsed="true">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAABAAAAAAAAAAAAAAFAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\StatusController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.StavkaController" Collapsed="true">
+    <Position X="6.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAEEAAAAAAAA=</HashCode>
+      <FileName>Controllers\StavkaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.StreetController" Collapsed="true">
+    <Position X="11.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAgAAAAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\StreetController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.UserController" Collapsed="true">
+    <Position X="15.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAACAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.UserToCustomerController" Collapsed="true">
+    <Position X="20.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAAAAg=</HashCode>
+      <FileName>Controllers\UserToCustomerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Checker" Collapsed="true">
+    <Position X="40.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACJQAAAAAAAAAAACAAAAAEABAAAAABAABCAASAAA=</HashCode>
+      <FileName>Models\Checker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.DataManager" Collapsed="true">
+    <Position X="44.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAQgoAACUEAAQACAACAAAACAQgAAAAAEEAgABAgE=</HashCode>
+      <FileName>Models\DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Person" Collapsed="true">
+    <Position X="42.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAACAAAAAAEAIAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.House" Collapsed="true">
+    <Position X="49.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAMAAAAAAAAAAAAACAAIAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Address" Collapsed="true">
+    <Position X="49.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAEAIAAEAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.City" Collapsed="true">
+    <Position X="42.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAIAAAAQAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Company" Collapsed="true">
+    <Position X="3.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAEAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Customer" Collapsed="true">
+    <Position X="3.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgECAAAAAAAEAAAEAJAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Meter" Collapsed="true">
+    <Position X="40.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAACAAAAAAEAIAAAAQAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.MeterType" Collapsed="true">
+    <Position X="42.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAIAAAAQAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Order" Collapsed="true">
+    <Position X="51.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEDAAAACAAAAAAEAIAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.OrderEntry" Collapsed="true">
+    <Position X="40.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIECAAAEAAAAAAAEAIAAAAAAIAAgAAAAggAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Status" Collapsed="true">
+    <Position X="40.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAACAAAAAAEAIAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Stavka" Collapsed="true">
+    <Position X="42.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAEAIAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Street" Collapsed="true">
+    <Position X="44.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAMAIAAAAQAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.User" Collapsed="true">
+    <Position X="49.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAEAAAEAIAAAAAAAAAACAACAAAQAAAAAAA=</HashCode>
+      <FileName>Models\EDM\EntityToString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.Model1Container" Collapsed="true">
+    <Position X="44.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAhAAAAAAACAAAAAAIQAABAAUAAACAAAAAAARABAAIA=</HashCode>
+      <FileName>Models\EDM\Model1.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.UserToCustomer" Collapsed="true">
+    <Position X="51.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EDM\UserToCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.XMLQuery" Collapsed="true">
+    <Position X="40.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAIAAAAABAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._Address" Collapsed="true">
+    <Position X="40.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAAAAAAAAEAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._House" Collapsed="true">
+    <Position X="44.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._Street" Collapsed="true">
+    <Position X="46" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAhAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._City" Collapsed="true">
+    <Position X="42.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._User" Collapsed="true">
+    <Position X="47.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAAAAAAAAAAAAAAAACAACAAAQAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._Order" Collapsed="true">
+    <Position X="49.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAgAAAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._Customer" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAgAAAAAAAAABAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._Company" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._OrderEntry" Collapsed="true">
+    <Position X="51.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAACAAAoAAAAAAAEAAAgACgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._Meter" Collapsed="true">
+    <Position X="46" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._MeterType" Collapsed="true">
+    <Position X="47.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._Status" Collapsed="true">
+    <Position X="42.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._Person" Collapsed="true">
+    <Position X="40.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM._Stavka" Collapsed="true">
+    <Position X="44.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.EDM.LessCont" Collapsed="true">
+    <Position X="51.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAxAAAAAAACAAAAAAIQAABAAQAAAIEAAAAAARABAAIA=</HashCode>
+      <FileName>Models\XMLQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.AddressRepos" Collapsed="true">
+    <Position X="4.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAIAEAAAAAAAgQAAIAAAA=</HashCode>
+      <FileName>Models\Repos\AddressRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.CityRepos" Collapsed="true">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAIBCAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Models\Repos\CityRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.CompanyRepos" Collapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAABAACAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Repos\CompanyRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.CustomerRepos" Collapsed="true">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAAAAAAAAQAAAAAAACAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Repos\CustomerRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.HouseRepos" Collapsed="true">
+    <Position X="17.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAgAAAAAAAAAAAAAAAAAAACAAAABAACAAAAA=</HashCode>
+      <FileName>Models\Repos\HouseRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.MeterRepos" Collapsed="true">
+    <Position X="22.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAACAAAAAAAAIAAgAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Repos\MeterRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.MeterTypeRepos" Collapsed="true">
+    <Position X="26.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAQAAgCAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Models\Repos\MeterTypeRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.OrderEntryRepos" Collapsed="true">
+    <Position X="31.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAEAIAAAAAAAAAAAAAAAAAABAAAAACAAAA=</HashCode>
+      <FileName>Models\Repos\OrderEntryRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.OrderRepos" Collapsed="true">
+    <Position X="33.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAhEAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAA=</HashCode>
+      <FileName>Models\Repos\OrderRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.PersonRepos" Collapsed="true">
+    <Position X="2" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAQAAAAAAAAAAAAAAQCAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\Repos\PersonRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.Repos" Collapsed="true">
+    <Position X="17.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAQABAAA=</HashCode>
+      <FileName>Models\Repos\Repos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.SiteUtilitiesRepos" Collapsed="true">
+    <Position X="51.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAQAABACAAAAAIAAAgAAAAAAAAAAAAAQAAAAAQA=</HashCode>
+      <FileName>Models\Repos\SiteUtilitiesRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.StatusRepos" Collapsed="true">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAQIgAAAAAAAAAAABAA=</HashCode>
+      <FileName>Models\Repos\StatusRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.StavkaRepos" Collapsed="true">
+    <Position X="15.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEIAAASAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Repos\StavkaRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.StreetRepos" Collapsed="true">
+    <Position X="20" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAgAAAAAAIABAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Repos\StreetRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.UsersRepos" Collapsed="true">
+    <Position X="24.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAEAAAAAEAAAAAAAAAAEIAAAAAAAAAAgAAAABAAAAAA=</HashCode>
+      <FileName>Models\Repos\UsersRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.Repos.UserToCustomerRepos" Collapsed="true">
+    <Position X="29" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAEAAAAAAAAAAQUAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Repos\UserToCustomerRepos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.UtilityModels.OperatorViewModel" Collapsed="true">
+    <Position X="49.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAQAAAAAAAAQAAABAAUAAAAAAIAAAAAAAAAAAICAA=</HashCode>
+      <FileName>Models\UtilityModels\ModelsForViews.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.UtilityModels.SiteUtilitiesContainer" Collapsed="true">
+    <Position X="49.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAEIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UtilityModels\SiteUtilities.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.UtilityModels.HashedToken" Collapsed="true">
+    <Position X="47.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\UtilityModels\HashedToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.UtilityModels.Token" Collapsed="true">
+    <Position X="46" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\UtilityModels\Token.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Models.UtilityModels.TokenInfo" Collapsed="true">
+    <Position X="47.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAQAAARAAA=</HashCode>
+      <FileName>Models\UtilityModels\TokenInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="TechPractics2.Models.EntityTypes" Collapsed="true">
+    <Position X="40.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEBAAAECAAAAgAIAAAAAAQAAEAAAAACgAIABAAAAAA=</HashCode>
+      <FileName>Models\EntityTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TechPractics2.Models.EDM.UserType" Collapsed="true">
+    <Position X="42.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAQAAAAAIAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\EDM\UserType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

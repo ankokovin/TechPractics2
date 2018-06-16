@@ -9,6 +9,7 @@ namespace TechPractics2.Models.Repos
 {
     public class SiteUtilitiesRepos
     {
+        #region Tokes
         static private int saltLength = int.Parse(GlobalResources.SiteResources.SaltLength);
 
         private SiteUtilitiesContainer Container;
@@ -116,5 +117,14 @@ namespace TechPractics2.Models.Repos
                 return false;
             }
         }
+        #endregion
+
+        #region Excel
+        public string Export()
+        {
+            return null;
+        }
+        #endregion
     }
+
 }

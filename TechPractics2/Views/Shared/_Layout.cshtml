@@ -110,7 +110,7 @@
                                                 <p>@Html.ActionLink(GlobalResources.SiteResources.OrderEntries, "Index", "OrderEntry")</p>
                                             }else if (user.UserType == UserType.Normal)
                                             {
-                                                <p>@Html.ActionLink("Оставить заказ", null)</p>
+                                                <p>@Html.ActionLink("Оставить заказ", "MakeOrder","Home")</p>
                                                 <p>@Html.ActionLink("Мои профили","ViewMyProfiles","Home")</p>
                                             }
                                         </div>

@@ -13,7 +13,7 @@ namespace TechPractics2.Controllers
 
         public ActionResult OrderCollection()
         {
-            ViewData.Model = dataManager.OrderRepos.SelectOrders(x => true);
+            ViewData.Model = dataManager.OrderRepos.Select(x => true);
             return View();
         }
 
@@ -27,8 +27,8 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {
-            var Addresses = dataManager.AddressRepos.SelectAddresss(x => true);
-            var Customers = dataManager.CustomerRepos.SelectCustomers(x => true);
+            var Addresses = dataManager.AddressRepos.Select(x => true);
+            var Customers = dataManager.CustomerRepos.Select(x => true);
 
             ViewData[GlobalResources.SiteResources.Order_Address] = new SelectList(Addresses, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.Order_Customer] = new SelectList(Customers, "Id", "FullDisc");
@@ -41,17 +41,17 @@ namespace TechPractics2.Controllers
             Check(AddressId, CustomerId);
             if (ModelState.IsValid)
             {
-                dataManager.OrderRepos.AddOrder(
-                    dataManager.UsersRepos.FindUser(((Models.EDM.User)Session[GlobalResources.SiteResources.User]).Id),
-                    dataManager.CustomerRepos.SelectCustomers(x => x.Id == CustomerId).FirstOrDefault(),
-                    dataManager.AddressRepos.FindAddress(AddressId),
+                dataManager.OrderRepos.Add(
+                    dataManager.UsersRepos.Find(((Models.EDM.User)Session[GlobalResources.SiteResources.User]).Id),
+                    dataManager.CustomerRepos.Select(x => x.Id == CustomerId).FirstOrDefault(),
+                    dataManager.AddressRepos.Find(AddressId),
                     out string Res,
                     out int result
                     );
                 return RedirectToAction("Index");
             }
-            var Addresses = dataManager.AddressRepos.SelectAddresss(x => true);
-            var Customers = dataManager.CustomerRepos.SelectCustomers(x => true);
+            var Addresses = dataManager.AddressRepos.Select(x => true);
+            var Customers = dataManager.CustomerRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Order_Address] = new SelectList(Addresses, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.Order_Customer] = new SelectList(Customers, "Id", "FullDisc");
             return View();
@@ -59,30 +59,30 @@ namespace TechPractics2.Controllers
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.OrderRepos.FindOrder(id);
+            ViewData.Model = dataManager.OrderRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.OrderRepos.FindOrder(id);
+            ViewData.Model = dataManager.OrderRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.Order order)
         {
-            dataManager.OrderRepos.RemoveOrder(order.Id, out string Res);
+            dataManager.OrderRepos.Remove(order.Id, out string Res);
             return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = dataManager.OrderRepos.FindOrder(id);
-            var Addresses = dataManager.AddressRepos.SelectAddresss(x => true);
-            var Customers = dataManager.CustomerRepos.SelectCustomers(x => true);
+            ViewData.Model = dataManager.OrderRepos.Find(id);
+            var Addresses = dataManager.AddressRepos.Select(x => true);
+            var Customers = dataManager.CustomerRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Order_Address] = new SelectList(Addresses, "Id", "FullDisc") ;
             ViewData[GlobalResources.SiteResources.Order_Customer] = new SelectList(Customers, "Id", "FullDisc") ;
             return View();
@@ -94,19 +94,25 @@ namespace TechPractics2.Controllers
             Check(AddressId, CustomerId);
             if (ModelState.IsValid)
             {
-                dataManager.OrderRepos.ChangeOrder(id,
-                    dataManager.CustomerRepos.FindCustomer(CustomerId),
-                    dataManager.AddressRepos.FindAddress(AddressId),
+                dataManager.OrderRepos.Change(id,
+                    dataManager.CustomerRepos.Find(CustomerId),
+                    dataManager.AddressRepos.Find(AddressId),
                     out string Res
                     );
                 return RedirectToAction("Index");
             }
-            ViewData.Model = dataManager.OrderRepos.FindOrder(id);
-            var Addresses = dataManager.AddressRepos.SelectAddresss(x => true);
-            var Customers = dataManager.CustomerRepos.SelectCustomers(x => true);
+            ViewData.Model = dataManager.OrderRepos.Find(id);
+            var Addresses = dataManager.AddressRepos.Select(x => true);
+            var Customers = dataManager.CustomerRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Order_Address] = new SelectList(Addresses, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.Order_Customer] = new SelectList(Customers, "Id", "FullDisc");
             return View();
+        }
+
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.Order>("Order", this, dataManager);
+            return RedirectToAction("Index");
         }
     }
 }

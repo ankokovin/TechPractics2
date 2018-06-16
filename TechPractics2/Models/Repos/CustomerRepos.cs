@@ -13,7 +13,7 @@ namespace TechPractics2.Models.Repos
 
         }
 
-        public bool AddCustomer(string Name, string Passport, string PhoneNumber, out string Res, bool save = true)
+        public bool Add(string Name, string Passport, string PhoneNumber, out string Res, bool save = true)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool ChangeCustomer(int Id, string Name, string Passport, string PhoneNumber, out string Res, bool save = true)
+        public bool Change(int Id, string Name, string Passport, string PhoneNumber, out string Res, bool save = true)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace TechPractics2.Models.Repos
                     Res = "Уже есть частный клиент с данным номером паспорта";
                     return false;
                 }
-                var a = FindCustomer(Id);
+                var a = Find(Id);
                 if (a == null)
                 {
                     Res = "Нет частного клиента с данным идентификационным номером";
@@ -68,11 +68,11 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool RemoveCustomer(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var a = FindCustomer(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет заказчика с таким идентификационным номером";
@@ -103,13 +103,10 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public Customer FindCustomer(int id) => (from o in cont.CustomerSet where o.Id == id select o).FirstOrDefault();
+        public Customer Find(int id) => (from o in cont.CustomerSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Customer> SelectCustomers(Func<Customer, bool> predicate) => cont.CustomerSet.Where(predicate).AsParallel();
+        public override IEnumerable<Customer> Select(Func<Customer, bool> predicate) => cont.CustomerSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<Customer> enumerable)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

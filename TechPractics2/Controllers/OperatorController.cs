@@ -8,6 +8,7 @@ using GlobalResources;
 
 namespace TechPractics2.Controllers
 {
+
     public class OperatorController : DataController
     {
         public OperatorController(DataManager dataManager) : base(dataManager) { }
@@ -16,7 +17,7 @@ namespace TechPractics2.Controllers
         public ActionResult Index()
         {
 
-            ViewData[GlobalResources.SiteResources.Meter] = dataManager.MeterRepos.SelectMeters(x => true);
+            ViewData[GlobalResources.SiteResources.Meter] = dataManager.MeterRepos.Select(x => true);
             int count = (ViewData[GlobalResources.SiteResources.Meter] as IEnumerable<Models.EDM.Meter>).Count();
             Models.UtilityModels.OperatorViewModel operatorViewModel = new Models.UtilityModels.OperatorViewModel();
             ViewData.Model = operatorViewModel;
@@ -34,78 +35,78 @@ namespace TechPractics2.Controllers
                 operatorViewModel.FullAddress);
             if (dataManager.AddressRepos.ParseAddress(operatorViewModel.FullAddress, out City, out Street, out House) && ModelState.IsValid)
             {
-                Models.EDM.City city = dataManager.CityRepos.SelectCitys(x => x.Name == City).FirstOrDefault();
+                Models.EDM.City city = dataManager.CityRepos.Select(x => x.Name == City).FirstOrDefault();
                 if (city == null)
                 {
                     throw new Exception("Данный город не поддерживается :(");
                 }
-                Models.EDM.Street street = dataManager.StreetRepos.SelectStreets(x => x.Name == Street && x.City.Id == city.Id).FirstOrDefault();
+                Models.EDM.Street street = dataManager.StreetRepos.Select(x => x.Name == Street && x.City.Id == city.Id).FirstOrDefault();
                 if (street == null)
                 {
-                    dataManager.StreetRepos.AddStreet(Street, city, out string Res);
-                    street = dataManager.StreetRepos.SelectStreets(x => x.Name == Street && x.City.Id == city.Id).FirstOrDefault();
+                    dataManager.StreetRepos.Street(Street, city, out string Res);
+                    street = dataManager.StreetRepos.Select(x => x.Name == Street && x.City.Id == city.Id).FirstOrDefault();
                 }
-                Models.EDM.House house = dataManager.HouseRepos.SelectHouses(x => x.Number == House && x.Street.Id == street.Id).FirstOrDefault();
+                Models.EDM.House house = dataManager.HouseRepos.Select(x => x.Number == House && x.Street.Id == street.Id).FirstOrDefault();
                 if (house == null)
                 {
-                    dataManager.HouseRepos.AddHouse(House, street, out string Res);
-                    house = dataManager.HouseRepos.SelectHouses(x => x.Number == House && x.Street.Id == street.Id).FirstOrDefault();
+                    dataManager.HouseRepos.Add(House, street, out string Res);
+                    house = dataManager.HouseRepos.Select(x => x.Number == House && x.Street.Id == street.Id).FirstOrDefault();
                 }
-                Models.EDM.Address address = dataManager.AddressRepos.SelectAddresss(x => x.Flat == operatorViewModel.Flat && x.House.Id == house.Id).FirstOrDefault();
+                Models.EDM.Address address = dataManager.AddressRepos.Select(x => x.Flat == operatorViewModel.Flat && x.House.Id == house.Id).FirstOrDefault();
                 if (address == null)
                 {
-                    dataManager.AddressRepos.AddAddress(operatorViewModel.Flat, house, out string Res);
-                    address = dataManager.AddressRepos.SelectAddresss(x => x.Flat == operatorViewModel.Flat && x.House.Id == house.Id).FirstOrDefault();
+                    dataManager.AddressRepos.Add(operatorViewModel.Flat, house, out string Res);
+                    address = dataManager.AddressRepos.Select(x => x.Flat == operatorViewModel.Flat && x.House.Id == house.Id).FirstOrDefault();
                 }
                 Models.EDM.Customer customer;
                 if (operatorViewModel.IsCompany)
                 {
-                    customer = dataManager.CustomerRepos.SelectCustomers(x =>(x is Models.EDM.Company)
+                    customer = dataManager.CustomerRepos.Select(x =>(x is Models.EDM.Company)
                     && x.Passport==operatorViewModel.Passport
                     && ((Models.EDM.Company)x).INN == operatorViewModel.INN).FirstOrDefault();
                 }
                 else
                 {
-                    customer = dataManager.CustomerRepos.SelectCustomers(x => x.Passport == operatorViewModel.Passport 
+                    customer = dataManager.CustomerRepos.Select(x => x.Passport == operatorViewModel.Passport 
                     && !(x is Models.EDM.Company)).FirstOrDefault();
                 }
                 if (customer == null)
                 {
                     if (operatorViewModel.IsCompany)
                     {
-                        dataManager.CompanyRepos.AddCompany(operatorViewModel.FIO, operatorViewModel.Passport, operatorViewModel.PhoneNumber,
+                        dataManager.CompanyRepos.Add(operatorViewModel.FIO, operatorViewModel.Passport, operatorViewModel.PhoneNumber,
                             operatorViewModel.CompanyName, operatorViewModel.INN, out string Res);
-                        customer = dataManager.CustomerRepos.SelectCustomers(x => (x is Models.EDM.Company)
+                        customer = dataManager.CustomerRepos.Select(x => (x is Models.EDM.Company)
                              && x.Passport == operatorViewModel.Passport
                              && ((Models.EDM.Company)x).INN == operatorViewModel.INN).FirstOrDefault();
                     }else
                     {
-                        dataManager.CustomerRepos.AddCustomer(operatorViewModel.FIO, operatorViewModel.Passport, operatorViewModel.PhoneNumber,
+                        dataManager.CustomerRepos.Add(operatorViewModel.FIO, operatorViewModel.Passport, operatorViewModel.PhoneNumber,
                             out string Res);
-                        customer = dataManager.CustomerRepos.SelectCustomers(x => x.Passport == operatorViewModel.Passport
+                        customer = dataManager.CustomerRepos.Select(x => x.Passport == operatorViewModel.Passport
                             && !(x is Models.EDM.Company)).FirstOrDefault();
                     }
                 }
                 Models.EDM.User user = Session[GlobalResources.SiteResources.User] as Models.EDM.User;
-                dataManager.OrderRepos.AddOrder(
-                    dataManager.UsersRepos.FindUser(user.Id),
-                    dataManager.CustomerRepos.SelectCustomers(x=>x.Id==customer.Id).First(), 
-                    dataManager.AddressRepos.FindAddress(address.Id), 
+                dataManager.OrderRepos.Add(
+                    dataManager.UsersRepos.Find(user.Id),
+                    dataManager.CustomerRepos.Select(x=>x.Id==customer.Id).First(), 
+                    dataManager.AddressRepos.Find(address.Id), 
                     out string res, out int result);
-                var order = dataManager.OrderRepos.FindOrder(result);
-                var status = dataManager.StatusRepos.FindStatus(1);
+                var order = dataManager.OrderRepos.Find(result);
+                var status = dataManager.StatusRepos.Find(1);
                 if (operatorViewModel.MetersCounts != null)
                 {
-                    var Meters = dataManager.MeterRepos.SelectMeters(x => true).ToArray();
+                    var Meters = dataManager.MeterRepos.Select(x => true).ToArray();
                     for (int i = 0; i < operatorViewModel.MetersCounts.Count; i++)
                     {
                         for (int j = 0; j < operatorViewModel.MetersCounts[i]; ++j)
                         {
-                            dataManager.OrderEntryRepos.AddOrderEntry(order, 
+                            dataManager.OrderEntryRepos.Add(order, 
                                 DateTime.Now,
                                 null,
                                 null,
-                                dataManager.MeterRepos.FindMeter(Meters[i].Id),
+                                dataManager.MeterRepos.Find(Meters[i].Id),
                                 null,
                                 status,
                                 out string Res);
@@ -113,7 +114,7 @@ namespace TechPractics2.Controllers
                     }
                 }
             }
-            ViewData[GlobalResources.SiteResources.Meter] = dataManager.MeterRepos.SelectMeters(x => true);
+            ViewData[GlobalResources.SiteResources.Meter] = dataManager.MeterRepos.Select(x => true);
             int count = (ViewData[GlobalResources.SiteResources.Meter] as IEnumerable<Models.EDM.Meter>).Count();
             return View();
         }

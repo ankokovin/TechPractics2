@@ -21,7 +21,7 @@ namespace TechPractics2.Models.Repos
           /// <param name="street">Улица</param>
           /// <param name="Res">Сообщение результата добавления</param>
           /// <returns>Результат добавления</returns>
-        public bool AddHouse(string Number, Street street, out string Res, bool save = true)
+        public bool Add(string Number, Street street, out string Res, bool save = true)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="street">Улица</param>
         /// <param name="Res">Сообщение результата изменения</param>
         /// <returns>Результат изменения</returns>
-        public bool ChangeHouse(int id, string Number, Street street, out string Res, bool save = true)
+        public bool Change(int id, string Number, Street street, out string Res, bool save = true)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace TechPractics2.Models.Repos
                     Res = "В городе " + street.City + " на улице " + street + " уже есть дом номер " + Number;
                     return false;
                 }
-                var a = FindHouse(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет дома с данным идентификационным номером";
@@ -86,11 +86,11 @@ namespace TechPractics2.Models.Repos
         /// <param name="id">Идентификационный номер дома</param>
         /// <param name="Res">Сообщение результата удаления</param>
         /// <returns>Результат удаления</returns>
-        public bool RemoveHouse(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var a = FindHouse(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет дома с таким идентификационным номером";
@@ -121,13 +121,9 @@ namespace TechPractics2.Models.Repos
         /// </summary>
         /// <param name="id">Идентификационный номер</param>
         /// <returns>Дом</returns>
-        public House FindHouse(int id) => (from s in cont.HouseSet where s.Id == id select s).FirstOrDefault();
+        public House Find(int id) => (from s in cont.HouseSet where s.Id == id select s).FirstOrDefault();
 
-        public IEnumerable<House> SelectHouses(Func<House, bool> predicate) => cont.HouseSet.Where(predicate).AsParallel();
+        public override IEnumerable<House> Select(Func<House, bool> predicate) => cont.HouseSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<House> enumerable)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

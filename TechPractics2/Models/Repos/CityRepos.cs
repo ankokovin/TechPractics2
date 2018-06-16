@@ -19,7 +19,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="Name">Название города</param>
         /// <param name="Res">Сообщение о результате</param>
         /// <returns>Результат добавления</returns>
-        public bool AddCity(string Name, out string Res, bool save = true)
+        public bool Add(string Name, out string Res, bool save = true)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="id">Идентификатор города</param>
         /// <param name="Res">Сообщение о результате</param>
         /// <returns>Результат удаления</returns>
-        public bool RemoveCity(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace TechPractics2.Models.Repos
         /// <param name="Name">Новое имя города</param>
         /// <param name="Res">Сообщение о результате</param>
         /// <returns>Результат изменения</returns>
-        public bool ChangeCity(int id, string Name, out string Res, bool save = true)
+        public bool Change(int id, string Name, out string Res, bool save = true)
         {
             try
             {
@@ -118,13 +118,10 @@ namespace TechPractics2.Models.Repos
         /// </summary>
         /// <param name="Id">Идентификационный номер</param>
         /// <returns>Город</returns>
-        public City FindCity(int Id) => (from c in cont.CitySet where c.Id == Id select c).FirstOrDefault();
+        public City Find(int Id) => (from c in cont.CitySet where c.Id == Id select c).FirstOrDefault();
 
-        public IEnumerable<City> SelectCitys(Func<City, bool> predicate) => cont.CitySet.Where(predicate).AsParallel();
+        public override IEnumerable<City> Select(Func<City, bool> predicate) => cont.CitySet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<City> enumerable)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

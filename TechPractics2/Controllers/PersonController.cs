@@ -11,27 +11,27 @@ namespace TechPractics2.Controllers
 
         public ActionResult PersonCollection()
         {
-            ViewData.Model = dataManager.PersonRepos.SelectPersons(x => true);
+            ViewData.Model = dataManager.PersonRepos.Select(x => true);
             return View();
         }
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.PersonRepos.FindPerson(id);
+            ViewData.Model = dataManager.PersonRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.PersonRepos.FindPerson(id);
+            ViewData.Model = dataManager.PersonRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.Person person)
         {
-            dataManager.PersonRepos.RemovePerson(person.Id, out string Res);
+            dataManager.PersonRepos.Remove(person.Id, out string Res);
             return RedirectToAction("Index");
         }
 
@@ -55,7 +55,7 @@ namespace TechPractics2.Controllers
             Check(person);
             if (ModelState.IsValid)
             {
-            dataManager.PersonRepos.AddPerson(person.FIO, out string Res);
+            dataManager.PersonRepos.Add(person.FIO, out string Res);
             return RedirectToAction("Index");
             }
             return View();
@@ -64,7 +64,7 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = dataManager.PersonRepos.FindPerson(id);
+            ViewData.Model = dataManager.PersonRepos.Find(id);
             return View();
         }
 
@@ -74,11 +74,17 @@ namespace TechPractics2.Controllers
             Check(person);
             if (ModelState.IsValid)
             {
-                dataManager.PersonRepos.ChangePerson(person.Id, person.FIO, out string Res);
+                dataManager.PersonRepos.Change(person.Id, person.FIO, out string Res);
                 return RedirectToAction("Index");
             }
-            ViewData.Model = dataManager.PersonRepos.FindPerson(person.Id);
+            ViewData.Model = dataManager.PersonRepos.Find(person.Id);
             return View();
+        }
+
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.Person>("Person", this, dataManager);
+            return RedirectToAction("Index");
         }
     }
 }

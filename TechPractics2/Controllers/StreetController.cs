@@ -14,14 +14,14 @@ namespace TechPractics2.Controllers
 
         public ActionResult StreetCollection()
         {
-            ViewData.Model = dataManager.StreetRepos.SelectStreets(x => true);
+            ViewData.Model = dataManager.StreetRepos.Select(x => true);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {
-            var Cities = dataManager.CityRepos.SelectCitys(x => true);
+            var Cities = dataManager.CityRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Street_City] = new SelectList(Cities,"Id","Name");
             return View();
         }
@@ -31,10 +31,10 @@ namespace TechPractics2.Controllers
             Check(Name, CityId);
             if (ModelState.IsValid)
             {
-                dataManager.StreetRepos.AddStreet(Name, dataManager.CityRepos.FindCity(CityId), out string Res);
+                dataManager.StreetRepos.Street(Name, dataManager.CityRepos.Find(CityId), out string Res);
                 return RedirectToAction("Index");
             }
-            var Cities = dataManager.CityRepos.SelectCitys(x => true);
+            var Cities = dataManager.CityRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Street_City] = new SelectList(Cities, "Id", "Name");
             return View();
 
@@ -50,28 +50,28 @@ namespace TechPractics2.Controllers
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.StreetRepos.FindStreet(id);
+            ViewData.Model = dataManager.StreetRepos.Find(id);
             return View();
         }
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.StreetRepos.FindStreet(id);
+            ViewData.Model = dataManager.StreetRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.Street street)
         {
-            dataManager.StreetRepos.RemoveStreet(street.Id, out string Res);
+            dataManager.StreetRepos.Remove(street.Id, out string Res);
             return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = dataManager.StreetRepos.FindStreet(id);
-            var Cities = dataManager.CityRepos.SelectCitys(x => true);
+            ViewData.Model = dataManager.StreetRepos.Find(id);
+            var Cities = dataManager.CityRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Street_City] = new SelectList(Cities, "Id", "Name");
             return View();
         }
@@ -81,14 +81,19 @@ namespace TechPractics2.Controllers
             Check(Name, CityId);
             if (ModelState.IsValid)
             {
-                dataManager.StreetRepos.ChangeStreet(id, Name, dataManager.CityRepos.FindCity(CityId), out string Res);
+                dataManager.StreetRepos.Change(id, Name, dataManager.CityRepos.Find(CityId), out string Res);
                 return RedirectToAction("Index");
             }
-            ViewData.Model = dataManager.StreetRepos.FindStreet(id);
-            var Cities = dataManager.CityRepos.SelectCitys(x => true);
+            ViewData.Model = dataManager.StreetRepos.Find(id);
+            var Cities = dataManager.CityRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Street_City] = new SelectList(Cities, "Id", "Name");
             return View();
         }
 
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.Street>("Street", this, dataManager);
+            return RedirectToAction("Index");
+        }
     }
 }

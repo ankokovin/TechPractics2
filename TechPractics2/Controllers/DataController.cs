@@ -2,6 +2,7 @@
 
 namespace TechPractics2.Controllers
 {
+
     public class DataController : Controller
     {
         protected Models.DataManager dataManager;

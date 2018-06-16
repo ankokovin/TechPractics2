@@ -13,14 +13,14 @@ namespace TechPractics2.Controllers
 
         public ActionResult StatusCollection()
         {
-            ViewData.Model = dataManager.StatusRepos.SelectStatuss(x => true);
+            ViewData.Model = dataManager.StatusRepos.Select(x => true);
 
             return View();
         }
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.StatusRepos.FindStatus(id);
+            ViewData.Model = dataManager.StatusRepos.Find(id);
 
             return View();
         }
@@ -28,7 +28,7 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.StatusRepos.FindStatus(id);
+            ViewData.Model = dataManager.StatusRepos.Find(id);
 
             return View();
         }
@@ -36,7 +36,7 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.Status status)
         {
-            dataManager.StatusRepos.RemoveStatus(status.Id, out string Res);
+            dataManager.StatusRepos.Remove(status.Id, out string Res);
 
             return RedirectToAction("Index");
         }
@@ -49,22 +49,28 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Add(Models.EDM.Status status)
         {
-            dataManager.StatusRepos.AddStatus(status.Name, out string Res);
+            dataManager.StatusRepos.Add(status.Name, out string Res);
             return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = dataManager.StatusRepos.FindStatus(id);
+            ViewData.Model = dataManager.StatusRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(Models.EDM.Status status)
         {
-            dataManager.StatusRepos.ChangeStatus(status.Id, status.Name, out string Res);
+            dataManager.StatusRepos.Change(status.Id, status.Name, out string Res);
             return View();
+        }
+
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.Status>("Status", this, dataManager);
+            return RedirectToAction("Index");
         }
     }
 }

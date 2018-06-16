@@ -22,7 +22,6 @@ button.logout{
 
 .logintable{
     max-height:500px;
-    overflow-y:scroll;
 }
 
 table.logintable{

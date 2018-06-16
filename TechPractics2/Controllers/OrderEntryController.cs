@@ -12,11 +12,11 @@ namespace TechPractics2.Controllers
 
         public ActionResult OrderEntryCollection()
         {
-            ViewData.Model = dataManager.OrderEntryRepos.SelectOrderEntrys(x => true);
+            ViewData.Model = dataManager.OrderEntryRepos.Select(x => true);
             return View();
         }
 
-        public void Check(DateTime? startTime, DateTime? endTime, string RegNum, int OrderId, int MeterId, int StatusId, bool HasPerson, int PersonId)
+        public void Check(DateTime? startTime, DateTime? endTime, string RegNum, int OrderId, int MeterId, int StatusId, int? PersonId)
         {
             if (endTime!=null && startTime == null)
             {
@@ -34,67 +34,67 @@ namespace TechPractics2.Controllers
                 ModelState.AddModelError("MeterId", GlobalResources.SiteResources.PleaseInput + GlobalResources.SiteResources.OrderEntry_Meter);
             if (StatusId < 0)
                 ModelState.AddModelError("StatusId", GlobalResources.SiteResources.PleaseInput + GlobalResources.SiteResources.OrderEntry_Status);
-            if (HasPerson && PersonId < 0)
+            if (PersonId < 0)
                 ModelState.AddModelError("PersonId", GlobalResources.SiteResources.PleaseInput + GlobalResources.SiteResources.OrderEntry_Person);
         }
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.OrderEntryRepos.FindOrderEntry(id);
+            ViewData.Model = dataManager.OrderEntryRepos.Find(id);
             return View();
         }
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.OrderEntryRepos.FindOrderEntry(id);
+            ViewData.Model = dataManager.OrderEntryRepos.Find(id);
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.OrderEntry orderEntry)
         {
-            dataManager.OrderEntryRepos.RemoveOrderEntry(orderEntry.Id, out string Res);
+            dataManager.OrderEntryRepos.Remove(orderEntry.Id, out string Res);
             return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {
-            var Orders = dataManager.OrderRepos.SelectOrders(x => true);
+            var Orders = dataManager.OrderRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Order] = new SelectList(Orders, "Id", "Id");
-            var Meters = dataManager.MeterRepos.SelectMeters(x => true);
+            var Meters = dataManager.MeterRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Meter] = new SelectList(Meters, "Id", "Name");
-            var Statuss = dataManager.StatusRepos.SelectStatuss(x => true);
+            var Statuss = dataManager.StatusRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Status] = new SelectList(Statuss, "Id", "Name");
-            var Persons = dataManager.PersonRepos.SelectPersons(x => true);
+            var Persons = dataManager.PersonRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Person] = new SelectList(Persons, "Id", "FIO");
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Add(DateTime? startTime, DateTime? endTime, string RegNum, int OrderId, int MeterId, int StatusId, bool HasPerson, int PersonId)
+        public ActionResult Add(DateTime? startTime, DateTime? endTime, string RegNumer, int OrderId, int MeterId, int StatusId,bool HasPerson, int? PersonId)
         {
-            Check(startTime, endTime, RegNum, OrderId, MeterId, StatusId, HasPerson, PersonId);
+            Check(startTime, endTime, RegNumer, OrderId, MeterId, StatusId, PersonId);
             if (ModelState.IsValid)
             {
-                dataManager.OrderEntryRepos.AddOrderEntry(
-                    dataManager.OrderRepos.FindOrder(OrderId),
+                dataManager.OrderEntryRepos.Add(
+                    dataManager.OrderRepos.Find(OrderId),
                     startTime,
                     endTime,
-                    RegNum,
-                    dataManager.MeterRepos.FindMeter(MeterId),
-                    HasPerson ? dataManager.PersonRepos.FindPerson(PersonId) : null,
-                    dataManager.StatusRepos.FindStatus(StatusId),
+                    RegNumer,
+                    dataManager.MeterRepos.Find(MeterId),
+                    PersonId!=null&&HasPerson ? dataManager.PersonRepos.Find((int)PersonId) : null,
+                    dataManager.StatusRepos.Find(StatusId),
                     out string Res
                     );
                 return RedirectToAction("Index");
             }
 
-            var Orders = dataManager.OrderRepos.SelectOrders(x => true);
+            var Orders = dataManager.OrderRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Order] = new SelectList(Orders, "Id", "Id");
-            var Meters = dataManager.MeterRepos.SelectMeters(x => true);
+            var Meters = dataManager.MeterRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Meter] = new SelectList(Meters, "Id", "Name");
-            var Statuss = dataManager.StatusRepos.SelectStatuss(x => true);
+            var Statuss = dataManager.StatusRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Status] = new SelectList(Statuss, "Id", "Name");
-            var Persons = dataManager.PersonRepos.SelectPersons(x => true);
+            var Persons = dataManager.PersonRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Person] = new SelectList(Persons, "Id", "FIO");
             return View();
         }
@@ -103,44 +103,50 @@ namespace TechPractics2.Controllers
         public ActionResult Edit(int id)
         {
 
-            var Orders = dataManager.OrderRepos.SelectOrders(x => true);
+            var Orders = dataManager.OrderRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Order] = new SelectList(Orders, "Id", "Id");
-            var Meters = dataManager.MeterRepos.SelectMeters(x => true);
+            var Meters = dataManager.MeterRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Meter] = new SelectList(Meters, "Id", "Name");
-            var Statuss = dataManager.StatusRepos.SelectStatuss(x => true);
+            var Statuss = dataManager.StatusRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Status] = new SelectList(Statuss, "Id", "Name");
-            var Persons = dataManager.PersonRepos.SelectPersons(x => true);
+            var Persons = dataManager.PersonRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Person] = new SelectList(Persons, "Id", "FIO");
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(int Id, DateTime? startTime, DateTime? endTime, string RegNum, int OrderId, int MeterId, int StatusId, bool HasPerson, int PersonId)
+        public ActionResult Edit(int Id, DateTime? startTime, DateTime? endTime, string RegNumer, int OrderId, int MeterId, int StatusId,bool HasPerson, int? PersonId)
         {
-            Check(startTime, endTime, RegNum, OrderId, MeterId, StatusId, HasPerson, PersonId);
+            Check(startTime, endTime, RegNumer, OrderId, MeterId, StatusId, PersonId);
             if (ModelState.IsValid)
             {
-                dataManager.OrderEntryRepos.ChangeOrderEntry(
+                dataManager.OrderEntryRepos.Change(
                     Id,
-                    dataManager.OrderRepos.FindOrder(OrderId),
+                    dataManager.OrderRepos.Find(OrderId),
                     startTime,
                     endTime,
-                    RegNum,
-                    dataManager.MeterRepos.FindMeter(MeterId),
-                    HasPerson ? dataManager.PersonRepos.FindPerson(PersonId) : null,
-                    dataManager.StatusRepos.FindStatus(StatusId),
+                    RegNumer,
+                    dataManager.MeterRepos.Find(MeterId),
+                    PersonId!=null&&HasPerson ? dataManager.PersonRepos.Find((int)PersonId) : null,
+                    dataManager.StatusRepos.Find(StatusId),
                     out string Res
                     );
                 return RedirectToAction("Index");
             }
-            var Orders = dataManager.OrderRepos.SelectOrders(x => true);
+            var Orders = dataManager.OrderRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Order] = new SelectList(Orders, "Id", "Id");
-            var Meters = dataManager.MeterRepos.SelectMeters(x => true);
+            var Meters = dataManager.MeterRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Meter] = new SelectList(Meters, "Id", "Name");
-            var Statuss = dataManager.StatusRepos.SelectStatuss(x => true);
+            var Statuss = dataManager.StatusRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Status] = new SelectList(Statuss, "Id", "Name");
-            var Persons = dataManager.PersonRepos.SelectPersons(x => true);
+            var Persons = dataManager.PersonRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.OrderEntry_Person] = new SelectList(Persons, "Id", "FIO");
             return View();
+        }
+
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.OrderEntry>("OrderEntry", this, dataManager);
+            return RedirectToAction("Index");
         }
     }
 }

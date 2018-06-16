@@ -20,4 +20,10 @@ namespace TechPractics2.Models.UtilityModels
         public List<int> MetersCounts { get; set; }
 
     }
+
+    public class MakeOrderViewModel : OperatorViewModel
+    {
+        public bool UseProfile { get; set; }
+        public int ProfileId { get; set; }
+    }
 }

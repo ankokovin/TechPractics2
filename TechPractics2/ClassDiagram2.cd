@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TechPractics2.Controllers.AddressController" Collapsed="true">
+    <Position X="20.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAEAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AddressController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.AnaliticController" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AnaliticController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.CityController" Collapsed="true">
+    <Position X="16.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAEAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\CityController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.MyControllerFactory" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ControllerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.CustomerController" Collapsed="true">
+    <Position X="16.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAIAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\CustomerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.DataController" Collapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\DataController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.HomeController" Collapsed="true">
+    <Position X="18.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACiAAAAACAkQCAQAoAAAQAAAEAAAAIEQABAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.HouseController" Collapsed="true">
+    <Position X="14.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAABAAA=</HashCode>
+      <FileName>Controllers\HouseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.MeterController" Collapsed="true">
+    <Position X="16.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\MeterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.MeterTypeController" Collapsed="true">
+    <Position X="20.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAABAAAAAAAAAAAAAAEAAAACAAEABAAAAAA=</HashCode>
+      <FileName>Controllers\MeterTypeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.OperatorController" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\OperatorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.OrderController" Collapsed="true">
+    <Position X="16.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAAAAg=</HashCode>
+      <FileName>Controllers\OrderController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.OrderEntryController" Collapsed="true">
+    <Position X="20.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAQAAA=</HashCode>
+      <FileName>Controllers\OrderEntryController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.PersonController" Collapsed="true">
+    <Position X="18.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAIAAAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PersonController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.StatusController" Collapsed="true">
+    <Position X="20.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAABAAAAAAAAAAAAAAFAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\StatusController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.StavkaController" Collapsed="true">
+    <Position X="14.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAEEAAAAAAAA=</HashCode>
+      <FileName>Controllers\StavkaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.StreetController" Collapsed="true">
+    <Position X="14.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAgAAAAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\StreetController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.UserController" Collapsed="true">
+    <Position X="18.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAACAAAAAAEAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechPractics2.Controllers.UserToCustomerController" Collapsed="true">
+    <Position X="18.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAABAAAAAAAAAAAAAAEAAAACAAEAAAAAAAg=</HashCode>
+      <FileName>Controllers\UserToCustomerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

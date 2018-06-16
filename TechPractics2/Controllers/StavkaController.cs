@@ -13,7 +13,7 @@ namespace TechPractics2.Controllers
 
         public ActionResult StavkaCollection()
         {
-            ViewData.Model = dataManager.StavkaRepos.SelectStavkas(x => true);
+            ViewData.Model = dataManager.StavkaRepos.Select(x => true);
             return View();
         }
 
@@ -27,8 +27,8 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {
-            var Persones = dataManager.PersonRepos.SelectPersons(x => true);
-            var MeterTypes = dataManager.MeterTypeRepos.SelectMeterTypes(x => true);
+            var Persones = dataManager.PersonRepos.Select(x => true);
+            var MeterTypes = dataManager.MeterTypeRepos.Select(x => true);
 
             ViewData[GlobalResources.SiteResources.Stavka_Person] = new SelectList(Persones, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.Stavka_MeterType] = new SelectList(MeterTypes, "Id", "FullDisc");
@@ -41,15 +41,15 @@ namespace TechPractics2.Controllers
             Check(PersonId, MeterTypeId);
             if (ModelState.IsValid)
             {
-                dataManager.StavkaRepos.AddStavka(
-                    dataManager.MeterTypeRepos.SelectMeterTypes(x => x.Id == MeterTypeId).FirstOrDefault(),
-                    dataManager.PersonRepos.FindPerson(PersonId),
+                dataManager.StavkaRepos.Add(
+                    dataManager.MeterTypeRepos.Select(x => x.Id == MeterTypeId).FirstOrDefault(),
+                    dataManager.PersonRepos.Find(PersonId),
                     out string Res
                     );
                 return RedirectToAction("Index");
             }
-            var Persones = dataManager.PersonRepos.SelectPersons(x => true);
-            var MeterTypes = dataManager.MeterTypeRepos.SelectMeterTypes(x => true);
+            var Persones = dataManager.PersonRepos.Select(x => true);
+            var MeterTypes = dataManager.MeterTypeRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Stavka_Person] = new SelectList(Persones, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.Stavka_MeterType] = new SelectList(MeterTypes, "Id", "FullDisc");
             return View();
@@ -57,30 +57,30 @@ namespace TechPractics2.Controllers
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.StavkaRepos.FindStavka(id);
+            ViewData.Model = dataManager.StavkaRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.StavkaRepos.FindStavka(id);
+            ViewData.Model = dataManager.StavkaRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.Stavka order)
         {
-            dataManager.StavkaRepos.RemoveStavka(order.Id, out string Res);
+            dataManager.StavkaRepos.Remove(order.Id, out string Res);
             return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = dataManager.StavkaRepos.FindStavka(id);
-            var Persones = dataManager.PersonRepos.SelectPersons(x => true);
-            var MeterTypes = dataManager.MeterTypeRepos.SelectMeterTypes(x => true);
+            ViewData.Model = dataManager.StavkaRepos.Find(id);
+            var Persones = dataManager.PersonRepos.Select(x => true);
+            var MeterTypes = dataManager.MeterTypeRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Stavka_Person] = new SelectList(Persones, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.Stavka_MeterType] = new SelectList(MeterTypes, "Id", "FullDisc");
             return View();
@@ -92,19 +92,25 @@ namespace TechPractics2.Controllers
             Check(PersonId, MeterTypeId);
             if (ModelState.IsValid)
             {
-                dataManager.StavkaRepos.ChangeStavka(id,
-                    dataManager.MeterTypeRepos.FindMeterType(MeterTypeId),
-                    dataManager.PersonRepos.FindPerson(PersonId),
+                dataManager.StavkaRepos.Change(id,
+                    dataManager.MeterTypeRepos.Find(MeterTypeId),
+                    dataManager.PersonRepos.Find(PersonId),
                     out string Res
                     );
                 return RedirectToAction("Index");
             }
-            ViewData.Model = dataManager.StavkaRepos.FindStavka(id);
-            var Persones = dataManager.PersonRepos.SelectPersons(x => true);
-            var MeterTypes = dataManager.MeterTypeRepos.SelectMeterTypes(x => true);
+            ViewData.Model = dataManager.StavkaRepos.Find(id);
+            var Persones = dataManager.PersonRepos.Select(x => true);
+            var MeterTypes = dataManager.MeterTypeRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Stavka_Person] = new SelectList(Persones, "Id", "FullDisc");
             ViewData[GlobalResources.SiteResources.Stavka_MeterType] = new SelectList(MeterTypes, "Id", "FullDisc");
             return View();
+        }
+
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.Stavka>("Stavka", this, dataManager);
+            return RedirectToAction("Index");
         }
     }
 }

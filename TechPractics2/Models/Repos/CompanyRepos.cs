@@ -13,7 +13,7 @@ namespace TechPractics2.Models.Repos
 
         }
 
-        public bool AddCompany(string Name, string Passport, string PhoneNumber, string CompanyName, string INN, out string Res, bool save = true)
+        public bool Add(string Name, string Passport, string PhoneNumber, string CompanyName, string INN, out string Res, bool save = true)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool ChangeCompany(int Id, string Name, string Passport, string PhoneNumber, string CompanyName, string INN, out string Res, bool save = true)
+        public bool Change(int Id, string Name, string Passport, string PhoneNumber, string CompanyName, string INN, out string Res, bool save = true)
         {
 
             try
@@ -51,7 +51,7 @@ namespace TechPractics2.Models.Repos
                     Res = "Уже есть компания с данным ИНН";
                     return false;
                 }
-                var a = FindCompany(Id);
+                var a = Find(Id);
                 if (a == null)
                 {
                     Res = "Нет компании с данным идентификационным номером";
@@ -72,7 +72,7 @@ namespace TechPractics2.Models.Repos
 
         }
 
-        public bool RemoveCompany(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
 
             try
@@ -108,9 +108,9 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public Company FindCompany(int id) => (from o in cont.CustomerSet where o.Id == id select o).FirstOrDefault() as Company;
+        public Company Find(int id) => (from o in cont.CustomerSet where o.Id == id select o).FirstOrDefault() as Company;
 
-        public override DataTable table(IEnumerable<Company> enumerable)
+        public override IEnumerable<Company> Select(Func<Company, bool> predicate)
         {
             throw new NotImplementedException();
         }

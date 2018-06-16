@@ -11,31 +11,30 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Зарегистируйтесь</h2>
+        <h2>@GlobalResources.SiteResources.SignUp</h2>
         <p>
-            Это не займёт много времени.
+           @GlobalResources.SiteResources.SignUpMsg
 
         </p>
-        <p>@Html.ActionLink("Зарегистрироваться","SignUp","Home", new { @class = "btn btn-default" }) </p>
+        <p>@Html.ActionLink(GlobalResources.SiteResources.SignUp,"SignUp","Home", new { @class = "btn btn-default" }) </p>
 
     </div>
     <div class="col-md-4">
         <h2>
-            Осмотрите ассортимент
+            @GlobalResources.SiteResources.ViewMetersButtonTitle
         </h2>
         <p>
-            приборов учёта.
+           @GlobalResources.SiteResources.ViewMetersButtonMsg
         </p>
-        <p>@Html.ActionLink("Осмотреть","Index",null, new { @class = "btn btn-default" })</p>
+        <p>@Html.ActionLink(GlobalResources.SiteResources.View,"ViewMeters",null, new { @class = "btn btn-default" })</p>
 
     </div>
     <div class="col-md-4">
-        <h2>Оставьте заявку</h2>
+        <h2>@GlobalResources.SiteResources.MakeOrder</h2>
         <p>
-            на установку прибора учёта.
-            Ответ на заявку - не более суток.
+            @GlobalResources.SiteResources.MakeOrderMsg
         </p>
-        <p>@Html.ActionLink("Оставить заявку","Index",null, new { @class = "btn btn-default" })</p>
+        <p>@Html.ActionLink(GlobalResources.SiteResources.MakeOrder,"MakeOrder",null, new { @class = "btn btn-default" })</p>
 
     </div>
 

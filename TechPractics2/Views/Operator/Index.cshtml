@@ -1,6 +1,5 @@
 ﻿@model TechPractics2.Models.UtilityModels.OperatorViewModel
 @{
-    /**/
 
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,25 +12,12 @@
 <script src="~/Scripts/input_validation.js" type="text/javascript"></script>
 <style>
 
-    #messageHeader {
-        height: 20px;
-    }
-
-    #footer {
-        width: 376px;
-        background-color: #f2f2ef;
-        padding: 12px;
-    }
-
-    #message {
-        height: 76px;
-    }
-
     #map {
         height: 160px;
         width: 376px;
-        margin: 0px 12px 18px 12px;
+        margin: 20px 12px 18px 12px;
         position: relative;
+        display: none;
     }
 
     #header {
@@ -94,7 +80,6 @@
     }
 
     #notice {
-        position: absolute;
         left: 22px;
         margin: 0px;
         top: 44px;
@@ -107,142 +92,123 @@
 {
 
     <h2>Index</h2>
-    <table>
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.FullAddress, new { @class = "control-label col-md-3" })
-            </td>
-        </tr>
-        <tr>
 
-            <td>
-                <div id="header">
-                    <input type="text" id="suggest" class="input form-control" placeholder="Введите адрес">
-                    @Html.ValidationMessageFor(model => model.FullAddress,"", new { @class = "text-warning" } )
-                    <button id="button">Закрепить</button>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p id="notice">Адрес не найден</p>
-                <div id="map"></div>
-                <div id="footer">
-                    <div id="messageHeader"></div>
-                    <div id="message"></div>
-                </div>
-            </td>
-        </tr>
-    </table>
+    @Html.LabelFor(model => model.FullAddress, new { @class = "control-label col-md-3" })
 
+    <div id="header">
+        <input type="text" id="suggest" class="input form-control" placeholder="Введите адрес">
 
+            <button id="button" >Закрепить</button>
+            @Html.ValidationMessage("FullAddress", "", new { @class = "text-warning", style= "display: inline-block;" })
+            <div id="notice">Адрес не найден</div>
+    </div>
 
-
-
+    <div id="map">
+    </div> 
 
 
     using (Html.BeginForm("Index", "Operator", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(i => i.FullAddress)
-    <table>
-        <tr>
-            <td>
-                @Html.LabelFor(i => i.Flat, new { @class = "control-label col-md-3" })
-
-            </td>
-            <td>
-
-                @Html.EditorFor(i => i.Flat, null, new { @class = "form-control" })
-                @Html.ValidationMessageFor(i => i.Flat, "", new { @class = "text-warning" })
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(i => i.FIO, new { @class = "control-label col-md-3" })
-            </td>
-            <td>
-                @Html.EditorFor(i => i.FIO, null, new { @class = "form-control" })
-                @Html.ValidationMessageFor(i => i.FIO, "", new { @class = "text-warning" })
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(i => i.Passport, new { @class = "control-label col-md-3" })
-
-            </td>
-            <td>
-                @Html.EditorFor(i => i.Passport, null, new { @class = "form-control" })
-                @Html.ValidationMessageFor(i => i.Passport, "", new { @class = "text-warning" })
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-
-                @Html.LabelFor(i => i.PhoneNumber, new { @class = "control-label col-md-3" })
-            </td>
-            <td>
-                @Html.EditorFor(i => i.PhoneNumber, null, new { @class = "form-control" })
-                @Html.ValidationMessageFor(i => i.PhoneNumber, "", new { @class = "text-warning" })
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(i => i.IsCompany, new { @class = "control-label col-md-3" })
-
-            </td>
-            <td>
-                @Html.EditorFor(i => i.IsCompany, null, new { @class = "form-control" })
-                @Html.ValidationMessageFor(i => i.IsCompany, "", new { @class = "text-warning" })
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(i => i.CompanyName, new { @class = "control-label col-md-3" })
-
-            </td>
-            <td>
-                @Html.EditorFor(i => i.CompanyName, null, new { @class = "form-control" })
-                @Html.ValidationMessageFor(i => i.CompanyName, "", new { @class = "text-warning" })
-
-            </td>
-        </tr>
-
-
-
-        <tr>
-            <td>
-
-                @Html.LabelFor(i => i.INN, new { @class = "control-label col-md-3" })
-            </td>
-            <td>
-
-                @Html.EditorFor(i => i.INN, null, new { @class = "form-control" })
-                @Html.ValidationMessageFor(i => i.INN, "", new { @class = "text-warning" })
-            </td>
-        </tr>
-
-
-
-
-        @foreach (var item in Meters)
-        {
+        <table style="margin-top:40px;">
             <tr>
                 <td>
-                    @Html.Label(item.FullDisc, new { @class = "control-label col-md-3" })
+                    @Html.LabelFor(i => i.Flat, new { @class = "control-label col-md-3" })
 
                 </td>
                 <td>
 
-                    @Html.TextBox("MetersCounts", 0, new { @class = "form-control", type = "number" })
+                    @Html.EditorFor(i => i.Flat, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(i => i.Flat, "", new { @class = "text-warning" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(i => i.FIO, new { @class = "control-label col-md-3" })
+                </td>
+                <td>
+                    @Html.EditorFor(i => i.FIO, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(i => i.FIO, "", new { @class = "text-warning" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(i => i.Passport, new { @class = "control-label col-md-3" })
+
+                </td>
+                <td>
+                    @Html.EditorFor(i => i.Passport, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(i => i.Passport, "", new { @class = "text-warning" })
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    @Html.LabelFor(i => i.PhoneNumber, new { @class = "control-label col-md-3" })
+                </td>
+                <td>
+                    @Html.EditorFor(i => i.PhoneNumber, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(i => i.PhoneNumber, "", new { @class = "text-warning" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(i => i.IsCompany, new { @class = "control-label col-md-3" })
+
+                </td>
+                <td>
+                    @Html.EditorFor(i => i.IsCompany, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(i => i.IsCompany, "", new { @class = "text-warning" })
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(i => i.CompanyName, new { @class = "control-label col-md-3" })
+
+                </td>
+                <td>
+                    @Html.EditorFor(i => i.CompanyName, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(i => i.CompanyName, "", new { @class = "text-warning" })
+
                 </td>
             </tr>
 
 
-        }
-    </table>
+
+            <tr>
+                <td>
+
+                    @Html.LabelFor(i => i.INN, new { @class = "control-label col-md-3" })
+                </td>
+                <td>
+
+                    @Html.EditorFor(i => i.INN, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(i => i.INN, "", new { @class = "text-warning" })
+                </td>
+            </tr>
+
+
+
+
+            @foreach (var item in Meters)
+            {
+                <tr>
+                    <td>
+                        @Html.Label(item.FullDisc, new { @class = "control-label col-md-3" })
+
+                    </td>
+                    <td>
+
+                        @Html.TextBox("MetersCounts", 0, new { @class = "form-control", type = "number" })
+                    </td>
+                </tr>
+
+
+            }
+        </table>
 
 
 

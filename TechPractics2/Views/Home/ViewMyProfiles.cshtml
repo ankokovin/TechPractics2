@@ -9,7 +9,7 @@
 <h2>Мои профили</h2>
 
 <p>
-    @Html.ActionLink("Создать новый профиль", "CreateProfile")
+    @Html.ActionLink(GlobalResources.SiteResources.CreateProfile, "CreateProfile")
 </p>
 <table class="table">
     <tr>
@@ -52,8 +52,8 @@
             </td>
         }
         <td>
-            @Html.ActionLink("Делегировать", "ShareProfile", new { id = item.Id }) |
-            @Html.ActionLink("Удалить", "RemoveProfile", new { id = item.Id })
+            @Html.ActionLink(GlobalResources.SiteResources.ShareProfile, "ShareProfile", new { id = item.Id }) |
+            @Html.ActionLink(GlobalResources.SiteResources.Delete, "RemoveProfile", new { id = item.Id })
         </td>
     </tr>
 }

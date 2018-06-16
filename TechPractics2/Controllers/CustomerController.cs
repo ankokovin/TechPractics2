@@ -21,14 +21,14 @@ namespace TechPractics2.Controllers
         public ActionResult CustomerCollection()
         {
 
-            ViewData.Model = dataManager.CustomerRepos.SelectCustomers(x => true);
+            ViewData.Model = dataManager.CustomerRepos.Select(x => true);
 
             return View();
         }
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.CustomerRepos.SelectCustomers(x => x.Id == id).FirstOrDefault();
+            ViewData.Model = dataManager.CustomerRepos.Select(x => x.Id == id).FirstOrDefault();
             if (ViewData.Model == null)
             {
                 //Exception???
@@ -41,7 +41,7 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.CustomerRepos.SelectCustomers(x => x.Id == id).FirstOrDefault();
+            ViewData.Model = dataManager.CustomerRepos.Select(x => x.Id == id).FirstOrDefault();
             if (ViewData.Model == null)
             {
                 //Exception???
@@ -55,10 +55,10 @@ namespace TechPractics2.Controllers
         {
             if (IsCompany)
             {
-                dataManager.CompanyRepos.RemoveCompany(id, out string Res);
+                dataManager.CompanyRepos.Remove(id, out string Res);
             }else
             {
-                dataManager.CustomerRepos.RemoveCustomer(id, out string Res);
+                dataManager.CustomerRepos.Remove(id, out string Res);
             }
 
             return RedirectToAction("CustomerCollection");
@@ -78,10 +78,10 @@ namespace TechPractics2.Controllers
             {
                 if (IsCompany)
                 {
-                    dataManager.CompanyRepos.AddCompany(FIO, Passport, PhoneNumber, CompanyName, INN, out string Res);
+                    dataManager.CompanyRepos.Add(FIO, Passport, PhoneNumber, CompanyName, INN, out string Res);
                 }else
                 {
-                    dataManager.CustomerRepos.AddCustomer(FIO, Passport, PhoneNumber, out string Res);
+                    dataManager.CustomerRepos.Add(FIO, Passport, PhoneNumber, out string Res);
                 }
                 return RedirectToAction("Index");
             }
@@ -127,7 +127,7 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = dataManager.CustomerRepos.SelectCustomers(x => x.Id == id).FirstOrDefault();
+            ViewData.Model = dataManager.CustomerRepos.Select(x => x.Id == id).FirstOrDefault();
             if (ViewData.Model == null)
             {
                 //Exception???
@@ -142,14 +142,19 @@ namespace TechPractics2.Controllers
             {
                 if (IsCompany)
                 {
-                    dataManager.CompanyRepos.ChangeCompany(id, FIO, Passport, PhoneNumber, CompanyName, INN,out string Res);
+                    dataManager.CompanyRepos.Change(id, FIO, Passport, PhoneNumber, CompanyName, INN,out string Res);
                 }else
                 {
-                    dataManager.CustomerRepos.ChangeCustomer(id, FIO, Passport, PhoneNumber, out string Res);
+                    dataManager.CustomerRepos.Change(id, FIO, Passport, PhoneNumber, out string Res);
                 }
                 return RedirectToAction("Index");
             }
             return View();
+        }
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.Customer>("Customer", this, dataManager);
+            return RedirectToAction("Index");
         }
     }
 }

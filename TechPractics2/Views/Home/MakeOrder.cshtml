@@ -1,8 +1,253 @@
-﻿
+﻿@model TechPractics2.Models.UtilityModels.MakeOrderViewModel
 @{
     ViewBag.Title = "MakeOrder";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var Meters = ViewData[GlobalResources.SiteResources.Meter] as IEnumerable<TechPractics2.Models.EDM.Meter>;
+
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
+
+    var Profiles = ViewData[GlobalResources.SiteResources.Customer] as IEnumerable<TechPractics2.Models.EDM.Customer>;
+
+    var ProfilesList = new SelectList(Profiles, "Id", "FullDisc");
 }
 
-<h2>MakeOrder</h2>
+ <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+ <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+ <script src="~/Scripts/input_validation.js" type="text/javascript"></script>
+ <style>
+
+     #map {
+         height: 160px;
+         width: 376px;
+         margin: 20px 12px 18px 12px;
+         position: relative;
+         display: none;
+     }
+
+     #header {
+         height: 28px;
+         width: 376px;
+         margin: 12px 10px 12px 12px;
+     }
+
+     #button {
+         display: inline-block;
+         font-size: 11px;
+         color: rgb(68,68,68);
+         text-decoration: none;
+         user-select: none;
+         padding: .2em 0.6em;
+         outline: none;
+         border: 1px solid rgba(0,0,0,.1);
+         border-radius: 2px;
+         background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
+         transition: all .218s ease 0s;
+         height: 28px;
+         width: 74px;
+     }
+
+         #button:hover {
+             color: rgb(24,24,24);
+             border: 1px solid rgb(198,198,198);
+             background: #f7f7f7 linear-gradient(#f7f7f7, #f1f1f1);
+             box-shadow: 0 1px 2px rgba(0,0,0,.1);
+         }
+
+         #button:active {
+             color: rgb(51,51,51);
+             border: 1px solid rgb(204,204,204);
+             background: rgb(238,238,238) linear-gradient(rgb(238,238,238), rgb(224,224,224));
+             box-shadow: 0 1px 2px rgba(0,0,0,.1) inset;
+         }
+
+     .input {
+         height: 18px;
+         width: 277px;
+         padding: 4px;
+         border: 1px solid #999;
+         margin-right: 10px;
+         border-radius: 3px;
+         box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0);
+         transition: .17s linear;
+     }
+
+         .input:focus {
+             outline: none;
+             border: 1px solid #fdd734;
+             box-shadow: 0 0 1px 1px #fdd734;
+         }
+
+     .input_error, .input_error:focus {
+         outline: none;
+         border: 1px solid #f33;
+         box-shadow: 0 0 1px 1px #f33;
+     }
+
+     #notice {
+         left: 22px;
+         margin: 0px;
+         top: 44px;
+         color: #f33;
+         display: none;
+     }
+ </style>
+
+<h2>@GlobalResources.SiteResources.MakeOrder</h2>
+
+            @Html.LabelFor(x => x.FullAddress, new { @class = "control-label col-md-3" })
+
+            <div id="header">
+                <input type="text" id="suggest" class="input form-control" placeholder="Введите адрес">
+                <button id="button">Закрепить</button>
+                @Html.ValidationMessage("FullAddress", "", new { @class = "text-warning", style = "display: inline-block;" })
+            <p id="notice">Адрес не найден</p>
+            </div>
+
+            <div id="map"></div>
+
+
+@using (Html.BeginForm("MakeOrder", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(i => i.FullAddress)
+
+<table style="margin-top:40px;">
+    <tr >
+        <td>
+            @Html.LabelFor(i => i.Flat, new { @class = "control-label col-md-3" })
+
+        </td>
+        <td>
+
+            @Html.EditorFor(i => i.Flat, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.Flat, "", new { @class = "text-warning" })
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.ProfileId , new { @class = "control-label col-md-3" })
+            </td>
+        <td>
+            @Html.CheckBoxFor(x => x.UseProfile, new { id = "UseProfile1" })
+            @Html.DropDownList("ProfileId", ProfilesList, new { @class = "form-control", @style="display:none;" } )
+            @Html.Label("У вас ещё нет ни одного профиля", new { id="NoProfileLable", @class = "text-warning", @style = "display:none;" })
+            @Html.ActionLink("Создать","CreateProfile","Home",new { id = "NewProfileLink", @style = "display:none;" })
+            @Html.ValidationMessage("ProfileId", new { @class = "text-warning" })
+        </td>
+    </tr>
+    <tr  class="profile">
+        <td>
+            @Html.LabelFor(i => i.FIO, new { @class = "control-label col-md-3" })
+        </td>
+        <td>
+            @Html.EditorFor(i => i.FIO, null, new { @class = "form-control", id="FIO" })
+            @Html.ValidationMessageFor(i => i.FIO, "", new { @class = "text-warning" })
+        </td>
+    </tr>
+    <tr  class="profile">
+        <td>
+            @Html.LabelFor(i => i.Passport, new { @class = "control-label col-md-3" })
+
+        </td>
+        <td>
+            @Html.EditorFor(i => i.Passport, null, new { @class = "form-control", id="Passport" })
+            @Html.ValidationMessageFor(i => i.Passport, "", new { @class = "text-warning" })
+
+        </td>
+    </tr>
+    <tr  class="profile">
+        <td>
+
+            @Html.LabelFor(i => i.PhoneNumber, new { @class = "control-label col-md-3" })
+        </td>
+        <td>
+            @Html.EditorFor(i => i.PhoneNumber, null, new { @class = "form-control", id="PhoneNumber" })
+            @Html.ValidationMessageFor(i => i.PhoneNumber, "", new { @class = "text-warning" })
+        </td>
+    </tr>
+    <tr  class="profile">
+        <td>
+            @Html.LabelFor(i => i.IsCompany, new { @class = "control-label col-md-3" })
+
+        </td>
+        <td>
+            @Html.EditorFor(i => i.IsCompany, null, new { @class = "form-control", id="IsCompany" })
+            @Html.ValidationMessageFor(i => i.IsCompany, "", new { @class = "text-warning" })
+
+        </td>
+    </tr>
+    <tr  class="profile">
+        <td>
+            @Html.LabelFor(i => i.CompanyName, new { @class = "control-label col-md-3" })
+
+        </td>
+        <td>
+            @Html.EditorFor(i => i.CompanyName, null, new { @class = "form-control", id="CompanyName" })
+            @Html.ValidationMessageFor(i => i.CompanyName, "", new { @class = "text-warning" })
+
+        </td>
+    </tr>
+
+
+
+    <tr  class="profile">
+        <td>
+
+            @Html.LabelFor(i => i.INN, new { @class = "control-label col-md-3" })
+        </td>
+        <td>
+
+            @Html.EditorFor(i => i.INN, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.INN, "", new { @class = "text-warning" })
+        </td>
+    </tr>
+
+
+
+
+    @foreach (var item in Meters)
+    {
+        <tr>
+            <td>
+                @Html.Label(item.FullDisc, new { @class = "control-label col-md-3" })
+
+            </td>
+            <td>
+
+                @Html.TextBox("MetersCounts", 0, new { @class = "form-control", type = "number" })
+            </td>
+        </tr>
+
+
+    }
+</table>
+
+
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        <input type="submit" value=@GlobalResources.SiteResources.Submit class="btn btn-primary" />
+    </div>
+}
+
+<script src="~/Scripts/MakeOrderBlocker.js" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
 

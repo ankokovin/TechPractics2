@@ -537,4 +537,58 @@
   <data name="NotRussia" xml:space="preserve">
     <value>Данная страна не обслуживается</value>
   </data>
+  <data name="CreateProfile" xml:space="preserve">
+    <value>Создать новый профиль</value>
+  </data>
+  <data name="FullAddress" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="MakeOrder" xml:space="preserve">
+    <value>Оставьте заявку</value>
+  </data>
+  <data name="MakeOrderMsg" xml:space="preserve">
+    <value>на установку прибора учёта. Ответ на заявку - не более суток.</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="ShareProfile" xml:space="preserve">
+    <value>Поделиться профилем с другим пользователем</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
+  <data name="SignUpMsg" xml:space="preserve">
+    <value>Это не займёт много времени.</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Осмотреть</value>
+  </data>
+  <data name="ViewMetersButtonMsg" xml:space="preserve">
+    <value>приборов учёта.</value>
+  </data>
+  <data name="ViewMetersButtonTitle" xml:space="preserve">
+    <value>Осмотрите ассортимент</value>
+  </data>
+  <data name="create" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\create.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="details1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\details.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Вывести в Excel</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="_1200px_Microsoft_Excel_2013_logo_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1200px-Microsoft_Excel_2013_logo.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

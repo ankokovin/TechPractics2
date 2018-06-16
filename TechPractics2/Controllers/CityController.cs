@@ -11,7 +11,7 @@ namespace TechPractics2.Controllers
 
         public ActionResult CityCollection()
         {
-            ViewData.Model = dataManager.CityRepos.SelectCitys(x => true);
+            ViewData.Model = dataManager.CityRepos.Select(x => true);
             return View();
         }
 
@@ -19,21 +19,21 @@ namespace TechPractics2.Controllers
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.CityRepos.FindCity(id);
+            ViewData.Model = dataManager.CityRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.CityRepos.FindCity(id);
+            ViewData.Model = dataManager.CityRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.City city)
         {
-            dataManager.CityRepos.RemoveCity(city.Id, out string Res);
+            dataManager.CityRepos.Remove(city.Id, out string Res);
             return RedirectToAction("Index");
         }
 
@@ -56,7 +56,7 @@ namespace TechPractics2.Controllers
             Check(city);
             if (ModelState.IsValid)
             {
-                dataManager.CityRepos.AddCity(city.Name, out string Res);
+                dataManager.CityRepos.Add(city.Name, out string Res);
                 return RedirectToAction("Index");
             }
             return View();
@@ -65,7 +65,7 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = dataManager.CityRepos.FindCity(id);
+            ViewData.Model = dataManager.CityRepos.Find(id);
             return View();
         }
 
@@ -75,11 +75,17 @@ namespace TechPractics2.Controllers
             Check(city);
             if (ModelState.IsValid)
             {
-                dataManager.CityRepos.ChangeCity(city.Id, city.Name, out string Res);
+                dataManager.CityRepos.Change(city.Id, city.Name, out string Res);
                 return RedirectToAction("Index");
             }
-            ViewData.Model = dataManager.CityRepos.FindCity(city.Id);
+            ViewData.Model = dataManager.CityRepos.Find(city.Id);
             return View();
+        }
+
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.City>("City", this, dataManager);
+            return RedirectToAction("Index");
         }
     }
 }

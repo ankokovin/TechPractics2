@@ -12,7 +12,7 @@ namespace TechPractics2.Models.Repos
         {
         }
 
-        public bool AddStatus(string Name, out string Res, bool save = true)
+        public bool Add(string Name, out string Res, bool save = true)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool ChangeStatus(int Id, string Name, out string Res, bool save = true)
+        public bool Change(int Id, string Name, out string Res, bool save = true)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace TechPractics2.Models.Repos
                     Res = "Уже есть данный статус";
                     return false;
                 }
-                var a = FindStatus(Id);
+                var a = Find(Id);
                 if (a == null)
                 {
                     Res = "Нет статуса с данным идентификационным номером";
@@ -62,11 +62,11 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool RemoveStatus(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var a = FindStatus(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет статуса с таким идентификационным номером";
@@ -92,13 +92,9 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public Status FindStatus(int id) => (from o in cont.StatusSet where o.Id == id select o).FirstOrDefault();
+        public Status Find(int id) => (from o in cont.StatusSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Status> SelectStatuss(Func<Status, bool> predicate) => cont.StatusSet.Where(predicate).AsParallel();
+        public override IEnumerable<Status> Select(Func<Status, bool> predicate) => cont.StatusSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<Status> enumerable)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -142,7 +142,7 @@ namespace TechPractics2.Controllers
                 }
                 Session.Remove(GlobalResources.SiteResources.Remember);
             }
-            return Redirect(System.Web.HttpContext.Current.Request.UrlReferrer.AbsolutePath);
+            return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -166,7 +166,7 @@ namespace TechPractics2.Controllers
             Check(user);
             if (ModelState.IsValid)
             {
-                bool res = dataManager.UsersRepos.AddUser(Models.EDM.UserType.Normal, user.Login, user.Password, out string Res);
+                bool res = dataManager.UsersRepos.Add(Models.EDM.UserType.Normal, user.Login, user.Password, out string Res);
                 if (res)
                     return SignIn(user.Login,user.Password,true,true);
                 else
@@ -179,7 +179,7 @@ namespace TechPractics2.Controllers
         {
             var User = Session[GlobalResources.SiteResources.User] as Models.EDM.User;
             if (User == null) return RedirectToAction("Index");
-            ViewData.Model = dataManager.UserToCustomerRepos.SelectUserToCustomers(x => x.User.Id == User.Id).Select(x=>x.Customer);
+            ViewData.Model = dataManager.UserToCustomerRepos.Select(x => x.User.Id == User.Id).Select(x=>x.Customer);
             return View();
         }
         [AcceptVerbs(HttpVerbs.Get)]
@@ -196,17 +196,17 @@ namespace TechPractics2.Controllers
                 var user = Session[GlobalResources.SiteResources.User] as Models.EDM.User;
                 if (IsCompany)
                 {
-                    if (dataManager.CustomerRepos.SelectCustomers(x => x is Models.EDM.Company
+                    if (dataManager.CustomerRepos.Select(x => x is Models.EDM.Company
                     && x.Passport == Passport
                     && (x as Models.EDM.Company).INN == INN).Any())
                     {
                         ModelState.AddModelError("FIO", "Уже есть заказчик с данным номером паспорта и ИНН компании");
                     }else
                     {
-                        dataManager.CompanyRepos.AddCompany(FIO, Passport, PhoneNumber, CompanyName, INN, out string Res);
-                        dataManager.UserToCustomerRepos.AddUserToCustomer(
-                            dataManager.UsersRepos.FindUser(user.Id),
-                            dataManager.CustomerRepos.SelectCustomers(x => x is Models.EDM.Company
+                        dataManager.CompanyRepos.Add(FIO, Passport, PhoneNumber, CompanyName, INN, out string Res);
+                        dataManager.UserToCustomerRepos.Add(
+                            dataManager.UsersRepos.Find(user.Id),
+                            dataManager.CustomerRepos.Select(x => x is Models.EDM.Company
                                     && x.Passport == Passport
                                     && (x as Models.EDM.Company).INN == INN).First(),
                             out Res
@@ -215,17 +215,17 @@ namespace TechPractics2.Controllers
                     }
                 }else
                 {
-                    if (dataManager.CustomerRepos.SelectCustomers(x => !(x is Models.EDM.Company)
+                    if (dataManager.CustomerRepos.Select(x => !(x is Models.EDM.Company)
                     && x.Passport == Passport
                     ).Any())
                     {
                         ModelState.AddModelError("FIO", "Уже есть заказчик с таким номером паспорта");
                     }else
                     {
-                        dataManager.CustomerRepos.AddCustomer(FIO, Passport, PhoneNumber,out string Res);
-                        dataManager.UserToCustomerRepos.AddUserToCustomer(
-                            dataManager.UsersRepos.FindUser(user.Id),
-                            dataManager.CustomerRepos.SelectCustomers(x => !(x is Models.EDM.Company)
+                        dataManager.CustomerRepos.Add(FIO, Passport, PhoneNumber,out string Res);
+                        dataManager.UserToCustomerRepos.Add(
+                            dataManager.UsersRepos.Find(user.Id),
+                            dataManager.CustomerRepos.Select(x => !(x is Models.EDM.Company)
                                 && x.Passport == Passport
                             ).First(),
                             out Res
@@ -276,18 +276,18 @@ namespace TechPractics2.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ShareProfile(int id)
         {
-            ViewData.Model = dataManager.CustomerRepos.SelectCustomers(x => x.Id == id).FirstOrDefault();
+            ViewData.Model = dataManager.CustomerRepos.Select(x => x.Id == id).FirstOrDefault();
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult ShareProfile(int customerId, string Login)
         {
-            var user = dataManager.UsersRepos.SelectUsers(x => x.Login == Login).FirstOrDefault();
+            var user = dataManager.UsersRepos.Select(x => x.Login == Login).FirstOrDefault();
             if (user!=null)
             {
-                dataManager.UserToCustomerRepos.AddUserToCustomer(
-                    dataManager.UsersRepos.FindUser(user.Id),
-                    dataManager.CustomerRepos.SelectCustomers(x => x.Id == customerId).First(),
+                dataManager.UserToCustomerRepos.Add(
+                    dataManager.UsersRepos.Find(user.Id),
+                    dataManager.CustomerRepos.Select(x => x.Id == customerId).First(),
                     out string Res
                     );
                 return RedirectToAction("ViewMyProfiles");
@@ -295,26 +295,172 @@ namespace TechPractics2.Controllers
             {
                 ModelState.AddModelError("Login", "Пользователь с таким логином не существует");
             }
-            ViewData.Model = dataManager.CustomerRepos.SelectCustomers(x => x.Id == customerId).FirstOrDefault();
+            ViewData.Model = dataManager.CustomerRepos.Select(x => x.Id == customerId).FirstOrDefault();
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult RemoveProfile(int id)
         {
-            ViewData.Model = dataManager.CustomerRepos.SelectCustomers(x => x.Id == id).FirstOrDefault();
+            ViewData.Model = dataManager.CustomerRepos.Select(x => x.Id == id).FirstOrDefault();
             return View();
         }
 
         public ActionResult RemoveProfile(Models.EDM.Customer customer)
         {
             var user = Session[GlobalResources.SiteResources.User] as Models.EDM.User;
-            dataManager.UserToCustomerRepos.AddUserToCustomer(
-                dataManager.UsersRepos.FindUser(user.Id),
-                dataManager.CustomerRepos.SelectCustomers(x => x.Id == customer.Id).First(),
+            dataManager.UserToCustomerRepos.Add(
+                dataManager.UsersRepos.Find(user.Id),
+                dataManager.CustomerRepos.Select(x => x.Id == customer.Id).First(),
                 out string Res
                 );
             return RedirectToAction("ViewMyProfiles");
+        }
+
+        public ActionResult ShowMeters()
+        {
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult MakeOrder()
+        {
+            var user = Session[GlobalResources.SiteResources.User] as Models.EDM.User;
+            if (user == null) return RedirectToAction("Index");
+            ViewData[GlobalResources.SiteResources.Customer] = dataManager.UserToCustomerRepos.Select(x => x.User.Id == user.Id).Select(x => x.Customer);
+            ViewData[GlobalResources.SiteResources.Meter] = dataManager.MeterRepos.Select(x => true);
+            return View();
+        }
+        
+        public void Check(Models.UtilityModels.MakeOrderViewModel model)
+        {
+            if (model.UseProfile)
+            {
+                if (model.ProfileId <= 0)
+                {
+                    ModelState.AddModelError("ProfileId", "Не выбран профиль");
+                }
+            }
+            else
+            {
+                Check(model.FIO, model.Passport, model.PhoneNumber, model.IsCompany, model.CompanyName, model.INN);
+            }
+            if (string.IsNullOrWhiteSpace(model.FullAddress))
+            {
+                ModelState.AddModelError("FullAddress", SiteResources.PleaseInput + " полный адрес");
+            }
+            if (model.Flat < 0)
+                ModelState.AddModelError("Flat", GlobalResources.SiteResources.PleaseInput + GlobalResources.SiteResources.Address_Flat);
+        }
+        
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult MakeOrder(Models.UtilityModels.MakeOrderViewModel model)
+        {
+            Models.EDM.User user = Session[GlobalResources.SiteResources.User] as Models.EDM.User;
+            Check(model);
+            if (ModelState.IsValid)
+            {
+                if (dataManager.AddressRepos.ParseAddress(model.FullAddress,out string City, out string Street, out string House))
+                {
+                    Models.EDM.City city = dataManager.CityRepos.Select(x => x.Name == City).FirstOrDefault();
+                    if (city == null)
+                    {
+                        throw new Exception("Данный город не поддерживается :(");
+                    }
+                    Models.EDM.Street street = dataManager.StreetRepos.Select(x => x.Name == Street && x.City.Id == city.Id).FirstOrDefault();
+                    if (street == null)
+                    {
+                        dataManager.StreetRepos.Street(Street, city, out string Res);
+                        street = dataManager.StreetRepos.Select(x => x.Name == Street && x.City.Id == city.Id).FirstOrDefault();
+                    }
+                    Models.EDM.House house = dataManager.HouseRepos.Select(x => x.Number == House && x.Street.Id == street.Id).FirstOrDefault();
+                    if (house == null)
+                    {
+                        dataManager.HouseRepos.Add(House, street, out string Res);
+                        house = dataManager.HouseRepos.Select(x => x.Number == House && x.Street.Id == street.Id).FirstOrDefault();
+                    }
+                    Models.EDM.Address address = dataManager.AddressRepos.Select(x => x.Flat == model.Flat && x.House.Id == house.Id).FirstOrDefault();
+                    if (address == null)
+                    {
+                        dataManager.AddressRepos.Add(model.Flat, house, out string Res);
+                        address = dataManager.AddressRepos.Select(x => x.Flat == model.Flat && x.House.Id == house.Id).FirstOrDefault();
+                    }
+                    Models.EDM.Customer customer;
+                    if (model.UseProfile)
+                    {
+                        customer = dataManager.CustomerRepos.Select(x => x.Id == model.ProfileId).FirstOrDefault();
+                    }
+                    else
+                    {
+                        
+                        if (model.IsCompany)
+                        {
+                            customer = dataManager.CustomerRepos.Select(x => (x is Models.EDM.Company)
+                            && x.Passport == model.Passport
+                            && ((Models.EDM.Company)x).INN == model.INN).FirstOrDefault();
+                        }
+                        else
+                        {
+                            customer = dataManager.CustomerRepos.Select(x => x.Passport == model.Passport
+                            && !(x is Models.EDM.Company)).FirstOrDefault();
+                        }
+                        if (customer == null)
+                        {
+                            if (model.IsCompany)
+                            {
+                                dataManager.CompanyRepos.Add(model.FIO, model.Passport, model.PhoneNumber,
+                                    model.CompanyName, model.INN, out string Res);
+                                customer = dataManager.CustomerRepos.Select(x => (x is Models.EDM.Company)
+                                     && x.Passport == model.Passport
+                                     && ((Models.EDM.Company)x).INN == model.INN).FirstOrDefault();
+                            }
+                            else
+                            {
+                                dataManager.CustomerRepos.Add(model.FIO, model.Passport, model.PhoneNumber,
+                                    out string Res);
+                                customer = dataManager.CustomerRepos.Select(x => x.Passport == model.Passport
+                                    && !(x is Models.EDM.Company)).FirstOrDefault();
+                            }
+                        }
+
+                    }
+                   
+                    dataManager.OrderRepos.Add(
+                        dataManager.UsersRepos.Find(user.Id),
+                        dataManager.CustomerRepos.Select(x => x.Id == customer.Id).First(),
+                        dataManager.AddressRepos.Find(address.Id),
+                        out string res, out int result);
+                    var order = dataManager.OrderRepos.Find(result);
+                    var status = dataManager.StatusRepos.Find(1);
+                    if (model.MetersCounts != null)
+                    {
+                        var Meters = dataManager.MeterRepos.Select(x => true).ToArray();
+                        for (int i = 0; i < model.MetersCounts.Count; i++)
+                        {
+                            for (int j = 0; j < model.MetersCounts[i]; ++j)
+                            {
+                                dataManager.OrderEntryRepos.Add(order,
+                                    DateTime.Now,
+                                    null,
+                                    null,
+                                    dataManager.MeterRepos.Find(Meters[i].Id),
+                                    null,
+                                    status,
+                                    out string Res);
+                            }
+                        }
+                    }
+                }
+            }
+            ViewData[GlobalResources.SiteResources.Customer] = dataManager.UserToCustomerRepos.Select(x => x.User.Id == user.Id).Select(x => x.Customer);
+            ViewData[GlobalResources.SiteResources.Meter] = dataManager.MeterRepos.Select(x => true);
+            return View();
+        }
+        
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ViewMyOrders()
+        {
+            return View();
         }
     }
 }

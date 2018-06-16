@@ -12,7 +12,7 @@ namespace TechPractics2.Models.Repos
         {
             
         }
-        public bool AddOrderEntry(Order order, DateTime? startTime, DateTime? endTime
+        public bool Add(Order order, DateTime? startTime, DateTime? endTime
            , string RegNumber, Meter meter, Person person, Status status, out string Res, bool save = true)
         {
             try
@@ -45,12 +45,12 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool ChangeOrderEntry(int Id, Order order, DateTime? startTime, DateTime? endTime,
+        public bool Change(int Id, Order order, DateTime? startTime, DateTime? endTime,
              string RegNumber, Meter meter, Person person, Status status, out string Res, bool save = true)
         {
             try
             {
-                var a = FindOrderEntry(Id);
+                var a = Find(Id);
                 if (a == null)
                 {
                     Res = "Нет заказной позиции с данным идентификационным номером";
@@ -82,11 +82,11 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool RemoveOrderEntry(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var a = FindOrderEntry(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет заказной позиции с таким идентификационным номером";
@@ -104,41 +104,9 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public OrderEntry FindOrderEntry(int id) => (from o in cont.OrderEntrySet where o.Id == id select o).FirstOrDefault();
+        public OrderEntry Find(int id) => (from o in cont.OrderEntrySet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<OrderEntry> SelectOrderEntrys(Func<OrderEntry, bool> predicate) => cont.OrderEntrySet.Where(predicate).AsParallel();
+        public override IEnumerable<OrderEntry> Select(Func<OrderEntry, bool> predicate) => cont.OrderEntrySet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<OrderEntry> orderEntries)
-        {
-            DataTable dataTable = new DataTable();
-            dataTable.Columns.AddRange(new DataColumn[] {
-                new DataColumn("№",typeof(int)),
-                new DataColumn("OrderId",typeof(int)),
-                new DataColumn("MeterId",typeof(int)),
-                new DataColumn("MeterName",typeof(string)),
-                new DataColumn("Status",typeof(string)),
-                new DataColumn("StartTime",typeof(DateTime)),
-                new DataColumn("EndTime",typeof(DateTime)),
-                new DataColumn("RegNumer",typeof(string)),
-                new DataColumn("Person",typeof(string))
-                }
-            );
-            int i = 0;
-            foreach (var orderentry in orderEntries)
-            {
-                dataTable.Rows.Add(
-                    ++i,
-                    orderentry.Order.Id,
-                    orderentry.Meter.Id,
-                    orderentry.Meter.Name,
-                    orderentry.Status.Name,
-                    orderentry.StartTime ?? DateTime.MinValue,
-                    orderentry.EndTime ?? DateTime.MinValue,
-                    orderentry.RegNumer ?? string.Empty,
-                    orderentry.Person?.FIO ?? string.Empty
-                    );
-            }
-            return dataTable;
-        }
     }
 }

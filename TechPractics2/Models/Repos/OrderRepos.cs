@@ -13,7 +13,7 @@ namespace TechPractics2.Models.Repos
         {
            
         }
-        public bool AddOrder(User user, Customer customer, Address address, out string Res, out int result, int? id = null, bool save = true)
+        public bool Add(User user, Customer customer, Address address, out string Res, out int result, int? id = null, bool save = true)
         {
             try
             {
@@ -42,11 +42,11 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool ChangeOrder(int Id, Customer customer, Address address, out string Res, bool save = true)
+        public bool Change(int Id, Customer customer, Address address, out string Res, bool save = true)
         {
             try
             {
-                var a = FindOrder(Id);
+                var a = Find(Id);
                 if (a == null)
                 {
                     Res = "Нет заказа с данным идентификационный номером";
@@ -65,11 +65,11 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool RemoveOrder(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var a = FindOrder(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет заказа с таким идентификационным номером";
@@ -95,13 +95,10 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public Order FindOrder(int id) => (from o in cont.OrderSet where o.Id == id select o).FirstOrDefault();
+        public Order Find(int id) => (from o in cont.OrderSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Order> SelectOrders(Func<Order, bool> predicate) => cont.OrderSet.Where(predicate).AsParallel();
+        public override IEnumerable<Order> Select(Func<Order, bool> predicate) => cont.OrderSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<Order> enumerable)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

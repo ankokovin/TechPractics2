@@ -12,7 +12,7 @@ namespace TechPractics2.Models.Repos
         public StavkaRepos(Model1Container model, bool checkInputs=true, bool allowCascade=false) : base(model, checkInputs, allowCascade)
         {
         }
-        public bool AddStavka(MeterType meterType, Person person, out string Res, bool save = true)
+        public bool Add(MeterType meterType, Person person, out string Res, bool save = true)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool ChangeStavka(int Id, MeterType meterType, Person person, out string Res, bool save = true)
+        public bool Change(int Id, MeterType meterType, Person person, out string Res, bool save = true)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace TechPractics2.Models.Repos
                     Res = "Уже есть данная ставка у данного человека";
                     return false;
                 }
-                var a = FindStavka(Id);
+                var a = Find(Id);
                 if (a == null)
                 {
                     Res = "Нет ставки с данным идентификационным номером";
@@ -64,11 +64,11 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public bool RemoveStavka(int id, out string Res, bool save = true, bool check = true)
+        public bool Remove(int id, out string Res, bool save = true, bool check = true)
         {
             try
             {
-                var a = FindStavka(id);
+                var a = Find(id);
                 if (a == null)
                 {
                     Res = "Нет ставки с таким идентификационным номером";
@@ -86,13 +86,10 @@ namespace TechPractics2.Models.Repos
             }
         }
 
-        public Stavka FindStavka(int id) => (from o in cont.StavkaSet where o.Id == id select o).FirstOrDefault();
+        public Stavka Find(int id) => (from o in cont.StavkaSet where o.Id == id select o).FirstOrDefault();
 
-        public IEnumerable<Stavka> SelectStavkas(Func<Stavka, bool> predicate) => cont.StavkaSet.Where(predicate).AsParallel();
+        public override IEnumerable<Stavka> Select(Func<Stavka, bool> predicate) => cont.StavkaSet.Where(predicate).AsParallel();
 
-        public override DataTable table(IEnumerable<Stavka> enumerable)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

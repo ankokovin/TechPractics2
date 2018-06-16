@@ -3,9 +3,10 @@ using System.Linq;
 using System.IO;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using TechPractics2.Models.EDM;
 
 
-namespace TechPractics2.Models.EDM
+namespace TechPractics2.Models
 {
 
     public class XMLQuery
@@ -135,13 +136,13 @@ namespace TechPractics2.Models.EDM
         public int OrderId { get; set; }
         public int StatusId { get; set; }
         public int MeterId { get; set; }
-        public int? PersonId { get; set; }
-        public DateTime? startTime { get; set; }
-        public DateTime? endTime { get; set; }
+        public int PersonId { get; set; }
+        public DateTime startTime { get; set; }
+        public DateTime endTime { get; set; }
         public string RegNum { get; set; }
         public static _OrderEntry Trans(OrderEntry orderEntry) => 
-            new _OrderEntry { Id=orderEntry.Id, MeterId = orderEntry.Meter.Id, OrderId = orderEntry.Order.Id, PersonId = orderEntry.PersonId, StatusId = orderEntry.Status.Id,
-            startTime = orderEntry.StartTime, endTime = orderEntry.EndTime, RegNum = orderEntry.RegNumer};
+            new _OrderEntry { Id=orderEntry.Id, MeterId = orderEntry.Meter.Id, OrderId = orderEntry.Order.Id, PersonId = orderEntry.PersonId??-1, StatusId = orderEntry.Status.Id,
+            startTime = orderEntry.StartTime??DateTime.MinValue, endTime = orderEntry.EndTime??DateTime.MinValue, RegNum = orderEntry.RegNumer??string.Empty};
     }
     [Serializable]
     [XmlRoot(ElementName = "Meter")]
@@ -255,7 +256,7 @@ namespace TechPractics2.Models.EDM
             Dictionary<int, int> CityIndices = new Dictionary<int, int>();
             foreach (_City c in CitySet)
             {
-                if (dataManager.CityRepos.AddCity(c.Name,out string Res))
+                if (dataManager.CityRepos.Add(c.Name,out string Res))
                 {
                     CityIndices.Add(c.Id, ++idx);
                 }else
@@ -268,7 +269,7 @@ namespace TechPractics2.Models.EDM
             foreach (_Street s in StreetSet)
             {
                 int cid = CityIndices[s.CityId];
-                if (dataManager.StreetRepos.AddStreet(s.Name, dataManager.CityRepos.FindCity(cid), out string Res))
+                if (dataManager.StreetRepos.Street(s.Name, dataManager.CityRepos.Find(cid), out string Res))
                 {
                     StreetIndices.Add(s.Id, ++idx);
                 }else
@@ -281,7 +282,7 @@ namespace TechPractics2.Models.EDM
             foreach (_House h in HouseSet)
             {
                 int sid = StreetIndices[h.StreetId];
-                if (dataManager.HouseRepos.AddHouse(h.Number, dataManager.StreetRepos.FindStreet(sid), out string Res))
+                if (dataManager.HouseRepos.Add(h.Number, dataManager.StreetRepos.Find(sid), out string Res))
                     HouseIndices.Add(h.Id, ++idx);
                 else
                     HouseIndices.Add(h.Id, (from p in dataManager.cont.HouseSet where p.Number == h.Number && p.Street.Id == sid select p.Id).First());
@@ -291,7 +292,7 @@ namespace TechPractics2.Models.EDM
             foreach(_Address a in AddressSet)
             {
                 int hid = HouseIndices[a.HouseId];
-                if (dataManager.AddressRepos.AddAddress(a.Flat, dataManager.HouseRepos.FindHouse(hid), out string Res))
+                if (dataManager.AddressRepos.Add(a.Flat, dataManager.HouseRepos.Find(hid), out string Res))
                     AddressesIndices.Add(a.Id, ++idx);
                 else
                     AddressesIndices.Add(a.Id, (from p in dataManager.cont.AddressSet where p.Flat == a.Flat && p.House.Id == hid select p.Id).First());
@@ -300,7 +301,7 @@ namespace TechPractics2.Models.EDM
             idx = dataManager.NextId[EntityTypes.User];
             foreach(_User u in UserSet)
             {
-                if (dataManager.UsersRepos.AddUser(u.UserType, u.Login, u.Password, out string Res))
+                if (dataManager.UsersRepos.Add(u.UserType, u.Login, u.Password, out string Res))
                     UserIndices.Add(u.Id, ++idx);
                 else
                     UserIndices.Add(u.Id, (from p in dataManager.cont.UserSet where p.Login == u.Login select p.Id).First());
@@ -309,7 +310,7 @@ namespace TechPractics2.Models.EDM
             idx = dataManager.NextId[EntityTypes.MeterType];
             foreach (_MeterType m in MeterTypeSet)
             {
-                if (dataManager.MeterTypeRepos.AddMeterType(m.Name, out string Res))
+                if (dataManager.MeterTypeRepos.Add(m.Name, out string Res))
                     MeterTypeindices.Add(m.Id, ++idx);
                 else
                     MeterTypeindices.Add(m.Id, (from p in dataManager.cont.MeterTypeSet where p.Name == m.Name select p.Id).First());
@@ -319,7 +320,7 @@ namespace TechPractics2.Models.EDM
             foreach (_Meter m in MeterSet)
             {
                 int mt = MeterTypeindices[m.MeterTypeId];
-                if (dataManager.MeterRepos.AddMeter(m.Name, dataManager.MeterTypeRepos.FindMeterType(mt), out string Res))
+                if (dataManager.MeterRepos.Add(m.Name, dataManager.MeterTypeRepos.Find(mt), out string Res))
                     MeterIndices.Add(m.Id, ++idx);
                 else
                     MeterIndices.Add(m.Id, (from p in dataManager.cont.MeterSet where p.Name == m.Name && p.MeterType.Id == mt select p.Id).First());
@@ -328,7 +329,7 @@ namespace TechPractics2.Models.EDM
             idx = dataManager.NextId[EntityTypes.Person];
             foreach (_Person p in PersonSet)
             {
-                if (dataManager.PersonRepos.AddPerson(p.FIO, out string Res))
+                if (dataManager.PersonRepos.Add(p.FIO, out string Res))
                     PersonIndices.Add(p.Id, ++idx);
                 else
                     PersonIndices.Add(p.Id, (from q in dataManager.cont.PersonSet where q.FIO == p.FIO select q.Id).First());
@@ -339,7 +340,7 @@ namespace TechPractics2.Models.EDM
             {
                 int mt = MeterTypeindices[s.MeterTypeId];
                 int pid = PersonIndices[s.PersonId];
-                if (dataManager.StavkaRepos.AddStavka(dataManager.MeterTypeRepos.FindMeterType(mt), dataManager.PersonRepos.FindPerson(pid), out string Res))
+                if (dataManager.StavkaRepos.Add(dataManager.MeterTypeRepos.Find(mt), dataManager.PersonRepos.Find(pid), out string Res))
                     StavkaIndices.Add(s.Id, ++idx);
                 else
                     StavkaIndices.Add(s.Id, (from p in dataManager.cont.StavkaSet where p.MeterType.Id == mt && p.Person.Id ==pid select p.Id).First());
@@ -350,13 +351,13 @@ namespace TechPractics2.Models.EDM
             {
                 if (c is _Company m)
                 {
-                    if (dataManager.CompanyRepos.AddCompany(m.FIO, m.Passport,m.PhoneNumber, m.CompanyName, m.INN, out string Res))
+                    if (dataManager.CompanyRepos.Add(m.FIO, m.Passport,m.PhoneNumber, m.CompanyName, m.INN, out string Res))
                         CustomerIndices.Add(m.Id, ++idx);
                     else
                         CustomerIndices.Add(m.Id, (from p in dataManager.cont.CustomerSet where p is Company && (p as Company).INN == m.INN select p.Id).First());
                 }else
                 {
-                    if (dataManager.CustomerRepos.AddCustomer(c.FIO, c.Passport, c.PhoneNumber, out string Res))
+                    if (dataManager.CustomerRepos.Add(c.FIO, c.Passport, c.PhoneNumber, out string Res))
                         CustomerIndices.Add(c.Id, ++idx);
                     else
                         CustomerIndices.Add(c.Id, (from p in dataManager.cont.CustomerSet where !(p is Company) && p.Passport == c.Passport select p.Id).First());
@@ -369,15 +370,15 @@ namespace TechPractics2.Models.EDM
                 int uid = UserIndices[o.UserId];
                 int cid = CustomerIndices[o.CustomerId];
                 int aid = AddressesIndices[o.AddressId];
-                dataManager.OrderRepos.AddOrder(dataManager.UsersRepos.FindUser(uid), dataManager.CustomerRepos.FindCustomer(cid),
-                      dataManager.AddressRepos.FindAddress(aid), out string Res,out int id,++idx);
+                dataManager.OrderRepos.Add(dataManager.UsersRepos.Find(uid), dataManager.CustomerRepos.Find(cid),
+                      dataManager.AddressRepos.Find(aid), out string Res,out int id,++idx);
                     OrderIndices.Add(o.Id, idx);
             }
             Dictionary<int, int> StatusIndices = new Dictionary<int, int>();
             idx = dataManager.NextId[EntityTypes.Status];
             foreach (_Status s in StatusSet)
             {
-                if (dataManager.StatusRepos.AddStatus(s.Name, out string res))
+                if (dataManager.StatusRepos.Add(s.Name, out string res))
                     StatusIndices[s.Id] = ++idx;
                 else
                     StatusIndices[s.Id] = (from p in dataManager.cont.StatusSet where p.Name == s.Name select p.Id).First();
@@ -388,8 +389,8 @@ namespace TechPractics2.Models.EDM
                 int mid = MeterIndices[o.MeterId];
                 int pid = o.PersonId != null ? PersonIndices[(int)o.PersonId] : -1;
                 int sid = StatusIndices[o.StatusId];
-                dataManager.OrderEntryRepos.AddOrderEntry(dataManager.OrderRepos.FindOrder(oid), o.startTime, o.endTime, o.RegNum, dataManager.MeterRepos.FindMeter(mid),
-                    o.PersonId != null ? dataManager.PersonRepos.FindPerson(pid) : null, dataManager.StatusRepos.FindStatus(sid), out string Res);
+                dataManager.OrderEntryRepos.Add(dataManager.OrderRepos.Find(oid), o.startTime, o.endTime, o.RegNum, dataManager.MeterRepos.Find(mid),
+                    o.PersonId != null ? dataManager.PersonRepos.Find(pid) : null, dataManager.StatusRepos.Find(sid), out string Res);
             }
         }
     }

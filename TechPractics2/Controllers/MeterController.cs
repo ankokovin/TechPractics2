@@ -12,14 +12,14 @@ namespace TechPractics2.Controllers
 
         public ActionResult MeterCollection()
         {
-            ViewData.Model = dataManager.MeterRepos.SelectMeters(x => true);
+            ViewData.Model = dataManager.MeterRepos.Select(x => true);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {
-            var Cities = dataManager.MeterTypeRepos.SelectMeterTypes(x => true);
+            var Cities = dataManager.MeterTypeRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Meter_MeterType] = new SelectList(Cities, "Id", "Name");
             return View();
         }
@@ -29,10 +29,10 @@ namespace TechPractics2.Controllers
             Check(Name, MeterTypeId);
             if (ModelState.IsValid)
             {
-                dataManager.MeterRepos.AddMeter(Name, dataManager.MeterTypeRepos.FindMeterType(MeterTypeId), out string Res);
+                dataManager.MeterRepos.Add(Name, dataManager.MeterTypeRepos.Find(MeterTypeId), out string Res);
                 return RedirectToAction("Index");
             }
-            var Cities = dataManager.MeterTypeRepos.SelectMeterTypes(x => true);
+            var Cities = dataManager.MeterTypeRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Meter_MeterType] = new SelectList(Cities, "Id", "Name");
             return View();
 
@@ -48,28 +48,28 @@ namespace TechPractics2.Controllers
 
         public ActionResult Details(int id)
         {
-            ViewData.Model = dataManager.MeterRepos.FindMeter(id);
+            ViewData.Model = dataManager.MeterRepos.Find(id);
             return View();
         }
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Delete(int id)
         {
-            ViewData.Model = dataManager.MeterRepos.FindMeter(id);
+            ViewData.Model = dataManager.MeterRepos.Find(id);
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.Meter street)
         {
-            dataManager.MeterRepos.RemoveMeter(street.Id, out string Res);
+            dataManager.MeterRepos.Remove(street.Id, out string Res);
             return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            ViewData.Model = dataManager.MeterRepos.FindMeter(id);
-            var Cities = dataManager.MeterTypeRepos.SelectMeterTypes(x => true);
+            ViewData.Model = dataManager.MeterRepos.Find(id);
+            var Cities = dataManager.MeterTypeRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Meter_MeterType] = new SelectList(Cities, "Id", "Name");
             return View();
         }
@@ -79,14 +79,18 @@ namespace TechPractics2.Controllers
             Check(Name, MeterTypeId);
             if (ModelState.IsValid)
             {
-                dataManager.MeterRepos.ChangeMeter(id, Name, dataManager.MeterTypeRepos.FindMeterType(MeterTypeId), out string Res);
+                dataManager.MeterRepos.Change(id, Name, dataManager.MeterTypeRepos.Find(MeterTypeId), out string Res);
                 return RedirectToAction("Index");
             }
-            ViewData.Model = dataManager.MeterRepos.FindMeter(id);
-            var Cities = dataManager.MeterTypeRepos.SelectMeterTypes(x => true);
+            ViewData.Model = dataManager.MeterRepos.Find(id);
+            var Cities = dataManager.MeterTypeRepos.Select(x => true);
             ViewData[GlobalResources.SiteResources.Meter_MeterType] = new SelectList(Cities, "Id", "Name");
             return View();
         }
-
+        public ActionResult ExcelExport()
+        {
+            AnaliticController.ExportToExcel<Models.EDM.Meter>("Meter", this, dataManager);
+            return RedirectToAction("Index");
+        }
     }
 }
