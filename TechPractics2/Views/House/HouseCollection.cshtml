@@ -1,18 +1,25 @@
 ﻿@model IEnumerable<TechPractics2.Models.EDM.House>
 
 @{
-ViewBag.Title = GlobalResources.SiteResources.EntityCol;
+    ViewBag.Title = GlobalResources.SiteResources.EntityCol;
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
+
+@Styles.Render("~/Content/list.css")
 @if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
 {
 
     <h2>@GlobalResources.SiteResources.EntityCol</h2>
 
     <p>
-        @Html.ActionLink(GlobalResources.SiteResources.CreateNew, "Add")
+        <a href="@Url.Action("Add")" title=@GlobalResources.SiteResources.Add>
+            <img src="~/Resources/create.jpg" class="upper-img" />
+        </a>
+        <a href="@Url.Action("ExcelExport")" title=@GlobalResources.SiteResources.ExportToExcel>
+            <img src="~/Resources/1200px-Microsoft_Excel_2013_logo.svg.png" class="upper-img" />
+        </a>
     </p>
     <table class="table">
         <tr>
@@ -35,9 +42,15 @@ ViewBag.Title = GlobalResources.SiteResources.EntityCol;
                     @Html.Label(item.Street.ToString())
                 </td>
                 <td>
-                    @Html.ActionLink(GlobalResources.SiteResources.Edit, "Edit", new { id = item.Id }) |
-                    @Html.ActionLink(GlobalResources.SiteResources.Details, "Details", new { id = item.Id }) |
-                    @Html.ActionLink(GlobalResources.SiteResources.Delete, "Delete", new { id = item.Id })
+                    <a href="@Url.Action("Details", new { id = item.Id })" title=@GlobalResources.SiteResources.Details class="nohover">
+                        <img src="~/Resources/details.jpg" class="lower-img" />
+                    </a>
+                    <a href="@Url.Action("Edit", new { id = item.Id })" title=@GlobalResources.SiteResources.Edit class="nohover">
+                        <img src="~/Resources/edit.png" class="lower-img" />
+                    </a>
+                    <a href="@Url.Action("Delete", new { id = item.Id })" title=@GlobalResources.SiteResources.Delete class="nohover">
+                        <img src="~/Resources/delete.png" class="lower-img" />
+                    </a>
                 </td>
             </tr>
         }
