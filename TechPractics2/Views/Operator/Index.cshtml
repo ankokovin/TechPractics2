@@ -1,7 +1,7 @@
 ﻿@model TechPractics2.Models.UtilityModels.OperatorViewModel
 @{
 
-    ViewBag.Title = "Index";
+    ViewBag.Title = GlobalResources.SiteResources.Order;
     Layout = "~/Views/Shared/_Layout.cshtml";
     var Meters = ViewData[GlobalResources.SiteResources.Meter] as IEnumerable<TechPractics2.Models.EDM.Meter>;
 
@@ -94,7 +94,7 @@
 @if (User != null && (User.UserType == TechPractics2.Models.EDM.UserType.Admin || User.UserType == TechPractics2.Models.EDM.UserType.Operator))
 {
 
-    <h2>Index</h2>
+    <h2>@GlobalResources.SiteResources.Order</h2>
 
     @Html.LabelFor(model => model.FullAddress, new { @class = "control-label col-md-3" })
 
@@ -223,7 +223,7 @@
 
 
         <div class="form-group">
-            <input type="submit" value="Submit" class="btn btn-primary" />
+            <input type="submit" value="Отправить" class="btn btn-primary" />
         </div>
     }
 

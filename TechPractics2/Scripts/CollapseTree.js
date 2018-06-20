@@ -95,7 +95,6 @@ $(document).ready(function (global) {
 
     $('#AddToCurExp').click(function () {
         var str = $("#CurrentSelector").text()+" ";
-        alert($("#Operations").find("option:selected").val());
         str = str + $("#Operations").find("option:selected").val()+" ";
         str = str + $("#userinp").val()+" ";
     if ($("#logop").find("option:selected").text().length > 0) {

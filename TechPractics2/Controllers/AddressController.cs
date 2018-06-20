@@ -7,17 +7,12 @@ namespace TechPractics2.Controllers
     public class AddressController : DataController, IExcelExport
     {
         public AddressController(DataManager dataManager) : base(dataManager) { }
-
         public ActionResult Index() => RedirectToAction("AddressCollection");
-
         public ActionResult AddressCollection()
         {
             ViewData.Model = dataManager.AddressRepos.Select(x => true);
             return View();
         }
-
-
-
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {
@@ -40,7 +35,6 @@ namespace TechPractics2.Controllers
             return View();
 
         }
-
         public void Check(int Flat, int HouseId)
         {
             if (Flat < 0)
@@ -48,7 +42,6 @@ namespace TechPractics2.Controllers
             if (HouseId < 0)
                 ModelState.AddModelError("HouseId", GlobalResources.SiteResources.PleaseInput + GlobalResources.SiteResources.Address_House);
         }
-
         public ActionResult Details(int id)
         {
             ViewData.Model = dataManager.AddressRepos.Find(id);
@@ -60,14 +53,12 @@ namespace TechPractics2.Controllers
             ViewData.Model = dataManager.AddressRepos.Find(id);
             return View();
         }
-
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(Models.EDM.Address address)
         {
             dataManager.AddressRepos.Remove(address.Id, out string Res);
             return RedirectToAction("Index");
         }
-
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -93,7 +84,6 @@ namespace TechPractics2.Controllers
             ViewData[GlobalResources.SiteResources.Address_House] = new SelectList(Houses, "Id", "FullDisc");
             return View();
         }
-
         public ActionResult ExcelExport()
         {
             AnaliticController.ExportToExcel<Models.EDM.Address>("Address", this, dataManager);

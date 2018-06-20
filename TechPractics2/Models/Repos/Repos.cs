@@ -113,142 +113,6 @@ namespace TechPractics2.Models.Repos
             Expression<Func<object,object>> isCompany = x => x is Company;
             _selectors[typeof(Customer)].Add("IsCompany", Tuple.Create(isCompany, typeof(bool)));
             _selectors[typeof(User)].Remove("Password");
-            /*
-            {
-                {
-                    typeof(Address),
-                    new TSelector
-            {
-                { "Flat", Tuple.Create(Expression<Func<object, object>> a = x => (x as Address)?.Flat),typeof(int))},
-                { "House", Tuple.Create(new Func<object, object>(x => (x as Address)?.House),typeof(House)) },
-                { "FullDisc", Tuple.Create(new Func<object, object>(x => (x as Address)?.FullDisc),typeof(string)) }
-            }
-                },
-                {
-                    typeof(House),
-                    new TSelector
-            {
-                {"Number", Tuple.Create(new Func<object, object>(x=>(x as House)?.Number),typeof(string)) },
-                {"Street", Tuple.Create(new Func<object, object>(x=>(x as House)?.Street),typeof(Street)) },
-                { "FullDisc", Tuple.Create(new Func<object, object>(x => (x as House)?.FullDisc),typeof(string)) }
-            }
-                },
-                {
-                    typeof(Street),
-                    new TSelector
-            {
-                 {"Name", Tuple.Create(new Func<object, object>(x=>(x as Street)?.Name),typeof(string)) },
-                 {"City", Tuple.Create(new Func<object, object>(x=>(x as Street)?.City),typeof(City)) },
-                 { "FullDisc", Tuple.Create(new Func<object, object>(x => (x as Street)?.FullDisc),typeof(string)) }
-            }
-                },
-                {
-                    typeof(City),
-                    new TSelector
-            {
-                 {"Name", Tuple.Create(new Func<object, object>(x=>(x as City)?.Name),typeof(string)) },
-                 { "FullDisc", Tuple.Create(new Func<object, object>(x => (x as City)?.FullDisc),typeof(string)) }
-            }
-                },
-
-                {
-                    typeof(Customer),
-                    new TSelector
-            {
-                { "FIO", Tuple.Create(new Func<object, object>(x => (x as Customer)?.FIO),typeof(string)) },
-                { "PhoneNumber", Tuple.Create(new Func<object, object>(x => (x as Customer)?.PhoneNumber),typeof(string)) },
-                { "Passport", Tuple.Create(new Func<object, object>(x => (x as Customer)?.Passport),typeof(string)) },
-                { "CompanyName", Tuple.Create(new Func<object, object>(x => (x as Company)?.CompanyName),typeof(string)) },
-                { "INN", Tuple.Create(new Func<object, object>(x => (x as Company)?.INN),typeof(string)) },
-                { "FullDisc", Tuple.Create(new Func<object, object>(x => (x as Customer)?.FullDisc),typeof(string)) }
-            }
-                },
-                {
-                    typeof(Order),
-                    new TSelector
-            {
-                {"Customer", Tuple.Create(new Func<object,object>(x=>(x as Order)?.Customer),typeof(Customer)) },
-                {"Address", Tuple.Create(new Func<object,object>(x=>(x as Order)?.Address),typeof(Address)) },
-                {"Id", Tuple.Create(new Func<object, object>(x=>(x as Order)?.Id),typeof(int)) },
-                {"User", Tuple.Create(new Func<object, object>(x=>(x as Order)?.User),typeof(User)) },
-                {"FullDisc", Tuple.Create(new Func<object, object>(x=>(x as Order)?.FullDisc),typeof(string)) },
-            }
-                },
-                {
-                    typeof(OrderEntry),
-                    new TSelector
-            {
-                {"StartTime", Tuple.Create(new Func<object,object>(x=>(x as OrderEntry)?.StartTime),typeof(DateTime?)) },
-                {"EndTime", Tuple.Create(new Func<object,object>(x=>(x as OrderEntry)?.EndTime),typeof(DateTime?)) },
-                {"Status", Tuple.Create(new Func<object, object>(x=>(x as OrderEntry)?.Status),typeof(Status)) },
-                {"Meter", Tuple.Create(new Func<object, object>(x=>(x as OrderEntry)?.Meter),typeof(Meter)) },
-                {"Order", Tuple.Create(new Func<object, object>(x=>(x as OrderEntry)?.Order),typeof(Order)) },
-                {"Person", Tuple.Create(new Func<object, object>(x=>(x as OrderEntry)?.Person),typeof(Person)) },
-                {"FullDisc", Tuple.Create(new Func<object, object>(x=>(x as OrderEntry)?.FullDisc),typeof(string)) },
-            }
-                },
-                {
-                    typeof(Meter),
-                    new TSelector
-            {
-                {"MeterType", Tuple.Create(new Func<object,object>(x=>(x as Meter)?.MeterType),typeof(MeterType)) },
-                {"Name", Tuple.Create(new Func<object,object>(x=>(x as Meter)?.Name),typeof(string)) },
-                {"FullDisc", Tuple.Create(new Func<object, object>(x=>(x as Meter)?.FullDisc),typeof(string)) },
-            }
-                },
-                 {
-                    typeof(MeterType),
-                    new TSelector
-            {
-                {"Name", Tuple.Create(new Func<object,object>(x=>(x as MeterType)?.Name),typeof(string)) },
-                {"FullDisc", Tuple.Create(new Func<object, object>(x=>(x as MeterType)?.FullDisc),typeof(string)) },
-            }
-                },
-                {
-                    typeof(Person),
-                    new TSelector
-            {
-                {"FIO", Tuple.Create(new Func<object,object>(x=>(x as Person)?.FIO),typeof(string)) },
-                {"FullDisc", Tuple.Create(new Func<object, object>(x=>(x as Person)?.FullDisc),typeof(string)) },
-            }
-                },
-                {
-                    typeof(Status),
-                    new TSelector
-            {
-                {"Name", Tuple.Create(new Func<object,object>(x=>(x as Status)?.Name),typeof(string)) },
-                {"FullDisc", Tuple.Create(new Func<object, object>(x=>(x as Status)?.FullDisc),typeof(string)) },
-            }
-                },
-                {
-                    typeof(Stavka),
-                    new TSelector
-            {
-                {"MeterType", Tuple.Create(new Func<object,object>(x=>(x as Stavka)?.MeterType),typeof(MeterType)) },
-                {"Person", Tuple.Create(new Func<object,object>(x=>(x as Stavka)?.Person),typeof(Person)) },
-                {"FullDisc", Tuple.Create(new Func<object, object>(x=>(x as Stavka)?.FullDisc),typeof(string)) },
-            }
-                },
-                {
-                    typeof(User),
-                    new TSelector
-            {
-                {"Login", Tuple.Create(new Func<object,object>(x=>(x as User)?.Login),typeof(string)) },
-                {"UserType", Tuple.Create(new Func<object,object>(x=>(x as User)?.UserType),typeof(UserType)) },
-                {"FullDisc", Tuple.Create(new Func<object, object>(x=>(x as User)?.FullDisc),typeof(string)) },
-            }
-                },
-                {
-                    typeof(UserToCustomer),
-                    new TSelector
-            {
-                {"User", Tuple.Create(new Func<object,object>(x=>(x as UserToCustomer)?.User),typeof(User)) },
-                {"Customer", Tuple.Create(new Func<object,object>(x=>(x as UserToCustomer)?.Customer),typeof(Customer)) },
-                {"FullDisc", Tuple.Create(new Func<object, object>(x=>(x as UserToCustomer)?.FullDisc),typeof(string)) },
-            }
-                },
-            };
-            */
         }
 
         private static Dictionary<Type, TSelector> _selectors;
@@ -336,7 +200,6 @@ namespace TechPractics2.Models.Repos
             Type constant = properties[properties.Length - 1] == "Id" ? typeof(int) :
                 properties[properties.Length - 1] == "StartTime" || properties[properties.Length - 1] == "EndTime" ? typeof(DateTime?) : typeof(string);
             var mconst = Expression.Constant(Parse(value,constant ));
-
             Expression compare=null;
             if (sign == "==")
             {
@@ -383,6 +246,7 @@ namespace TechPractics2.Models.Repos
                         ops.Push(op);
                         op = LogicOp.None;
                         break;
+
                     case ")":
                         var prev = expressions.Pop();
                         op = ops.Pop();
@@ -418,11 +282,9 @@ namespace TechPractics2.Models.Repos
                             res = exp;
                         }
                         i += 2;
-                        break;
-                        
+                        break;           
                 }
             }
-
             return res;
         }
 
