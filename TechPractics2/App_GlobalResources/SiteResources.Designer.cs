@@ -453,6 +453,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Страница не найдена.
+        /// </summary>
+        public static string Error404 {
+            get {
+                return ResourceManager.GetString("Error404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вывести в Excel.
         /// </summary>
         public static string ExportToExcel {
@@ -1025,6 +1034,15 @@ namespace GlobalResources {
         public static string Orders {
             get {
                 return ResourceManager.GetString("Orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquaters are working VEWY HAWD to fix this!.
+        /// </summary>
+        public static string PageError {
+            get {
+                return ResourceManager.GetString("PageError", resourceCulture);
             }
         }
         

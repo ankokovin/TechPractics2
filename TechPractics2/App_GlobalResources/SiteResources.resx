@@ -612,6 +612,9 @@
   <data name="Equal" xml:space="preserve">
     <value>Равно</value>
   </data>
+  <data name="Error404" xml:space="preserve">
+    <value>Страница не найдена</value>
+  </data>
   <data name="GetExcel" xml:space="preserve">
     <value>Вывести в Excel</value>
   </data>
@@ -647,6 +650,9 @@
   </data>
   <data name="Order_Id" xml:space="preserve">
     <value>Номер</value>
+  </data>
+  <data name="PageError" xml:space="preserve">
+    <value>We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquaters are working VEWY HAWD to fix this!</value>
   </data>
   <data name="Support" xml:space="preserve">
     <value>Поддержка</value>
