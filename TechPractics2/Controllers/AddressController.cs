@@ -16,11 +16,7 @@ namespace TechPractics2.Controllers
             return View();
         }
 
-        public ActionResult AddressCollection(IEnumerable<Models.EDM.Address> collection)
-        {
-            ViewData.Model = collection;
-            return View();
-        }
+
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()

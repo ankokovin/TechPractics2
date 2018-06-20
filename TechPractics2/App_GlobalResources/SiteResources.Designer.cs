@@ -143,11 +143,47 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Создание запроса.
+        /// </summary>
+        public static string AnaliticPage {
+            get {
+                return ResourceManager.GetString("AnaliticPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на И.
+        /// </summary>
+        public static string And {
+            get {
+                return ResourceManager.GetString("And", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Назад.
         /// </summary>
         public static string Back {
             get {
                 return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Закрыть скобку.
+        /// </summary>
+        public static string BrackerClose {
+            get {
+                return ResourceManager.GetString("BrackerClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Открыть скобку.
+        /// </summary>
+        public static string BracketOpen {
+            get {
+                return ResourceManager.GetString("BracketOpen", resourceCulture);
             }
         }
         
@@ -215,11 +251,29 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Город Улица Дом.
+        /// </summary>
+        public static string CompanyContact {
+            get {
+                return ResourceManager.GetString("CompanyContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ООО &quot;Компания по установке приборов учёта&quot;.
         /// </summary>
         public static string CompanyName {
             get {
                 return ResourceManager.GetString("CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на xxxxxxxxx.
+        /// </summary>
+        public static string CompanyPhone {
+            get {
+                return ResourceManager.GetString("CompanyPhone", resourceCulture);
             }
         }
         
@@ -390,6 +444,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Равно.
+        /// </summary>
+        public static string Equal {
+            get {
+                return ResourceManager.GetString("Equal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вывести в Excel.
         /// </summary>
         public static string ExportToExcel {
@@ -440,6 +503,33 @@ namespace GlobalResources {
         public static string FunctionsButtonText {
             get {
                 return ResourceManager.GetString("FunctionsButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вывести в Excel.
+        /// </summary>
+        public static string GetExcel {
+            get {
+                return ResourceManager.GetString("GetExcel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Больше.
+        /// </summary>
+        public static string Greater {
+            get {
+                return ResourceManager.GetString("Greater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Больше или равно.
+        /// </summary>
+        public static string GreaterOrEqual {
+            get {
+                return ResourceManager.GetString("GreaterOrEqual", resourceCulture);
             }
         }
         
@@ -516,6 +606,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Добавить.
+        /// </summary>
+        public static string Insert {
+            get {
+                return ResourceManager.GetString("Insert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Last_sing_in_error.
         /// </summary>
         public static string Last_sing_in_error {
@@ -530,6 +629,24 @@ namespace GlobalResources {
         public static string Last_Url {
             get {
                 return ResourceManager.GetString("Last_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меньше.
+        /// </summary>
+        public static string Less {
+            get {
+                return ResourceManager.GetString("Less", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меньше или равно.
+        /// </summary>
+        public static string LessOrEqual {
+            get {
+                return ResourceManager.GetString("LessOrEqual", resourceCulture);
             }
         }
         
@@ -651,6 +768,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Описание.
+        /// </summary>
+        public static string MeterDiscription {
+            get {
+                return ResourceManager.GetString("MeterDiscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Счётчики.
         /// </summary>
         public static string Meters {
@@ -723,6 +849,33 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string Non {
+            get {
+                return ResourceManager.GetString("Non", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на У вас ещё нет ниодного профиля.
+        /// </summary>
+        public static string NoProfiles {
+            get {
+                return ResourceManager.GetString("NoProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Неравно.
+        /// </summary>
+        public static string NotEqual {
+            get {
+                return ResourceManager.GetString("NotEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Данная страна не обслуживается.
         /// </summary>
         public static string NotRussia {
@@ -737,6 +890,15 @@ namespace GlobalResources {
         public static string OperatorOrder {
             get {
                 return ResourceManager.GetString("OperatorOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Или.
+        /// </summary>
+        public static string Or {
+            get {
+                return ResourceManager.GetString("Or", resourceCulture);
             }
         }
         
@@ -1133,6 +1295,33 @@ namespace GlobalResources {
         public static string Success_Login_Msg {
             get {
                 return ResourceManager.GetString("Success_Login_Msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Поддержка.
+        /// </summary>
+        public static string Support {
+            get {
+                return ResourceManager.GetString("Support", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ankokovin@edu.hse.ru.
+        /// </summary>
+        public static string SupportEMail {
+            get {
+                return ResourceManager.GetString("SupportEMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на mailto:ankokovin@edu.hse.ru.
+        /// </summary>
+        public static string SupportEMailTo {
+            get {
+                return ResourceManager.GetString("SupportEMailTo", resourceCulture);
             }
         }
         

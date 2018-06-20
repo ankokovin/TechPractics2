@@ -1,8 +1,35 @@
-﻿
+﻿@model IEnumerable<TechPractics2.Models.EDM.Meter>
 @{
-    ViewBag.Title = "ViewMeters";
+    ViewBag.Title = GlobalResources.SiteResources.Meters;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ViewMeters</h2>
+<h2>@GlobalResources.SiteResources.Meters</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @GlobalResources.SiteResources.Meter_Name
+        </th>
+        <th>
+            @GlobalResources.SiteResources.Meter_MeterType
+        </th>
+        <th>
+            @GlobalResources.SiteResources.MeterDiscription
+        </th>
+    </tr>
+        @foreach (var meter in Model)
+        {
+    <tr>
+            <td>
+                @Html.DisplayFor(x => meter.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(x => meter.MeterType.FullDisc)
+            </td>
+            <td></td>
+    </tr>
+        }
+    
+</table>
 

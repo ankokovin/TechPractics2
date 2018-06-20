@@ -11,7 +11,8 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MeterType
     {
         public MeterType()
@@ -21,6 +22,7 @@ namespace TechPractics2.Models.EDM
         }
     
         public int Id { get; set; }
+        [Display(Name = "MeterType_Name", ResourceType = typeof(GlobalResources.SiteResources))]
         public string Name { get; set; }
     
         public virtual ICollection<Meter> Meter { get; set; }

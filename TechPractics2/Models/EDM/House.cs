@@ -11,7 +11,8 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class House
     {
         public House()
@@ -20,9 +21,11 @@ namespace TechPractics2.Models.EDM
         }
     
         public int Id { get; set; }
+        [Display(Name = "House_Number", ResourceType = typeof(GlobalResources.SiteResources))]
         public string Number { get; set; }
     
         public virtual ICollection<Address> Address { get; set; }
+        [Display(Name = "House_Street", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual Street Street { get; set; }
     }
 }

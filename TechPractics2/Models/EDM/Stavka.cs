@@ -11,12 +11,14 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Stavka
     {
         public int Id { get; set; }
-    
+        [Display(Name = "Stavka_Person", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual Person Person { get; set; }
+        [Display(Name = "Stavka_MeterType", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual MeterType MeterType { get; set; }
     }
 }

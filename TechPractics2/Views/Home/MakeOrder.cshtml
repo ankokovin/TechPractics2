@@ -1,6 +1,6 @@
 ﻿@model TechPractics2.Models.UtilityModels.MakeOrderViewModel
 @{
-    ViewBag.Title = "MakeOrder";
+    ViewBag.Title = GlobalResources.SiteResources.MakeOrder;
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var Meters = ViewData[GlobalResources.SiteResources.Meter] as IEnumerable<TechPractics2.Models.EDM.Meter>;
@@ -132,8 +132,8 @@
         <td>
             @Html.CheckBoxFor(x => x.UseProfile, new { id = "UseProfile1" })
             @Html.DropDownList("ProfileId", ProfilesList, new { @class = "form-control", @style="display:none;" } )
-            @Html.Label("У вас ещё нет ни одного профиля", new { id="NoProfileLable", @class = "text-warning", @style = "display:none;" })
-            @Html.ActionLink("Создать","CreateProfile","Home",new { id = "NewProfileLink", @style = "display:none;" })
+            @Html.Label(GlobalResources.SiteResources.NoProfiles, new { id="NoProfileLable", @class = "text-warning", @style = "display:none;" })
+            @Html.ActionLink(GlobalResources.SiteResources.CreateNew,"CreateProfile","Home",new { id = "NewProfileLink", @style = "display:none;" })
             @Html.ValidationMessage("ProfileId", new { @class = "text-warning" })
         </td>
     </tr>

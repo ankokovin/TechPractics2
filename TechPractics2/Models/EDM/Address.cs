@@ -11,17 +11,20 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Address
     {
         public Address()
         {
             this.Order = new HashSet<Order>();
         }
-    
+        
         public int Id { get; set; }
+
+        [Display(Name ="Address_Flat",ResourceType =typeof(GlobalResources.SiteResources))]
         public int Flat { get; set; }
-    
+        [Display(Name = "Address_House", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual House House { get; set; }
         public virtual ICollection<Order> Order { get; set; }
     }

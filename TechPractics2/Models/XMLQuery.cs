@@ -136,12 +136,12 @@ namespace TechPractics2.Models
         public int OrderId { get; set; }
         public int StatusId { get; set; }
         public int MeterId { get; set; }
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
         public DateTime startTime { get; set; }
         public DateTime endTime { get; set; }
         public string RegNum { get; set; }
         public static _OrderEntry Trans(OrderEntry orderEntry) => 
-            new _OrderEntry { Id=orderEntry.Id, MeterId = orderEntry.Meter.Id, OrderId = orderEntry.Order.Id, PersonId = orderEntry.PersonId??-1, StatusId = orderEntry.Status.Id,
+            new _OrderEntry { Id=orderEntry.Id, MeterId = orderEntry.Meter.Id, OrderId = orderEntry.Order.Id, PersonId = orderEntry.PersonId, StatusId = orderEntry.Status.Id,
             startTime = orderEntry.StartTime??DateTime.MinValue, endTime = orderEntry.EndTime??DateTime.MinValue, RegNum = orderEntry.RegNumer??string.Empty};
     }
     [Serializable]

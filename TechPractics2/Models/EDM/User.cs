@@ -11,7 +11,8 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         public User()
@@ -21,8 +22,11 @@ namespace TechPractics2.Models.EDM
         }
     
         public int Id { get; set; }
+        [Display(Name = "User_UserType", ResourceType = typeof(GlobalResources.SiteResources))]
         public UserType UserType { get; set; }
+        [Display(Name = "User_Login", ResourceType = typeof(GlobalResources.SiteResources))]
         public string Login { get; set; }
+        [Display(Name = "User_Password", ResourceType = typeof(GlobalResources.SiteResources))]
         public string Password { get; set; }
     
         public virtual ICollection<Order> Order { get; set; }

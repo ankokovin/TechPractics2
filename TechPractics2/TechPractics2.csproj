@@ -539,7 +539,6 @@
     <Content Include="Views\Home\MakeOrder.cshtml" />
     <Content Include="Views\Home\ViewMeters.cshtml" />
     <Content Include="Views\Home\ViewMyOrders.cshtml" />
-    <Content Include="Views\OrderEntry\Selection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

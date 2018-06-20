@@ -1,13 +1,14 @@
 ﻿@model TechPractics2.Models.UtilityModels.AnaliticModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = GlobalResources.SiteResources.AnaliticPage;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var User = Session[GlobalResources.SiteResources.User] as TechPractics2.Models.EDM.User;
 }
 
-<h2>Index</h2>
+<h2>@GlobalResources.SiteResources.AnaliticPage</h2>
 
-
-
+@if (User!=null && User.UserType != TechPractics2.Models.EDM.UserType.Normal)
+{
 <table style="border-collapse: collapse;">
     <tr>
         <td style="padding: 3px;
@@ -44,29 +45,29 @@
                     <span class="Collapsable">@GlobalResources.SiteResources.OrderEntry</span><ul class="TreeList">
                         <li id="Order">
                             <span class="Collapsable">Order</span> @GlobalResources.SiteResources.Order <ul class="TreeList">
-                                <li class="Attribute"> <span class="Collapsable"> @GlobalResources.SiteResources.Order_Id  </span><button name="Id">Add</button></li>
+                                <li class="Attribute"> <span class="Collapsable"> @GlobalResources.SiteResources.Order_Id  </span><button name="Id">@GlobalResources.SiteResources.Insert</button></li>
                                 <li id="Customer">
                                     <span class="Collapsable">@GlobalResources.SiteResources.Customer </span> <ul class="TreeList">
-                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Customer_FIO</span><button name="FIO">Add</button> </li>
-                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Customer_Passport</span><button name="Passport">Add</button> </li>
-                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Customer_PhoneNumber</span><button name="PhoneNumber">Add</button> </li>
-                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Company</span><button name="IsCompany">Add</button> </li>
-                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.CompanyName</span><button name="CompanyName">Add</button> </li>
-                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Company_INN</span><button name="INN">Add</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Customer_FIO</span><button name="FIO">@GlobalResources.SiteResources.Insert</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Customer_Passport</span><button name="Passport">@GlobalResources.SiteResources.Insert</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Customer_PhoneNumber</span><button name="PhoneNumber">@GlobalResources.SiteResources.Insert</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Company</span><button name="IsCompany">@GlobalResources.SiteResources.Insert</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Company_CompanyName</span><button name="CompanyName">@GlobalResources.SiteResources.Insert</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Company_INN</span><button name="INN">@GlobalResources.SiteResources.Insert</button> </li>
                                     </ul>
                                 </li>
                                 <li id="Address">
                                     <span class="Collapsable">@GlobalResources.SiteResources.Address</span> <ul class="TreeList">
-                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Address_Flat</span><button name="Flat">Add</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Address_Flat</span><button name="Flat">@GlobalResources.SiteResources.Insert</button> </li>
                                         <li id="House">
                                             <span class="Collapsable">@GlobalResources.SiteResources.House</span>  <ul class="TreeList">
-                                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.House_Number</span><button name="Number">Add</button> </li>
+                                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.House_Number</span><button name="Number">@GlobalResources.SiteResources.Insert</button> </li>
                                                 <li id="Street">
                                                     <span class="Collapsable">@GlobalResources.SiteResources.Street</span> <ul class="TreeList">
-                                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Street_Name</span><button name="Name">Add</button> </li>
+                                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Street_Name</span><button name="Name">@GlobalResources.SiteResources.Insert</button> </li>
                                                         <li id="City">
                                                             <span class="Collapsable">City</span> <ul class="TreeList">
-                                                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.City</span><button name="Name">Add</button></li>
+                                                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.City</span><button name="Name">@GlobalResources.SiteResources.Insert</button></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -78,7 +79,7 @@
                                 <li id="User">
                                     <span class="Collapsable">@GlobalResources.SiteResources.User</span> <ul class="TreeList">
                                         <li class="Attribute">
-                                            <span class="Collapsable">@GlobalResources.SiteResources.User_Login</span> <button name="Login"> Add</button>
+                                            <span class="Collapsable">@GlobalResources.SiteResources.User_Login</span> <button name="Login"> @GlobalResources.SiteResources.Insert</button>
                                         </li>
                                     </ul>
                                 </li>
@@ -89,25 +90,25 @@
 
                                 <li id="MeterType">
                                     <span class="Collapsable">@GlobalResources.SiteResources.MeterType</span>  <ul class="TreeList">
-                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.MeterType_Name</span> <button name="Name">Add</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.MeterType_Name</span> <button name="Name">@GlobalResources.SiteResources.Insert</button> </li>
                                     </ul>
                                 </li>
-                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Meter_Name</span> <button name="Name">Add</button> </li>
+                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Meter_Name</span> <button name="Name">@GlobalResources.SiteResources.Insert</button> </li>
                             </ul>
                         </li>
                         <li id="Status">
                             <span class="Collapsable">@GlobalResources.SiteResources.Status</span> <ul class="TreeList">
-                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Status_Name</span> <button name="Name">Add</button> </li>
+                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Status_Name</span> <button name="Name">@GlobalResources.SiteResources.Insert</button> </li>
                             </ul>
                         </li>
                         <li id="Person">
                             <span class="Collapsable">@GlobalResources.SiteResources.Person</span> <ul class="TreeList">
-                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Person_FIO</span> <button name="Name">Add</button> </li>
+                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Person_FIO</span> <button name="FIO">@GlobalResources.SiteResources.Insert</button> </li>
                             </ul>
                         </li>
-                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.OrderEntry_RegNum</span> <button name="RegNumer">Add</button> </li>
-                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.OrderEntry_StartTime</span> <button name="StartTime">Add</button> </li>
-                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.OrderEntry_EndTime</span> <button name="EndTime">Add</button> </li>
+                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.OrderEntry_RegNum</span> <button name="RegNumer">@GlobalResources.SiteResources.Insert</button> </li>
+                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.OrderEntry_StartTime</span> <button name="StartTime">@GlobalResources.SiteResources.Insert</button> </li>
+                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.OrderEntry_EndTime</span> <button name="EndTime">@GlobalResources.SiteResources.Insert</button> </li>
                     </ul>
                 </li>
             </ul>
@@ -121,37 +122,39 @@
         <td style="padding: 3px;
                      border: 1px solid black;">
             <select id="Operations">
-                <option value="==">Равно</option>
-                <option value="!=">Неравно</option>
-                <option value=">">Больше</option>
-                <option value="<">Меньше</option>
-                <option value="<=">Меньше или равно</option>
-                <option value=">=">Больше или равно</option>
+                <option value="==">@GlobalResources.SiteResources.Equal</option>
+                <option value="!=">@GlobalResources.SiteResources.NotEqual</option>
+                <option value=">">@GlobalResources.SiteResources.Greater</option>
+                <option value="<">@GlobalResources.SiteResources.Less</option>
+                <option value="<=">@GlobalResources.SiteResources.LessOrEqual</option>
+                <option value=">=">@GlobalResources.SiteResources.GreaterOrEqual</option>
             </select>
         </td>
 
         <td style="padding: 3px;
                      border: 1px solid black;">
             <input id="userinp" />
-            <button id="AddToCurExp">Добавить</button>
+            <button id="AddToCurExp">@GlobalResources.SiteResources.Insert</button>
             <select id="logop">
-                <option value="Non"></option>
-                <option value="And">И</option>
-                <option value="Or">Или</option>
+                <option value="Non">@GlobalResources.SiteResources.Non</option>
+                <option value="And">@GlobalResources.SiteResources.And</option>
+                <option value="Or">@GlobalResources.SiteResources.Or</option>
             </select>
-            <button id="BracketOpen">Отрыть скобку</button>
-            <button id="BracketClose">Закрыть скобку</button>
+            <button id="BracketOpen">@GlobalResources.SiteResources.BracketOpen</button>
+            <button id="BracketClose">@GlobalResources.SiteResources.BrackerClose</button>
         </td>
     </tr>
 
 </table>
 
-@using (Html.BeginForm("Query", "Analitic", FormMethod.Post))
+using (Html.BeginForm("Query", "Analitic", FormMethod.Post))
 {
 
     @Html.HiddenFor(x => x.Exp,"")
     @Html.HiddenFor(x => x.MType,"")
-    <button type="submit">GetExcel</button>
+    <button type="submit">@GlobalResources.SiteResources.GetExcel</button>
 }
 
 <script type="text/javascript" src="~/Scripts/CollapseTree.js"></script>
+
+}

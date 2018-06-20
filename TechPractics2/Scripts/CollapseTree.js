@@ -30,7 +30,7 @@ $(document).ready(function (global) {
 
         $(".UnHide").each(function () {
             $(this).removeClass("UnHide");
-        })
+        });
 
         var temp = $(id).addClass("UnHide");
         $("#OrderEntry").find("button").hide();

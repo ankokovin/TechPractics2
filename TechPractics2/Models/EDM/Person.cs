@@ -11,7 +11,8 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Person
     {
         public Person()
@@ -21,6 +22,7 @@ namespace TechPractics2.Models.EDM
         }
     
         public int Id { get; set; }
+        [Display(Name = "Person_FIO", ResourceType = typeof(GlobalResources.SiteResources))]
         public string FIO { get; set; }
     
         public virtual ICollection<Stavka> Stavka { get; set; }

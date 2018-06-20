@@ -591,7 +591,70 @@
   <data name="_1200px_Microsoft_Excel_2013_logo_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1200px-Microsoft_Excel_2013_logo.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AnaliticPage" xml:space="preserve">
+    <value>Создание запроса</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>И</value>
+  </data>
+  <data name="BrackerClose" xml:space="preserve">
+    <value>Закрыть скобку</value>
+  </data>
+  <data name="BracketOpen" xml:space="preserve">
+    <value>Открыть скобку</value>
+  </data>
+  <data name="CompanyContact" xml:space="preserve">
+    <value>Город Улица Дом</value>
+  </data>
+  <data name="CompanyPhone" xml:space="preserve">
+    <value>xxxxxxxxx</value>
+  </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Равно</value>
+  </data>
+  <data name="GetExcel" xml:space="preserve">
+    <value>Вывести в Excel</value>
+  </data>
+  <data name="Greater" xml:space="preserve">
+    <value>Больше</value>
+  </data>
+  <data name="GreaterOrEqual" xml:space="preserve">
+    <value>Больше или равно</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="Less" xml:space="preserve">
+    <value>Меньше</value>
+  </data>
+  <data name="LessOrEqual" xml:space="preserve">
+    <value>Меньше или равно</value>
+  </data>
+  <data name="MeterDiscription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Non" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoProfiles" xml:space="preserve">
+    <value>У вас ещё нет ниодного профиля</value>
+  </data>
+  <data name="NotEqual" xml:space="preserve">
+    <value>Неравно</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Или</value>
+  </data>
   <data name="Order_Id" xml:space="preserve">
     <value>Номер</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Поддержка</value>
+  </data>
+  <data name="SupportEMail" xml:space="preserve">
+    <value>ankokovin@edu.hse.ru</value>
+  </data>
+  <data name="SupportEMailTo" xml:space="preserve">
+    <value>mailto:ankokovin@edu.hse.ru</value>
   </data>
 </root>

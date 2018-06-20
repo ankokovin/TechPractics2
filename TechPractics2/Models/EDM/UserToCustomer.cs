@@ -11,12 +11,14 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UserToCustomer
     {
         public int Id { get; set; }
-    
+        [Display(Name = "UserToCustomer_User", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual User User { get; set; }
+        [Display(Name = "UserToCustomer_Customer", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual Customer Customer { get; set; }
     }
 }

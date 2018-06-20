@@ -11,7 +11,8 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Order
     {
         public Order()
@@ -20,10 +21,12 @@ namespace TechPractics2.Models.EDM
         }
     
         public int Id { get; set; }
-    
+        [Display(Name = "Order_Customer", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual Customer Customer { get; set; }
+        [Display(Name = "Order_User", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual User User { get; set; }
         public virtual ICollection<OrderEntry> OrderEntry { get; set; }
+        [Display(Name = "Order_Address", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual Address Address { get; set; }
     }
 }

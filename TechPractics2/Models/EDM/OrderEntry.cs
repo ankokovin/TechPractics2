@@ -25,10 +25,13 @@ namespace TechPractics2.Models.EDM
         [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> EndTime { get; set; }
         public Nullable<int> PersonId { get; set; }
-    
+        [Display(Name = "OrderEntry_Order", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual Order Order { get; set; }
+        [Display(Name = "OrderEntry_Meter", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual Meter Meter { get; set; }
+        [Display(Name = "OrderEntry_Status", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual Status Status { get; set; }
+        [Display(Name = "OrderEntry_Person", ResourceType = typeof(GlobalResources.SiteResources))]
         public virtual Person Person { get; set; }
     }
 }

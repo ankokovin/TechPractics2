@@ -11,10 +11,13 @@ namespace TechPractics2.Models.EDM
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Company : Customer
     {
+        [Display(Name = "Company_CompanyName", ResourceType = typeof(GlobalResources.SiteResources))]
         public string CompanyName { get; set; }
+        [Display(Name = "Company_INN", ResourceType = typeof(GlobalResources.SiteResources))]
         public string INN { get; set; }
     }
 }

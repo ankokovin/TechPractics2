@@ -317,8 +317,9 @@ namespace TechPractics2.Controllers
             return RedirectToAction("ViewMyProfiles");
         }
 
-        public ActionResult ShowMeters()
+        public ActionResult ViewMeters()
         {
+            ViewData.Model = dataManager.MeterRepos.Select(x => true);
             return View();
         }
 
