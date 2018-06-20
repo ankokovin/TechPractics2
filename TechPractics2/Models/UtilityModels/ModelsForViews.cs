@@ -26,4 +26,10 @@ namespace TechPractics2.Models.UtilityModels
         public bool UseProfile { get; set; }
         public int ProfileId { get; set; }
     }
+
+    public class AnaliticModel
+    {
+        public string MType { get; set; }
+        public string Exp { get; set; }
+    }
 }

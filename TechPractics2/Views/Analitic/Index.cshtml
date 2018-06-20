@@ -1,4 +1,4 @@
-﻿
+﻿@model TechPractics2.Models.UtilityModels.AnaliticModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,7 +6,152 @@
 
 <h2>Index</h2>
 
-@Html.BeginForm("ExportToExcelQuery", "Analitic", FormMethod.Post){ 
-<input type="submit" value="Export to Excel" class="button" />
+
+
+<table style="border-collapse: collapse;">
+    <tr>
+        <td style="padding: 3px;
+                     border: 1px solid black;">
+            <select id="SelectEntity">
+                <option value="OrderEntry"> @GlobalResources.SiteResources.OrderEntry</option>
+                <option value="Order">      @GlobalResources.SiteResources.Order</option>
+                <option value="Customer">   @GlobalResources.SiteResources.Customer</option>
+                <option value="Address">    @GlobalResources.SiteResources.Address</option>
+                <option value="House">      @GlobalResources.SiteResources.House</option>
+                <option value="Street">     @GlobalResources.SiteResources.Street</option>
+                <option value="City">       @GlobalResources.SiteResources.City</option>
+                <option value="User">       @GlobalResources.SiteResources.User</option>
+                <option value="Meter">      @GlobalResources.SiteResources.Meter</option>
+                <option value="MeterType">  @GlobalResources.SiteResources.MeterType</option>
+                <option value="Status">     @GlobalResources.SiteResources.Status</option>
+                <option value="Person">     @GlobalResources.SiteResources.Person</option>
+
+            </select>
+        </td>
+        <td colspan="3" style="padding: 3px;
+                     border: 1px solid black;">
+            <button id="ClearBtn">Очистить</button>
+            <label id="CurrentExpression"></label>
+        </td>
+    </tr>
+
+    <tr>
+        <td  style="padding: 3px;
+                     border: 1px solid black;">
+            Selectors
+            <ul class="TreeList SoftHide">
+                <li id="OrderEntry" class="UnHide">
+                    <span class="Collapsable">@GlobalResources.SiteResources.OrderEntry</span><ul class="TreeList">
+                        <li id="Order">
+                            <span class="Collapsable">Order</span> @GlobalResources.SiteResources.Order <ul class="TreeList">
+                                <li class="Attribute"> <span class="Collapsable"> @GlobalResources.SiteResources.Order_Id  </span><button name="Id">Add</button></li>
+                                <li id="Customer">
+                                    <span class="Collapsable">@GlobalResources.SiteResources.Customer </span> <ul class="TreeList">
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Customer_FIO</span><button name="FIO">Add</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Customer_Passport</span><button name="Passport">Add</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Customer_PhoneNumber</span><button name="PhoneNumber">Add</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Company</span><button name="IsCompany">Add</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.CompanyName</span><button name="CompanyName">Add</button> </li>
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Company_INN</span><button name="INN">Add</button> </li>
+                                    </ul>
+                                </li>
+                                <li id="Address">
+                                    <span class="Collapsable">@GlobalResources.SiteResources.Address</span> <ul class="TreeList">
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Address_Flat</span><button name="Flat">Add</button> </li>
+                                        <li id="House">
+                                            <span class="Collapsable">@GlobalResources.SiteResources.House</span>  <ul class="TreeList">
+                                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.House_Number</span><button name="Number">Add</button> </li>
+                                                <li id="Street">
+                                                    <span class="Collapsable">@GlobalResources.SiteResources.Street</span> <ul class="TreeList">
+                                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Street_Name</span><button name="Name">Add</button> </li>
+                                                        <li id="City">
+                                                            <span class="Collapsable">City</span> <ul class="TreeList">
+                                                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.City</span><button name="Name">Add</button></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li id="User">
+                                    <span class="Collapsable">@GlobalResources.SiteResources.User</span> <ul class="TreeList">
+                                        <li class="Attribute">
+                                            <span class="Collapsable">@GlobalResources.SiteResources.User_Login</span> <button name="Login"> Add</button>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="Meter">
+                            <span class="Collapsable">@GlobalResources.SiteResources.Meter</span> <ul class="TreeList">
+
+                                <li id="MeterType">
+                                    <span class="Collapsable">@GlobalResources.SiteResources.MeterType</span>  <ul class="TreeList">
+                                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.MeterType_Name</span> <button name="Name">Add</button> </li>
+                                    </ul>
+                                </li>
+                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Meter_Name</span> <button name="Name">Add</button> </li>
+                            </ul>
+                        </li>
+                        <li id="Status">
+                            <span class="Collapsable">@GlobalResources.SiteResources.Status</span> <ul class="TreeList">
+                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Status_Name</span> <button name="Name">Add</button> </li>
+                            </ul>
+                        </li>
+                        <li id="Person">
+                            <span class="Collapsable">@GlobalResources.SiteResources.Person</span> <ul class="TreeList">
+                                <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.Person_FIO</span> <button name="Name">Add</button> </li>
+                            </ul>
+                        </li>
+                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.OrderEntry_RegNum</span> <button name="RegNumer">Add</button> </li>
+                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.OrderEntry_StartTime</span> <button name="StartTime">Add</button> </li>
+                        <li class="Attribute"><span class="Collapsable">@GlobalResources.SiteResources.OrderEntry_EndTime</span> <button name="EndTime">Add</button> </li>
+                    </ul>
+                </li>
+            </ul>
+        </td>
+
+        <td style="padding: 3px;
+                     border: 1px solid black;">
+            <label id="CurrentSelector"></label>
+        </td>
+
+        <td style="padding: 3px;
+                     border: 1px solid black;">
+            <select id="Operations">
+                <option value="==">Равно</option>
+                <option value="!=">Неравно</option>
+                <option value=">">Больше</option>
+                <option value="<">Меньше</option>
+                <option value="<=">Меньше или равно</option>
+                <option value=">=">Больше или равно</option>
+            </select>
+        </td>
+
+        <td style="padding: 3px;
+                     border: 1px solid black;">
+            <input id="userinp" />
+            <button id="AddToCurExp">Добавить</button>
+            <select id="logop">
+                <option value="Non"></option>
+                <option value="And">И</option>
+                <option value="Or">Или</option>
+            </select>
+            <button id="BracketOpen">Отрыть скобку</button>
+            <button id="BracketClose">Закрыть скобку</button>
+        </td>
+    </tr>
+
+</table>
+
+@using (Html.BeginForm("Query", "Analitic", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.Exp,"")
+    @Html.HiddenFor(x => x.MType,"")
+    <button type="submit">GetExcel</button>
 }
 
+<script type="text/javascript" src="~/Scripts/CollapseTree.js"></script>

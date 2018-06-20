@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<OrderEntry>
+	<Order>
+		<Id/>
+		<Customer>	
+			<FIO/>
+			<Passport/>
+			<PhoneNumber/>
+			<IsCompany/>
+			<CompanyName/>
+			<INN/>
+		</Customer>
+		<Address>
+			<Flat/>
+			<House>
+				<Number/>
+				<Street>
+					<Name/>
+					<City>
+						<Name/>
+					</City>
+				</Street>
+			</House>
+		</Address>
+		<User>
+			<Login/>
+		</User>
+	</Order>
+	<Meter>
+		<Name/>
+		<MeterType>
+			<Name/>
+		</MeterType>
+	</Meter>
+	<Status>
+		<Name/>
+	</Status>
+	<Person>
+		<Name/>
+	</Person>
+	<RegNumer/>
+	<StartTime/>
+	<EndTime/>
+</OrderEntry>

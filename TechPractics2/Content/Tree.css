@@ -1,0 +1,10 @@
+﻿
+.SoftHide{
+    font-size:0;
+}
+
+
+#OrderEntry.UnHide, #Order.UnHide, #Address.UnHide, #House.UnHide, #Street.UnHide, #City.UnHide,
+#Customer.UnHide, #Customer.UnHide, #Meter.UnHide, #MeterType.UnHide, #Person.UnHide, #Status.UnHide {
+    font-size: 12px;
+}

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using TechPractics2.Models;
 
 namespace TechPractics2.Controllers
@@ -12,6 +13,12 @@ namespace TechPractics2.Controllers
         public ActionResult AddressCollection()
         {
             ViewData.Model = dataManager.AddressRepos.Select(x => true);
+            return View();
+        }
+
+        public ActionResult AddressCollection(IEnumerable<Models.EDM.Address> collection)
+        {
+            ViewData.Model = collection;
             return View();
         }
 

@@ -5,17 +5,13 @@ namespace TechPractics2.Controllers
 {
     public class MeterController : DataController
     {
-
         public MeterController(DataManager dataManager) : base(dataManager) { }
-
         public ActionResult Index() => RedirectToAction("MeterCollection");
-
         public ActionResult MeterCollection()
         {
             ViewData.Model = dataManager.MeterRepos.Select(x => true);
             return View();
         }
-
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Add()
         {

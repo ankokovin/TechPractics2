@@ -768,6 +768,15 @@ namespace GlobalResources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Номер.
+        /// </summary>
+        public static string Order_Id {
+            get {
+                return ResourceManager.GetString("Order_Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Заказные позиции.
         /// </summary>
         public static string OrderEntries {

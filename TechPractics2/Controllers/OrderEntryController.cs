@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using TechPractics2.Models;
 using System;
+using System.Collections.Generic;
 
 namespace TechPractics2.Controllers
 {
@@ -13,6 +14,12 @@ namespace TechPractics2.Controllers
         public ActionResult OrderEntryCollection()
         {
             ViewData.Model = dataManager.OrderEntryRepos.Select(x => true);
+            return View();
+        }
+
+        public ActionResult Selection(IList<Models.EDM.OrderEntry> collection)
+        {
+            ViewData.Model = collection;
             return View();
         }
 
@@ -50,7 +57,7 @@ namespace TechPractics2.Controllers
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Delete(Models.EDM.OrderEntry orderEntry)
+        public ActionResult Delete(Models.EDM.Address orderEntry)
         {
             dataManager.OrderEntryRepos.Remove(orderEntry.Id, out string Res);
             return RedirectToAction("Index");
@@ -145,7 +152,7 @@ namespace TechPractics2.Controllers
 
         public ActionResult ExcelExport()
         {
-            AnaliticController.ExportToExcel<Models.EDM.OrderEntry>("OrderEntry", this, dataManager);
+            AnaliticController.ExportToExcel<Models.EDM.OrderEntry>("OrderEntry",(IEnumerable<Models.EDM.OrderEntry>)ViewData.Model,this);
             return RedirectToAction("Index");
         }
     }

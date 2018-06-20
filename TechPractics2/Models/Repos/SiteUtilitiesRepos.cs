@@ -119,12 +119,7 @@ namespace TechPractics2.Models.Repos
         }
         #endregion
 
-        #region Excel
-        public string Export()
-        {
-            return null;
-        }
-        #endregion
+       
     }
 
 }
